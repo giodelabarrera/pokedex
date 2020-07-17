@@ -5,21 +5,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/giodelabarrera/pokedex.git"
-  },
-  "author": "Giorgio de la Barrera <giodelabarrera@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/giodelabarrera/pokedex/issues"
-  },
-  "homepage": "https://github.com/giodelabarrera/pokedex#readme",
   "dependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
