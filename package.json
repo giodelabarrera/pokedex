@@ -1,0 +1,20 @@
+{
+  "name": "pokedex",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giodelabarrera/pokedex.git"
+  },
+  "author": "Giorgio de la Barrera <giodelabarrera@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/giodelabarrera/pokedex/issues"
+  },
+  "homepage": "https://github.com/giodelabarrera/pokedex#readme"
+}
