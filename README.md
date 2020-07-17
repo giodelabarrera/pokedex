@@ -2,6 +2,7 @@
 
 ## Structure
 
+```md
 components
   ui
     button
@@ -25,16 +26,19 @@ components
     type
     types
     weaknesses
+context
 domain
+hooks
 screens
   not-found
   pokemon
   pokemon-list
   no-results
-index.js
+```
 
 ## Use cases
 
+```md
 - get_list_pokemon_use_case
   - params
     - query?: string (nombre o numero)
@@ -48,9 +52,11 @@ index.js
     - slug: string (nombre o numero)
 
 - get_types_pokemon_use_case
+```
 
 ## Pages
 
+```md
 - detail
 poked.es/p/totodile
 poked.es/p/charmander
@@ -66,3 +72,4 @@ poked.es?s=ns
 poked.es?s=ni
 poked.es?o=2  // offset
 poked.es?t=electrico&s=az&o=4  // full
+```
