@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-function App() {
+function App () {
   return (
-    <div className="App">
+    <div className='App'>
       <p>Pokedex with lorem ipsum</p>
     </div>
   )

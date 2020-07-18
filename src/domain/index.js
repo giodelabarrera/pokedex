@@ -13,19 +13,18 @@ const USE_CASES = {
     import(
       /* webpackChunkName: "pokemon__get_types_use_case" */
       './tierlist/useCases/GetNextGameRouteUseCase/factory'
-    ),
+    )
 }
 
 const entryPoint = {
   get: useCaseName => {
     return {
-      async execute(...params) {
-        const {default: useCaseFactory} = await USE_CASES[useCaseName]()
-        // eslint-disable-next-line react-hooks/rules-of-hooks
+      async execute (...params) {
+        const { default: useCaseFactory } = await USE_CASES[useCaseName]()
         return useCaseFactory().execute(...params)
-      },
+      }
     }
-  },
+  }
 }
 
 export default entryPoint
