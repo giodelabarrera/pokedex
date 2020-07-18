@@ -7,11 +7,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "test": "jest --watch",
+    "test:coverage": "jest",
     "lint": "eslint . --cache-location node_modules/.cache/eslint",
     "prettier": "prettier \"**/*.+(js|json)\"",
     "format": "npm run prettier -- --write",
     "check-format": "npm run prettier -- --list-different",
-    "validate": "npm-run-all --parallel check-format lint build"
+    "validate": "npm-run-all --parallel check-format lint test:coverage build"
   },
   "dependencies": {
     "react": "^16.13.1",
