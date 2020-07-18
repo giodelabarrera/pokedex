@@ -8,8 +8,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "lint": "eslint . --cache-location node_modules/.cache/eslint",
-    "format": "prettier --write \"**/*.+(js|json)\"",
-    "validate": "npm-run-all --parallel lint build"
+    "prettier": "prettier \"**/*.+(js|json)\"",
+    "format": "npm run prettier -- --write",
+    "check-format": "npm run prettier -- --list-different",
+    "validate": "npm-run-all --parallel check-format lint build"
   },
   "dependencies": {
     "react": "^16.13.1",
