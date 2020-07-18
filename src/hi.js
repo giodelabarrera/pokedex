@@ -1,3 +1,3 @@
 export default function pepe () {
-  console.log(" I'm pepe")
+  console.log("Hi, I'm pepe 😎")
 }

@@ -17,7 +17,7 @@ const USE_CASES = {
 }
 
 const entryPoint = {
-  get: useCaseName => {
+  get: (useCaseName) => {
     return {
       async execute (...params) {
         const { default: useCaseFactory } = await USE_CASES[useCaseName]()
