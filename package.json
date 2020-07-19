@@ -9,6 +9,7 @@
     "build": "react-scripts build",
     "test": "jest --watch",
     "test:coverage": "jest",
+    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --watch --runInBand",
     "format": "standard --fix",
     "check-format": "standard",
     "validate": "npm-run-all --parallel check-format test:coverage build"
@@ -19,7 +20,9 @@
     "react-scripts": "^3.4.1"
   },
   "devDependencies": {
+    "fetch-mock": "^9.10.4",
     "husky": "^4.2.5",
+    "node-fetch": "^2.6.0",
     "npm-run-all": "^4.1.5",
     "standard": "^14.3.4"
   },
@@ -31,7 +34,8 @@
   "standard": {
     "globals": [
       "test",
-      "expect"
+      "expect",
+      "afterEach"
     ]
   },
   "browserslist": [
