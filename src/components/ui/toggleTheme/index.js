@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function ToggleTheme ({ mode = 'light', onChange }) {
   return (
-    <>
+    <div>
       <label>
         <input
           type='radio'
@@ -21,6 +21,6 @@ export default function ToggleTheme ({ mode = 'light', onChange }) {
         />
         Dark
       </label>
-    </>
+    </div>
   )
 }
