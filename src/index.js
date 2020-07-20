@@ -1,12 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-function App () {
-  return (
-    <div className='App'>
-      <p>Pokedex with lorem ipsum</p>
-    </div>
-  )
-}
+import App from './app'
 
 ReactDOM.render(<App />, document.getElementById('root'))
