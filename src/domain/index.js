@@ -2,17 +2,17 @@ const USE_CASES = {
   pokemon__get_list_use_case: () =>
     import(
       /* webpackChunkName: "pokemon__get_list_use_case" */
-      './tierlist/useCases/GetTierlistUseCase/factory'
+      './pokemon/useCases/GetListUseCase/factory'
     ),
   pokemon__get_single_use_case: () =>
     import(
       /* webpackChunkName: "pokemon__get_single_use_case" */
-      './tierlist/useCases/GetFilteredTierlistUseCase/factory'
+      './pokemon/useCases/GetSingleUseCase/factory'
     ),
   pokemon__get_types_use_case: () =>
     import(
       /* webpackChunkName: "pokemon__get_types_use_case" */
-      './tierlist/useCases/GetNextGameRouteUseCase/factory'
+      './pokemon/useCases/GetTypesUseCase/factory'
     )
 }
 
