@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 
-import './index.scss'
-
 import Logo from './logo'
 import SearchInput from './searchInput'
 import ToggleTheme from '../../ui/toggleTheme'
+
+import './index.scss'
 
 export default function Header() {
   const [query, setQuery] = useState('')
