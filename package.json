@@ -15,8 +15,10 @@
     "validate": "npm-run-all --parallel check-format test:coverage build"
   },
   "dependencies": {
+    "history": "^5.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^6.0.0-beta.0",
     "react-scripts": "^3.4.1"
   },
   "devDependencies": {
