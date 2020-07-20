@@ -9,7 +9,7 @@ export default function RESTRepository({httpClient}) {
       types = [],
       sort = 'lowest_number',
       limit = 12,
-      offset = 0,
+      offset = 0
     } = {}) {
       function toQueryString({query, types, sort, limit, offset}) {
         const searchParams = new URLSearchParams()
@@ -27,6 +27,6 @@ export default function RESTRepository({httpClient}) {
       const endpoint = 'pokemon' + (queryString && `?${queryString}`)
       const pokemonList = await httpClient(endpoint)
       return pokemonList
-    },
+    }
   }
 }

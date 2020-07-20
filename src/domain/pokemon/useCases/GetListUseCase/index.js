@@ -3,6 +3,6 @@ export default function GetListUseCase({pokemonRepository}) {
     async execute(params) {
       const pokemonList = await pokemonRepository.getList(params)
       return pokemonList
-    },
+    }
   }
 }

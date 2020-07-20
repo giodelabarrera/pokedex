@@ -3,6 +3,6 @@ export default function GetSingleUseCase({pokemonRepository}) {
     async execute(idOrName) {
       const pokemon = await pokemonRepository.getSingle(idOrName)
       return pokemon
-    },
+    }
   }
 }

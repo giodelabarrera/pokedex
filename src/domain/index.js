@@ -13,7 +13,7 @@ const USE_CASES = {
     import(
       /* webpackChunkName: "pokemon__get_types_use_case" */
       './pokemon/useCases/GetTypesUseCase/factory'
-    ),
+    )
 }
 
 const entryPoint = {
@@ -23,9 +23,9 @@ const entryPoint = {
         const {default: useCaseFactory} = await USE_CASES[useCaseName]()
         // eslint-disable-next-line
         return useCaseFactory().execute(...params)
-      },
+      }
     }
-  },
+  }
 }
 
 export default entryPoint

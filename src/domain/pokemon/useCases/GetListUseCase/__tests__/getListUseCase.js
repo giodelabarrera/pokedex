@@ -13,7 +13,7 @@ test('should return a pokemon list', async () => {
         english: 'Bulbasaur',
         japanese: 'フシギダネ',
         chinese: '妙蛙种子',
-        french: 'Bulbizarre',
+        french: 'Bulbizarre'
       },
       type: ['Grass', 'Poison'],
       base: {
@@ -22,8 +22,8 @@ test('should return a pokemon list', async () => {
         Defense: 49,
         'Sp. Attack': 65,
         'Sp. Defense': 65,
-        Speed: 45,
-      },
+        Speed: 45
+      }
     },
     {
       id: 2,
@@ -31,7 +31,7 @@ test('should return a pokemon list', async () => {
         english: 'Ivysaur',
         japanese: 'フシギソウ',
         chinese: '妙蛙草',
-        french: 'Herbizarre',
+        french: 'Herbizarre'
       },
       type: ['Grass', 'Poison'],
       base: {
@@ -40,8 +40,8 @@ test('should return a pokemon list', async () => {
         Defense: 63,
         'Sp. Attack': 80,
         'Sp. Defense': 80,
-        Speed: 60,
-      },
+        Speed: 60
+      }
     },
     {
       id: 3,
@@ -49,7 +49,7 @@ test('should return a pokemon list', async () => {
         english: 'Venusaur',
         japanese: 'フシギバナ',
         chinese: '妙蛙花',
-        french: 'Florizarre',
+        french: 'Florizarre'
       },
       type: ['Grass', 'Poison'],
       base: {
@@ -58,8 +58,8 @@ test('should return a pokemon list', async () => {
         Defense: 83,
         'Sp. Attack': 100,
         'Sp. Defense': 100,
-        Speed: 80,
-      },
+        Speed: 80
+      }
     },
     {
       id: 4,
@@ -67,7 +67,7 @@ test('should return a pokemon list', async () => {
         english: 'Charmander',
         japanese: 'ヒトカゲ',
         chinese: '小火龙',
-        french: 'Salamèche',
+        french: 'Salamèche'
       },
       type: ['Fire'],
       base: {
@@ -76,8 +76,8 @@ test('should return a pokemon list', async () => {
         Defense: 43,
         'Sp. Attack': 60,
         'Sp. Defense': 50,
-        Speed: 65,
-      },
+        Speed: 65
+      }
     },
     {
       id: 5,
@@ -85,7 +85,7 @@ test('should return a pokemon list', async () => {
         english: 'Charmeleon',
         japanese: 'リザード',
         chinese: '火恐龙',
-        french: 'Reptincel',
+        french: 'Reptincel'
       },
       type: ['Fire'],
       base: {
@@ -94,8 +94,8 @@ test('should return a pokemon list', async () => {
         Defense: 58,
         'Sp. Attack': 80,
         'Sp. Defense': 65,
-        Speed: 80,
-      },
+        Speed: 80
+      }
     },
     {
       id: 6,
@@ -103,7 +103,7 @@ test('should return a pokemon list', async () => {
         english: 'Charizard',
         japanese: 'リザードン',
         chinese: '喷火龙',
-        french: 'Dracaufeu',
+        french: 'Dracaufeu'
       },
       type: ['Fire', 'Flying'],
       base: {
@@ -112,8 +112,8 @@ test('should return a pokemon list', async () => {
         Defense: 78,
         'Sp. Attack': 109,
         'Sp. Defense': 85,
-        Speed: 100,
-      },
+        Speed: 100
+      }
     },
     {
       id: 7,
@@ -121,7 +121,7 @@ test('should return a pokemon list', async () => {
         english: 'Squirtle',
         japanese: 'ゼニガメ',
         chinese: '杰尼龟',
-        french: 'Carapuce',
+        french: 'Carapuce'
       },
       type: ['Water'],
       base: {
@@ -130,8 +130,8 @@ test('should return a pokemon list', async () => {
         Defense: 65,
         'Sp. Attack': 50,
         'Sp. Defense': 64,
-        Speed: 43,
-      },
+        Speed: 43
+      }
     },
     {
       id: 8,
@@ -139,7 +139,7 @@ test('should return a pokemon list', async () => {
         english: 'Wartortle',
         japanese: 'カメール',
         chinese: '卡咪龟',
-        french: 'Carabaffe',
+        french: 'Carabaffe'
       },
       type: ['Water'],
       base: {
@@ -148,8 +148,8 @@ test('should return a pokemon list', async () => {
         Defense: 80,
         'Sp. Attack': 65,
         'Sp. Defense': 80,
-        Speed: 58,
-      },
+        Speed: 58
+      }
     },
     {
       id: 9,
@@ -157,7 +157,7 @@ test('should return a pokemon list', async () => {
         english: 'Blastoise',
         japanese: 'カメックス',
         chinese: '水箭龟',
-        french: 'Tortank',
+        french: 'Tortank'
       },
       type: ['Water'],
       base: {
@@ -166,8 +166,8 @@ test('should return a pokemon list', async () => {
         Defense: 100,
         'Sp. Attack': 85,
         'Sp. Defense': 105,
-        Speed: 78,
-      },
+        Speed: 78
+      }
     },
     {
       id: 10,
@@ -175,7 +175,7 @@ test('should return a pokemon list', async () => {
         english: 'Caterpie',
         japanese: 'キャタピー',
         chinese: '绿毛虫',
-        french: 'Chenipan',
+        french: 'Chenipan'
       },
       type: ['Bug'],
       base: {
@@ -184,8 +184,8 @@ test('should return a pokemon list', async () => {
         Defense: 35,
         'Sp. Attack': 20,
         'Sp. Defense': 20,
-        Speed: 45,
-      },
+        Speed: 45
+      }
     },
     {
       id: 11,
@@ -193,7 +193,7 @@ test('should return a pokemon list', async () => {
         english: 'Metapod',
         japanese: 'トランセル',
         chinese: '铁甲蛹',
-        french: 'Chrysacier',
+        french: 'Chrysacier'
       },
       type: ['Bug'],
       base: {
@@ -202,8 +202,8 @@ test('should return a pokemon list', async () => {
         Defense: 55,
         'Sp. Attack': 25,
         'Sp. Defense': 25,
-        Speed: 30,
-      },
+        Speed: 30
+      }
     },
     {
       id: 12,
@@ -211,7 +211,7 @@ test('should return a pokemon list', async () => {
         english: 'Butterfree',
         japanese: 'バタフリー',
         chinese: '巴大蝶',
-        french: 'Papilusion',
+        french: 'Papilusion'
       },
       type: ['Bug', 'Flying'],
       base: {
@@ -220,9 +220,9 @@ test('should return a pokemon list', async () => {
         Defense: 50,
         'Sp. Attack': 90,
         'Sp. Defense': 80,
-        Speed: 70,
-      },
-    },
+        Speed: 70
+      }
+    }
   ]
   fetchMock.get('*', mockPokemonList)
 
@@ -241,7 +241,7 @@ test('should return a pokemon list filtered by query', async () => {
         english: 'Mewtwo',
         japanese: 'ミュウツー',
         chinese: '超梦',
-        french: 'Mewtwo',
+        french: 'Mewtwo'
       },
       type: ['Psychic'],
       base: {
@@ -250,8 +250,8 @@ test('should return a pokemon list filtered by query', async () => {
         Defense: 90,
         'Sp. Attack': 154,
         'Sp. Defense': 90,
-        Speed: 130,
-      },
+        Speed: 130
+      }
     },
     {
       id: 151,
@@ -259,7 +259,7 @@ test('should return a pokemon list filtered by query', async () => {
         english: 'Mew',
         japanese: 'ミュウ',
         chinese: '梦幻',
-        french: 'Mew',
+        french: 'Mew'
       },
       type: ['Psychic'],
       base: {
@@ -268,9 +268,9 @@ test('should return a pokemon list filtered by query', async () => {
         Defense: 100,
         'Sp. Attack': 100,
         'Sp. Defense': 100,
-        Speed: 100,
-      },
-    },
+        Speed: 100
+      }
+    }
   ]
   fetchMock.get('*', mockPokemonList)
 
@@ -290,7 +290,7 @@ test('should return a pokemon list filtered by types', async () => {
         english: 'Charizard',
         japanese: 'リザードン',
         chinese: '喷火龙',
-        french: 'Dracaufeu',
+        french: 'Dracaufeu'
       },
       type: ['Fire', 'Flying'],
       base: {
@@ -299,8 +299,8 @@ test('should return a pokemon list filtered by types', async () => {
         Defense: 78,
         'Sp. Attack': 109,
         'Sp. Defense': 85,
-        Speed: 100,
-      },
+        Speed: 100
+      }
     },
     {
       id: 146,
@@ -308,7 +308,7 @@ test('should return a pokemon list filtered by types', async () => {
         english: 'Moltres',
         japanese: 'ファイヤー',
         chinese: '火焰鸟',
-        french: 'Sulfura',
+        french: 'Sulfura'
       },
       type: ['Fire', 'Flying'],
       base: {
@@ -317,8 +317,8 @@ test('should return a pokemon list filtered by types', async () => {
         Defense: 90,
         'Sp. Attack': 125,
         'Sp. Defense': 85,
-        Speed: 90,
-      },
+        Speed: 90
+      }
     },
     {
       id: 250,
@@ -326,7 +326,7 @@ test('should return a pokemon list filtered by types', async () => {
         english: 'Ho-Oh',
         japanese: 'ホウオウ',
         chinese: '凤王',
-        french: 'Ho-Oh',
+        french: 'Ho-Oh'
       },
       type: ['Fire', 'Flying'],
       base: {
@@ -335,8 +335,8 @@ test('should return a pokemon list filtered by types', async () => {
         Defense: 90,
         'Sp. Attack': 110,
         'Sp. Defense': 154,
-        Speed: 90,
-      },
+        Speed: 90
+      }
     },
     {
       id: 662,
@@ -344,7 +344,7 @@ test('should return a pokemon list filtered by types', async () => {
         english: 'Fletchinder',
         japanese: 'ヒノヤコマ',
         chinese: '火箭雀',
-        french: 'Braisillon',
+        french: 'Braisillon'
       },
       type: ['Fire', 'Flying'],
       base: {
@@ -353,8 +353,8 @@ test('should return a pokemon list filtered by types', async () => {
         Defense: 55,
         'Sp. Attack': 56,
         'Sp. Defense': 52,
-        Speed: 84,
-      },
+        Speed: 84
+      }
     },
     {
       id: 663,
@@ -362,7 +362,7 @@ test('should return a pokemon list filtered by types', async () => {
         english: 'Talonflame',
         japanese: 'ファイアロー',
         chinese: '烈箭鹰',
-        french: 'Flambusard',
+        french: 'Flambusard'
       },
       type: ['Fire', 'Flying'],
       base: {
@@ -371,8 +371,8 @@ test('should return a pokemon list filtered by types', async () => {
         Defense: 71,
         'Sp. Attack': 74,
         'Sp. Defense': 69,
-        Speed: 126,
-      },
+        Speed: 126
+      }
     },
     {
       id: 741,
@@ -380,7 +380,7 @@ test('should return a pokemon list filtered by types', async () => {
         english: 'Oricorio',
         japanese: 'オドリドリ',
         chinese: '花舞鸟',
-        french: 'Plumeline',
+        french: 'Plumeline'
       },
       type: ['Fire', 'Flying'],
       base: {
@@ -389,9 +389,9 @@ test('should return a pokemon list filtered by types', async () => {
         Defense: 70,
         'Sp. Attack': 98,
         'Sp. Defense': 70,
-        Speed: 93,
-      },
-    },
+        Speed: 93
+      }
+    }
   ]
   fetchMock.get('*', mockPokemonList)
 

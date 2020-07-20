@@ -12,7 +12,7 @@ test('should return a pokemon by name', async () => {
       english: 'Pikachu',
       japanese: 'ピカチュウ',
       chinese: '皮卡丘',
-      french: 'Pikachu',
+      french: 'Pikachu'
     },
     type: ['Electric'],
     base: {
@@ -21,8 +21,8 @@ test('should return a pokemon by name', async () => {
       Defense: 40,
       'Sp. Attack': 50,
       'Sp. Defense': 50,
-      Speed: 90,
-    },
+      Speed: 90
+    }
   }
   fetchMock.get('*', mockPokemon)
 
@@ -41,7 +41,7 @@ test('should return a pokemon by id', async () => {
       english: 'Pikachu',
       japanese: 'ピカチュウ',
       chinese: '皮卡丘',
-      french: 'Pikachu',
+      french: 'Pikachu'
     },
     type: ['Electric'],
     base: {
@@ -50,8 +50,8 @@ test('should return a pokemon by id', async () => {
       Defense: 40,
       'Sp. Attack': 50,
       'Sp. Defense': 50,
-      Speed: 90,
-    },
+      Speed: 90
+    }
   }
   fetchMock.get('*', mockPokemon)
 
@@ -70,7 +70,7 @@ test('should fail when it happens a not found error', async () => {
   const idOrName = '25'
   await expect(getSingleUseCase.execute(idOrName)).rejects.toHaveProperty(
     'status',
-    404,
+    404
   )
 })
 
@@ -81,6 +81,6 @@ test('should fail when it happens a server error', async () => {
   const idOrName = '25'
   await expect(getSingleUseCase.execute(idOrName)).rejects.toHaveProperty(
     'status',
-    500,
+    500
   )
 })
