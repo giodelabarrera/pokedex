@@ -1,17 +1,17 @@
 import React from 'react'
 
-export default function Logo () {
+export default function Logo() {
   return (
     <svg
-      xmlns='http://www.w3.org/2000/svg'
-      width='40'
-      height='40'
-      viewBox='0 0 1024 1024'
+      xmlns="http://www.w3.org/2000/svg"
+      width="40"
+      height="40"
+      viewBox="0 0 1024 1024"
     >
       <path
-        stroke='none'
-        strokeWidth='1'
-        d='M 512.00,96.80
+        stroke="none"
+        strokeWidth="1"
+        d="M 512.00,96.80
            C 304.28,96.94 132.17,249.33 101.24,448.41
              101.24,448.41 312.51,448.80 312.51,448.80
              339.50,364.37 418.60,303.25 512.00,303.20
@@ -35,7 +35,7 @@ export default function Logo () {
              684.50,661.23 605.40,722.35 512.00,722.40
              418.75,722.29 339.76,661.27 312.67,576.99
              312.67,576.99 101.47,576.80 101.47,576.80
-             101.47,576.80 101.47,576.80 101.47,576.80 Z'
+             101.47,576.80 101.47,576.80 101.47,576.80 Z"
       />
     </svg>
   )

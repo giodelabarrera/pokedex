@@ -11,23 +11,23 @@ module.exports = {
   roots: ['<rootDir>/src'],
   testMatch: ['**/__tests__/**/*.js'],
   testEnvironment: resolve.sync('jest-environment-jsdom', {
-    basedir: require.resolve('jest')
+    basedir: require.resolve('jest'),
   }),
   moduleDirectories: ['node_modules', path.join(__dirname, './src')],
   transform: {
     '^.+\\.(js|jsx)$': require.resolve(
-      'react-scripts/config/jest/babelTransform'
+      'react-scripts/config/jest/babelTransform',
     ),
     '^.+\\.css$': require.resolve('react-scripts/config/jest/cssTransform.js'),
     '^(?!.*\\.(js|jsx|css|json)$)': require.resolve(
-      'react-scripts/config/jest/fileTransform.js'
-    )
+      'react-scripts/config/jest/fileTransform.js',
+    ),
   },
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$'],
   resetMocks: true,
   collectCoverageFrom: [
     'src/**/*.js',
     '!<rootDir>/node_modules/**/*',
-    '!<rootDir>/src/test/**/*'
-  ]
+    '!<rootDir>/src/test/**/*',
+  ],
 }

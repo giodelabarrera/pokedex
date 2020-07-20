@@ -1,12 +1,12 @@
 import React from 'react'
 
-export default function ToggleTheme ({ mode = 'light', onChange }) {
+export default function ToggleTheme({mode = 'light', onChange}) {
   return (
     <div>
       <label>
         <input
-          type='radio'
-          value='light'
+          type="radio"
+          value="light"
           checked={mode === 'light'}
           onChange={onChange}
         />
@@ -14,8 +14,8 @@ export default function ToggleTheme ({ mode = 'light', onChange }) {
       </label>
       <label>
         <input
-          type='radio'
-          value='dark'
+          type="radio"
+          value="dark"
           checked={mode === 'dark'}
           onChange={onChange}
         />

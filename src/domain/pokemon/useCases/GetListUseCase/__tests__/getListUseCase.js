@@ -13,20 +13,17 @@ test('should return a pokemon list', async () => {
         english: 'Bulbasaur',
         japanese: 'フシギダネ',
         chinese: '妙蛙种子',
-        french: 'Bulbizarre'
+        french: 'Bulbizarre',
       },
-      type: [
-        'Grass',
-        'Poison'
-      ],
+      type: ['Grass', 'Poison'],
       base: {
         HP: 45,
         Attack: 49,
         Defense: 49,
         'Sp. Attack': 65,
         'Sp. Defense': 65,
-        Speed: 45
-      }
+        Speed: 45,
+      },
     },
     {
       id: 2,
@@ -34,20 +31,17 @@ test('should return a pokemon list', async () => {
         english: 'Ivysaur',
         japanese: 'フシギソウ',
         chinese: '妙蛙草',
-        french: 'Herbizarre'
+        french: 'Herbizarre',
       },
-      type: [
-        'Grass',
-        'Poison'
-      ],
+      type: ['Grass', 'Poison'],
       base: {
         HP: 60,
         Attack: 62,
         Defense: 63,
         'Sp. Attack': 80,
         'Sp. Defense': 80,
-        Speed: 60
-      }
+        Speed: 60,
+      },
     },
     {
       id: 3,
@@ -55,20 +49,17 @@ test('should return a pokemon list', async () => {
         english: 'Venusaur',
         japanese: 'フシギバナ',
         chinese: '妙蛙花',
-        french: 'Florizarre'
+        french: 'Florizarre',
       },
-      type: [
-        'Grass',
-        'Poison'
-      ],
+      type: ['Grass', 'Poison'],
       base: {
         HP: 80,
         Attack: 82,
         Defense: 83,
         'Sp. Attack': 100,
         'Sp. Defense': 100,
-        Speed: 80
-      }
+        Speed: 80,
+      },
     },
     {
       id: 4,
@@ -76,19 +67,17 @@ test('should return a pokemon list', async () => {
         english: 'Charmander',
         japanese: 'ヒトカゲ',
         chinese: '小火龙',
-        french: 'Salamèche'
+        french: 'Salamèche',
       },
-      type: [
-        'Fire'
-      ],
+      type: ['Fire'],
       base: {
         HP: 39,
         Attack: 52,
         Defense: 43,
         'Sp. Attack': 60,
         'Sp. Defense': 50,
-        Speed: 65
-      }
+        Speed: 65,
+      },
     },
     {
       id: 5,
@@ -96,19 +85,17 @@ test('should return a pokemon list', async () => {
         english: 'Charmeleon',
         japanese: 'リザード',
         chinese: '火恐龙',
-        french: 'Reptincel'
+        french: 'Reptincel',
       },
-      type: [
-        'Fire'
-      ],
+      type: ['Fire'],
       base: {
         HP: 58,
         Attack: 64,
         Defense: 58,
         'Sp. Attack': 80,
         'Sp. Defense': 65,
-        Speed: 80
-      }
+        Speed: 80,
+      },
     },
     {
       id: 6,
@@ -116,20 +103,17 @@ test('should return a pokemon list', async () => {
         english: 'Charizard',
         japanese: 'リザードン',
         chinese: '喷火龙',
-        french: 'Dracaufeu'
+        french: 'Dracaufeu',
       },
-      type: [
-        'Fire',
-        'Flying'
-      ],
+      type: ['Fire', 'Flying'],
       base: {
         HP: 78,
         Attack: 84,
         Defense: 78,
         'Sp. Attack': 109,
         'Sp. Defense': 85,
-        Speed: 100
-      }
+        Speed: 100,
+      },
     },
     {
       id: 7,
@@ -137,19 +121,17 @@ test('should return a pokemon list', async () => {
         english: 'Squirtle',
         japanese: 'ゼニガメ',
         chinese: '杰尼龟',
-        french: 'Carapuce'
+        french: 'Carapuce',
       },
-      type: [
-        'Water'
-      ],
+      type: ['Water'],
       base: {
         HP: 44,
         Attack: 48,
         Defense: 65,
         'Sp. Attack': 50,
         'Sp. Defense': 64,
-        Speed: 43
-      }
+        Speed: 43,
+      },
     },
     {
       id: 8,
@@ -157,19 +139,17 @@ test('should return a pokemon list', async () => {
         english: 'Wartortle',
         japanese: 'カメール',
         chinese: '卡咪龟',
-        french: 'Carabaffe'
+        french: 'Carabaffe',
       },
-      type: [
-        'Water'
-      ],
+      type: ['Water'],
       base: {
         HP: 59,
         Attack: 63,
         Defense: 80,
         'Sp. Attack': 65,
         'Sp. Defense': 80,
-        Speed: 58
-      }
+        Speed: 58,
+      },
     },
     {
       id: 9,
@@ -177,19 +157,17 @@ test('should return a pokemon list', async () => {
         english: 'Blastoise',
         japanese: 'カメックス',
         chinese: '水箭龟',
-        french: 'Tortank'
+        french: 'Tortank',
       },
-      type: [
-        'Water'
-      ],
+      type: ['Water'],
       base: {
         HP: 79,
         Attack: 83,
         Defense: 100,
         'Sp. Attack': 85,
         'Sp. Defense': 105,
-        Speed: 78
-      }
+        Speed: 78,
+      },
     },
     {
       id: 10,
@@ -197,19 +175,17 @@ test('should return a pokemon list', async () => {
         english: 'Caterpie',
         japanese: 'キャタピー',
         chinese: '绿毛虫',
-        french: 'Chenipan'
+        french: 'Chenipan',
       },
-      type: [
-        'Bug'
-      ],
+      type: ['Bug'],
       base: {
         HP: 45,
         Attack: 30,
         Defense: 35,
         'Sp. Attack': 20,
         'Sp. Defense': 20,
-        Speed: 45
-      }
+        Speed: 45,
+      },
     },
     {
       id: 11,
@@ -217,19 +193,17 @@ test('should return a pokemon list', async () => {
         english: 'Metapod',
         japanese: 'トランセル',
         chinese: '铁甲蛹',
-        french: 'Chrysacier'
+        french: 'Chrysacier',
       },
-      type: [
-        'Bug'
-      ],
+      type: ['Bug'],
       base: {
         HP: 50,
         Attack: 20,
         Defense: 55,
         'Sp. Attack': 25,
         'Sp. Defense': 25,
-        Speed: 30
-      }
+        Speed: 30,
+      },
     },
     {
       id: 12,
@@ -237,21 +211,18 @@ test('should return a pokemon list', async () => {
         english: 'Butterfree',
         japanese: 'バタフリー',
         chinese: '巴大蝶',
-        french: 'Papilusion'
+        french: 'Papilusion',
       },
-      type: [
-        'Bug',
-        'Flying'
-      ],
+      type: ['Bug', 'Flying'],
       base: {
         HP: 60,
         Attack: 45,
         Defense: 50,
         'Sp. Attack': 90,
         'Sp. Defense': 80,
-        Speed: 70
-      }
-    }
+        Speed: 70,
+      },
+    },
   ]
   fetchMock.get('*', mockPokemonList)
 
@@ -270,19 +241,17 @@ test('should return a pokemon list filtered by query', async () => {
         english: 'Mewtwo',
         japanese: 'ミュウツー',
         chinese: '超梦',
-        french: 'Mewtwo'
+        french: 'Mewtwo',
       },
-      type: [
-        'Psychic'
-      ],
+      type: ['Psychic'],
       base: {
         HP: 106,
         Attack: 110,
         Defense: 90,
         'Sp. Attack': 154,
         'Sp. Defense': 90,
-        Speed: 130
-      }
+        Speed: 130,
+      },
     },
     {
       id: 151,
@@ -290,25 +259,23 @@ test('should return a pokemon list filtered by query', async () => {
         english: 'Mew',
         japanese: 'ミュウ',
         chinese: '梦幻',
-        french: 'Mew'
+        french: 'Mew',
       },
-      type: [
-        'Psychic'
-      ],
+      type: ['Psychic'],
       base: {
         HP: 100,
         Attack: 100,
         Defense: 100,
         'Sp. Attack': 100,
         'Sp. Defense': 100,
-        Speed: 100
-      }
-    }
+        Speed: 100,
+      },
+    },
   ]
   fetchMock.get('*', mockPokemonList)
 
   const getListUseCase = GetListUseCaseFactory()
-  const params = { query: 'mew' }
+  const params = {query: 'mew'}
   const pokemonList = await getListUseCase.execute(params)
 
   expect(pokemonList).toBeInstanceOf(Array)
@@ -323,20 +290,17 @@ test('should return a pokemon list filtered by types', async () => {
         english: 'Charizard',
         japanese: 'リザードン',
         chinese: '喷火龙',
-        french: 'Dracaufeu'
+        french: 'Dracaufeu',
       },
-      type: [
-        'Fire',
-        'Flying'
-      ],
+      type: ['Fire', 'Flying'],
       base: {
         HP: 78,
         Attack: 84,
         Defense: 78,
         'Sp. Attack': 109,
         'Sp. Defense': 85,
-        Speed: 100
-      }
+        Speed: 100,
+      },
     },
     {
       id: 146,
@@ -344,20 +308,17 @@ test('should return a pokemon list filtered by types', async () => {
         english: 'Moltres',
         japanese: 'ファイヤー',
         chinese: '火焰鸟',
-        french: 'Sulfura'
+        french: 'Sulfura',
       },
-      type: [
-        'Fire',
-        'Flying'
-      ],
+      type: ['Fire', 'Flying'],
       base: {
         HP: 90,
         Attack: 100,
         Defense: 90,
         'Sp. Attack': 125,
         'Sp. Defense': 85,
-        Speed: 90
-      }
+        Speed: 90,
+      },
     },
     {
       id: 250,
@@ -365,20 +326,17 @@ test('should return a pokemon list filtered by types', async () => {
         english: 'Ho-Oh',
         japanese: 'ホウオウ',
         chinese: '凤王',
-        french: 'Ho-Oh'
+        french: 'Ho-Oh',
       },
-      type: [
-        'Fire',
-        'Flying'
-      ],
+      type: ['Fire', 'Flying'],
       base: {
         HP: 106,
         Attack: 130,
         Defense: 90,
         'Sp. Attack': 110,
         'Sp. Defense': 154,
-        Speed: 90
-      }
+        Speed: 90,
+      },
     },
     {
       id: 662,
@@ -386,20 +344,17 @@ test('should return a pokemon list filtered by types', async () => {
         english: 'Fletchinder',
         japanese: 'ヒノヤコマ',
         chinese: '火箭雀',
-        french: 'Braisillon'
+        french: 'Braisillon',
       },
-      type: [
-        'Fire',
-        'Flying'
-      ],
+      type: ['Fire', 'Flying'],
       base: {
         HP: 62,
         Attack: 73,
         Defense: 55,
         'Sp. Attack': 56,
         'Sp. Defense': 52,
-        Speed: 84
-      }
+        Speed: 84,
+      },
     },
     {
       id: 663,
@@ -407,20 +362,17 @@ test('should return a pokemon list filtered by types', async () => {
         english: 'Talonflame',
         japanese: 'ファイアロー',
         chinese: '烈箭鹰',
-        french: 'Flambusard'
+        french: 'Flambusard',
       },
-      type: [
-        'Fire',
-        'Flying'
-      ],
+      type: ['Fire', 'Flying'],
       base: {
         HP: 78,
         Attack: 81,
         Defense: 71,
         'Sp. Attack': 74,
         'Sp. Defense': 69,
-        Speed: 126
-      }
+        Speed: 126,
+      },
     },
     {
       id: 741,
@@ -428,26 +380,23 @@ test('should return a pokemon list filtered by types', async () => {
         english: 'Oricorio',
         japanese: 'オドリドリ',
         chinese: '花舞鸟',
-        french: 'Plumeline'
+        french: 'Plumeline',
       },
-      type: [
-        'Fire',
-        'Flying'
-      ],
+      type: ['Fire', 'Flying'],
       base: {
         HP: 75,
         Attack: 70,
         Defense: 70,
         'Sp. Attack': 98,
         'Sp. Defense': 70,
-        Speed: 93
-      }
-    }
+        Speed: 93,
+      },
+    },
   ]
   fetchMock.get('*', mockPokemonList)
 
   const getListUseCase = GetListUseCaseFactory()
-  const params = { types: ['Fire', 'Flying'] }
+  const params = {types: ['Fire', 'Flying']}
   const pokemonList = await getListUseCase.execute(params)
 
   expect(pokemonList).toBeInstanceOf(Array)
