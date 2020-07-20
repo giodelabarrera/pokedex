@@ -14,9 +14,7 @@ test('should return a pokemon by name', async () => {
       chinese: '皮卡丘',
       french: 'Pikachu'
     },
-    type: [
-      'Electric'
-    ],
+    type: ['Electric'],
     base: {
       HP: 35,
       Attack: 55,
@@ -45,9 +43,7 @@ test('should return a pokemon by id', async () => {
       chinese: '皮卡丘',
       french: 'Pikachu'
     },
-    type: [
-      'Electric'
-    ],
+    type: ['Electric'],
     base: {
       HP: 35,
       Attack: 55,
@@ -72,7 +68,10 @@ test('should fail when it happens a not found error', async () => {
 
   const getSingleUseCase = GetSingleUseCaseFactory()
   const idOrName = '25'
-  await expect(getSingleUseCase.execute(idOrName)).rejects.toHaveProperty('status', 404)
+  await expect(getSingleUseCase.execute(idOrName)).rejects.toHaveProperty(
+    'status',
+    404
+  )
 })
 
 test('should fail when it happens a server error', async () => {
@@ -80,5 +79,8 @@ test('should fail when it happens a server error', async () => {
 
   const getSingleUseCase = GetSingleUseCaseFactory()
   const idOrName = '25'
-  await expect(getSingleUseCase.execute(idOrName)).rejects.toHaveProperty('status', 500)
+  await expect(getSingleUseCase.execute(idOrName)).rejects.toHaveProperty(
+    'status',
+    500
+  )
 })

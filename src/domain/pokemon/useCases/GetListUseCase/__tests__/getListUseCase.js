@@ -15,10 +15,7 @@ test('should return a pokemon list', async () => {
         chinese: '妙蛙种子',
         french: 'Bulbizarre'
       },
-      type: [
-        'Grass',
-        'Poison'
-      ],
+      type: ['Grass', 'Poison'],
       base: {
         HP: 45,
         Attack: 49,
@@ -36,10 +33,7 @@ test('should return a pokemon list', async () => {
         chinese: '妙蛙草',
         french: 'Herbizarre'
       },
-      type: [
-        'Grass',
-        'Poison'
-      ],
+      type: ['Grass', 'Poison'],
       base: {
         HP: 60,
         Attack: 62,
@@ -57,10 +51,7 @@ test('should return a pokemon list', async () => {
         chinese: '妙蛙花',
         french: 'Florizarre'
       },
-      type: [
-        'Grass',
-        'Poison'
-      ],
+      type: ['Grass', 'Poison'],
       base: {
         HP: 80,
         Attack: 82,
@@ -78,9 +69,7 @@ test('should return a pokemon list', async () => {
         chinese: '小火龙',
         french: 'Salamèche'
       },
-      type: [
-        'Fire'
-      ],
+      type: ['Fire'],
       base: {
         HP: 39,
         Attack: 52,
@@ -98,9 +87,7 @@ test('should return a pokemon list', async () => {
         chinese: '火恐龙',
         french: 'Reptincel'
       },
-      type: [
-        'Fire'
-      ],
+      type: ['Fire'],
       base: {
         HP: 58,
         Attack: 64,
@@ -118,10 +105,7 @@ test('should return a pokemon list', async () => {
         chinese: '喷火龙',
         french: 'Dracaufeu'
       },
-      type: [
-        'Fire',
-        'Flying'
-      ],
+      type: ['Fire', 'Flying'],
       base: {
         HP: 78,
         Attack: 84,
@@ -139,9 +123,7 @@ test('should return a pokemon list', async () => {
         chinese: '杰尼龟',
         french: 'Carapuce'
       },
-      type: [
-        'Water'
-      ],
+      type: ['Water'],
       base: {
         HP: 44,
         Attack: 48,
@@ -159,9 +141,7 @@ test('should return a pokemon list', async () => {
         chinese: '卡咪龟',
         french: 'Carabaffe'
       },
-      type: [
-        'Water'
-      ],
+      type: ['Water'],
       base: {
         HP: 59,
         Attack: 63,
@@ -179,9 +159,7 @@ test('should return a pokemon list', async () => {
         chinese: '水箭龟',
         french: 'Tortank'
       },
-      type: [
-        'Water'
-      ],
+      type: ['Water'],
       base: {
         HP: 79,
         Attack: 83,
@@ -199,9 +177,7 @@ test('should return a pokemon list', async () => {
         chinese: '绿毛虫',
         french: 'Chenipan'
       },
-      type: [
-        'Bug'
-      ],
+      type: ['Bug'],
       base: {
         HP: 45,
         Attack: 30,
@@ -219,9 +195,7 @@ test('should return a pokemon list', async () => {
         chinese: '铁甲蛹',
         french: 'Chrysacier'
       },
-      type: [
-        'Bug'
-      ],
+      type: ['Bug'],
       base: {
         HP: 50,
         Attack: 20,
@@ -239,10 +213,7 @@ test('should return a pokemon list', async () => {
         chinese: '巴大蝶',
         french: 'Papilusion'
       },
-      type: [
-        'Bug',
-        'Flying'
-      ],
+      type: ['Bug', 'Flying'],
       base: {
         HP: 60,
         Attack: 45,
@@ -272,9 +243,7 @@ test('should return a pokemon list filtered by query', async () => {
         chinese: '超梦',
         french: 'Mewtwo'
       },
-      type: [
-        'Psychic'
-      ],
+      type: ['Psychic'],
       base: {
         HP: 106,
         Attack: 110,
@@ -292,9 +261,7 @@ test('should return a pokemon list filtered by query', async () => {
         chinese: '梦幻',
         french: 'Mew'
       },
-      type: [
-        'Psychic'
-      ],
+      type: ['Psychic'],
       base: {
         HP: 100,
         Attack: 100,
@@ -308,7 +275,7 @@ test('should return a pokemon list filtered by query', async () => {
   fetchMock.get('*', mockPokemonList)
 
   const getListUseCase = GetListUseCaseFactory()
-  const params = { query: 'mew' }
+  const params = {query: 'mew'}
   const pokemonList = await getListUseCase.execute(params)
 
   expect(pokemonList).toBeInstanceOf(Array)
@@ -325,10 +292,7 @@ test('should return a pokemon list filtered by types', async () => {
         chinese: '喷火龙',
         french: 'Dracaufeu'
       },
-      type: [
-        'Fire',
-        'Flying'
-      ],
+      type: ['Fire', 'Flying'],
       base: {
         HP: 78,
         Attack: 84,
@@ -346,10 +310,7 @@ test('should return a pokemon list filtered by types', async () => {
         chinese: '火焰鸟',
         french: 'Sulfura'
       },
-      type: [
-        'Fire',
-        'Flying'
-      ],
+      type: ['Fire', 'Flying'],
       base: {
         HP: 90,
         Attack: 100,
@@ -367,10 +328,7 @@ test('should return a pokemon list filtered by types', async () => {
         chinese: '凤王',
         french: 'Ho-Oh'
       },
-      type: [
-        'Fire',
-        'Flying'
-      ],
+      type: ['Fire', 'Flying'],
       base: {
         HP: 106,
         Attack: 130,
@@ -388,10 +346,7 @@ test('should return a pokemon list filtered by types', async () => {
         chinese: '火箭雀',
         french: 'Braisillon'
       },
-      type: [
-        'Fire',
-        'Flying'
-      ],
+      type: ['Fire', 'Flying'],
       base: {
         HP: 62,
         Attack: 73,
@@ -409,10 +364,7 @@ test('should return a pokemon list filtered by types', async () => {
         chinese: '烈箭鹰',
         french: 'Flambusard'
       },
-      type: [
-        'Fire',
-        'Flying'
-      ],
+      type: ['Fire', 'Flying'],
       base: {
         HP: 78,
         Attack: 81,
@@ -430,10 +382,7 @@ test('should return a pokemon list filtered by types', async () => {
         chinese: '花舞鸟',
         french: 'Plumeline'
       },
-      type: [
-        'Fire',
-        'Flying'
-      ],
+      type: ['Fire', 'Flying'],
       base: {
         HP: 75,
         Attack: 70,
@@ -447,7 +396,7 @@ test('should return a pokemon list filtered by types', async () => {
   fetchMock.get('*', mockPokemonList)
 
   const getListUseCase = GetListUseCaseFactory()
-  const params = { types: ['Fire', 'Flying'] }
+  const params = {types: ['Fire', 'Flying']}
   const pokemonList = await getListUseCase.execute(params)
 
   expect(pokemonList).toBeInstanceOf(Array)
