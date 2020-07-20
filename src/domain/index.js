@@ -21,6 +21,7 @@ const entryPoint = {
     return {
       async execute (...params) {
         const { default: useCaseFactory } = await USE_CASES[useCaseName]()
+        // eslint-disable-next-line
         return useCaseFactory().execute(...params)
       }
     }
