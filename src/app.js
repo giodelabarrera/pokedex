@@ -5,10 +5,12 @@ import PokemonListScreen from './screens/pokemonList'
 import PokemonDetailScreen from './screens/pokemonDetail'
 import NotFoundScreen from './screens/notFound'
 
+import Header from './components/shell/header'
+
 function App () {
   return (
     <div className='App'>
-      <div>Header</div>
+      <Header />
       <main>
         <AppRoutes />
       </main>
