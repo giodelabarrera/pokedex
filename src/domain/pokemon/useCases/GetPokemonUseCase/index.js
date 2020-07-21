@@ -1,8 +1,17 @@
-export default function GetPokemonUseCase({pokemonRepository}) {
+export default function GetPokemonUseCase({
+  pokemonRepository,
+  getPokemonImageUrlsService
+}) {
   return {
     async execute({idOrName}) {
-      const pokemon = await pokemonRepository.getPokemon({idOrName})
-      return pokemon
+      const pokemonEntity = await pokemonRepository.getPokemon({idOrName})
+      const imageUrls = getPokemonImageUrlsService.execute({
+        pokemonNumber: pokemonEntity.number()
+      })
+      return {
+        ...pokemonEntity.toJson(),
+        imageUrl: imageUrls.large
+      }
     }
   }
 }
