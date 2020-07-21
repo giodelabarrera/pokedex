@@ -9,7 +9,8 @@ export default function RESTRepository({
       const pokemonEntityJson = pokemonResponseJsonToPokemonEntityJsonMapper.map(
         pokemonResponseJson
       )
-      return pokemonEntityFactory(pokemonEntityJson)
+      const pokemonEntity = pokemonEntityFactory(pokemonEntityJson)
+      return pokemonEntity
     },
     async getPokemonList({
       query = '',
@@ -38,7 +39,8 @@ export default function RESTRepository({
       const pokemonEntityJsonList = pokemonResponseJsonList.map(
         pokemonResponseJsonToPokemonEntityJsonMapper.map
       )
-      return pokemonEntityJsonList.map(pokemonEntityFactory)
+      const pokemonEntityList = pokemonEntityJsonList.map(pokemonEntityFactory)
+      return pokemonEntityList
     },
     async getTypeList() {
       const typeList = await httpClient('type')
