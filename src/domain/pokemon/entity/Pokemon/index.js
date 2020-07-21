@@ -1,6 +1,7 @@
-export default function PokemonEntity({id, name, types, stats}) {
+export default function PokemonEntity({id, number, name, types, stats}) {
   return {
     id,
+    number,
     name,
     types,
     stats
