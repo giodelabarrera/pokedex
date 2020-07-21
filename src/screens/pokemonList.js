@@ -1,16 +1,9 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 
 import {useDomain} from '../context/domainProvider'
-import FilterForm from '../components/form/filterForm'
 
 export default function PokemonListScreen() {
   const domain = useDomain()
-
-  const [formData, setFormData] = useState({
-    sort: 'lowest_number',
-    types: []
-  })
-  const {sort, types} = formData
 
   useEffect(() => {
     domain
@@ -21,15 +14,9 @@ export default function PokemonListScreen() {
       })
   })
 
-  const handleFilterFormSubmit = formData => {
-    console.log('update url with params 😎')
-    setFormData(formData)
-  }
-
   return (
     <>
-      <FilterForm sort={sort} types={types} onSubmit={handleFilterFormSubmit} />
-      {JSON.stringify(formData, 2)}
+      <span>Pokemon list</span>
     </>
   )
 }
