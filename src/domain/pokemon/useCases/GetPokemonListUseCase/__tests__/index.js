@@ -1,5 +1,5 @@
 import fetchMock from 'fetch-mock'
-import GetListUseCaseFactory from '../factory'
+import GetPokemonListUseCaseFactory from '../factory'
 
 afterEach(() => {
   fetchMock.reset()
@@ -226,7 +226,7 @@ test('should return a pokemon list', async () => {
   ]
   fetchMock.get('*', mockPokemonList)
 
-  const getListUseCase = GetListUseCaseFactory()
+  const getListUseCase = GetPokemonListUseCaseFactory()
   const pokemonList = await getListUseCase.execute()
 
   expect(pokemonList).toBeInstanceOf(Array)
@@ -274,7 +274,7 @@ test('should return a pokemon list filtered by query', async () => {
   ]
   fetchMock.get('*', mockPokemonList)
 
-  const getListUseCase = GetListUseCaseFactory()
+  const getListUseCase = GetPokemonListUseCaseFactory()
   const params = {query: 'mew'}
   const pokemonList = await getListUseCase.execute(params)
 
@@ -395,7 +395,7 @@ test('should return a pokemon list filtered by types', async () => {
   ]
   fetchMock.get('*', mockPokemonList)
 
-  const getListUseCase = GetListUseCaseFactory()
+  const getListUseCase = GetPokemonListUseCaseFactory()
   const params = {types: ['Fire', 'Flying']}
   const pokemonList = await getListUseCase.execute(params)
 

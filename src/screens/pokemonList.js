@@ -7,7 +7,7 @@ export default function PokemonListScreen() {
 
   useEffect(() => {
     domain
-      .get('pokemon__get_list_use_case')
+      .get('pokemon__get_pokemon_list_use_case')
       .execute()
       .then(response => {
         // debugger
