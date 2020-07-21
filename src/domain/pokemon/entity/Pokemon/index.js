@@ -3,7 +3,7 @@ export default function PokemonEntity({id, name, types, stats}) {
     return id.toString().padStart(3, '0')
   }
 
-  function toString() {
+  function toJson() {
     return {
       id,
       name,
@@ -19,6 +19,6 @@ export default function PokemonEntity({id, name, types, stats}) {
     types,
     stats,
     number,
-    toString
+    toJson
   }
 }

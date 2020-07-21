@@ -1,4 +1,4 @@
-export default function GetPokemonImageUrls({baseImageUrl}) {
+export default function GetPokemonImageUrlsService({baseImageUrl}) {
   return {
     execute({pokemonNumber}) {
       return {
