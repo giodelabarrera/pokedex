@@ -1,7 +1,7 @@
 import GetPokemonSlugServiceFactory from '../factory'
 
 test('should generate slug for Nidoran♂ pokemon', () => {
-  const expectedPokemonSlug = 'nidoran-male'
+  const expectedPokemonSlug = 'nidoran♂'
 
   const getPokemonSlugService = GetPokemonSlugServiceFactory()
   const pokemonName = 'Nidoran♂'
@@ -11,7 +11,7 @@ test('should generate slug for Nidoran♂ pokemon', () => {
 })
 
 test('should generate slug for Nidoran♀ pokemon', () => {
-  const expectedPokemonSlug = 'nidoran-female'
+  const expectedPokemonSlug = 'nidoran♀'
 
   const getPokemonSlugService = GetPokemonSlugServiceFactory()
   const pokemonName = 'Nidoran♀'

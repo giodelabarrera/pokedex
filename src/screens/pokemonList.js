@@ -11,15 +11,15 @@ export default function PokemonListScreen() {
   useEffect(() => {
     domain
       .get('pokemon__get_pokemon_list_use_case')
-      .execute()
+      .execute({limit: 48})
       .then(setPokemonList)
   }, [domain])
 
   return (
     <div className="pk-PokemonList">
-      {pokemonList.map(({id, number, name, imageUrl}) => (
+      {pokemonList.map(({id, number, name, imageUrl, slug}) => (
         <div key={id}>
-          <Link to={`/${id}`}>
+          <Link to={`/${slug}`}>
             <img src={imageUrl} alt={name} />
           </Link>
           <h4>{name}</h4>
