@@ -1,5 +1,5 @@
 import fetchMock from 'fetch-mock'
-import GetSingleUseCaseFactory from '../factory'
+import GetPokemonUseCaseFactory from '../factory'
 
 afterEach(() => {
   fetchMock.reset()
@@ -26,7 +26,7 @@ test('should return a pokemon by name', async () => {
   }
   fetchMock.get('*', mockPokemon)
 
-  const getSingleUseCase = GetSingleUseCaseFactory()
+  const getSingleUseCase = GetPokemonUseCaseFactory()
   const idOrName = 'pikachu'
   const pokemon = await getSingleUseCase.execute(idOrName)
 
@@ -55,7 +55,7 @@ test('should return a pokemon by id', async () => {
   }
   fetchMock.get('*', mockPokemon)
 
-  const getSingleUseCase = GetSingleUseCaseFactory()
+  const getSingleUseCase = GetPokemonUseCaseFactory()
   const idOrName = '25'
   const pokemon = await getSingleUseCase.execute(idOrName)
 
@@ -66,7 +66,7 @@ test('should return a pokemon by id', async () => {
 test('should fail when it happens a not found error', async () => {
   fetchMock.get('*', 404)
 
-  const getSingleUseCase = GetSingleUseCaseFactory()
+  const getSingleUseCase = GetPokemonUseCaseFactory()
   const idOrName = '25'
   await expect(getSingleUseCase.execute(idOrName)).rejects.toHaveProperty(
     'status',
@@ -77,7 +77,7 @@ test('should fail when it happens a not found error', async () => {
 test('should fail when it happens a server error', async () => {
   fetchMock.get('*', 500)
 
-  const getSingleUseCase = GetSingleUseCaseFactory()
+  const getSingleUseCase = GetPokemonUseCaseFactory()
   const idOrName = '25'
   await expect(getSingleUseCase.execute(idOrName)).rejects.toHaveProperty(
     'status',

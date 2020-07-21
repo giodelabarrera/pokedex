@@ -1,18 +1,18 @@
 const USE_CASES = {
-  pokemon__get_list_use_case: () =>
+  pokemon__get_pokemon_list_use_case: () =>
     import(
-      /* webpackChunkName: "pokemon__get_list_use_case" */
-      './pokemon/useCases/GetListUseCase/factory'
+      /* webpackChunkName: "pokemon__get_pokemon_list_use_case" */
+      './pokemon/useCases/GetPokemonListUseCase/factory'
     ),
-  pokemon__get_single_use_case: () =>
+  pokemon__get_pokemon_use_case: () =>
     import(
-      /* webpackChunkName: "pokemon__get_single_use_case" */
-      './pokemon/useCases/GetSingleUseCase/factory'
+      /* webpackChunkName: "pokemon__get_pokemon_use_case" */
+      './pokemon/useCases/GetPokemonUseCase/factory'
     ),
-  pokemon__get_types_use_case: () =>
+  pokemon__get_type_list_use_case: () =>
     import(
-      /* webpackChunkName: "pokemon__get_types_use_case" */
-      './pokemon/useCases/GetTypesUseCase/factory'
+      /* webpackChunkName: "pokemon__get_type_list_use_case" */
+      './pokemon/useCases/GetTypeListUseCase/factory'
     )
 }
 
