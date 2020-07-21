@@ -29,7 +29,10 @@ export default function RESTRepository({
       const params = {query, types, sort, limit, offset}
       const queryString = toQueryString(params)
       const endpoint = 'pokemon' + (queryString && `?${queryString}`)
-      const pokemonList = await httpClient(endpoint)
+      const pokemonListJson = await httpClient(endpoint)
+      const pokemonList = pokemonListJson.map(
+        pokemonJsonToPokemonEntityMapper.map
+      )
       return pokemonList
     },
     async getTypeList() {
