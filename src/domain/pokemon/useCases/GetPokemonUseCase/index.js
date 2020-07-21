@@ -14,8 +14,8 @@ export default function GetPokemonUseCase({
       })
       return {
         ...pokemonEntity.toJson(),
-        slug,
-        imageUrl: imageUrls.large
+        imageUrl: imageUrls.large,
+        slug
       }
     }
   }
