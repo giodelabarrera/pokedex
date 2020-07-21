@@ -1,4 +1,5 @@
 export default function GetPokemonSlugService() {
+  /* eslint-disable no-useless-escape */
   function slugify(text) {
     return text
       .toString()
@@ -11,6 +12,7 @@ export default function GetPokemonSlugService() {
       .replace(/^-+/, '') // Trim - from start of text
       .replace(/-+$/, '') // Trim - from end of text
   }
+  /* eslint-enable no-useless-escape */
 
   return {
     execute({pokemonName}) {
