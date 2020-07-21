@@ -1,10 +1,10 @@
 export default function RESTRepository({httpClient}) {
   return {
-    async getSingle(idOrName) {
+    async getPokemon(idOrName) {
       const pokemon = await httpClient(`pokemon/${idOrName}`)
       return pokemon
     },
-    async getList({
+    async getPokemonList({
       query = '',
       types = [],
       sort = 'lowest_number',
@@ -27,6 +27,10 @@ export default function RESTRepository({httpClient}) {
       const endpoint = 'pokemon' + (queryString && `?${queryString}`)
       const pokemonList = await httpClient(endpoint)
       return pokemonList
+    },
+    async getTypeList() {
+      const typeList = await httpClient('type')
+      return typeList
     }
   }
 }
