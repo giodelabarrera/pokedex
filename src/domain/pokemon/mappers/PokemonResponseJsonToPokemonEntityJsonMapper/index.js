@@ -1,6 +1,4 @@
-export default function PokemonJsonToPokemonEntityMapper({
-  pokemonEntityFactory
-}) {
+export default function PokemonResponseJsonToPokemonEntityJsonMapper() {
   function mapTranslationsOfNameToName(translationsOfName) {
     const {english: name} = translationsOfName
     return name
@@ -21,32 +19,25 @@ export default function PokemonJsonToPokemonEntityMapper({
     }
   }
 
-  function generateNumber(id) {
-    return id.toString().padStart(3, '0')
-  }
-
   return {
-    map(pokemonJson) {
+    map(pokemonResponseJson) {
       const {
         id,
         name: originName,
         type: originType,
         base: originBase
-      } = pokemonJson
+      } = pokemonResponseJson
 
       const name = mapTranslationsOfNameToName(originName)
-      const number = generateNumber(id)
       const types = mapTypesToLowerCase(originType)
       const stats = mapStatsKeysToSnakeCase(originBase)
 
-      const pokemonEntity = pokemonEntityFactory({
+      return {
         id,
-        number,
         name,
         types,
         stats
-      })
-      return pokemonEntity
+      }
     }
   }
 }

@@ -1,9 +1,24 @@
-export default function PokemonEntity({id, number, name, types, stats}) {
+export default function PokemonEntity({id, name, types, stats}) {
+  function number() {
+    return id.toString().padStart(3, '0')
+  }
+
+  function toString() {
+    return {
+      id,
+      name,
+      number: number(),
+      types,
+      stats
+    }
+  }
+
   return {
     id,
-    number,
     name,
     types,
-    stats
+    stats,
+    number,
+    toString
   }
 }
