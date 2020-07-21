@@ -1,22 +1,23 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 
 import {useDomain} from '../context/domainProvider'
 
 export default function PokemonListScreen() {
   const domain = useDomain()
 
+  const [pokemonList, setPokemonList] = useState([])
+
   useEffect(() => {
     domain
       .get('pokemon__get_pokemon_list_use_case')
       .execute()
-      .then(response => {
-        // debugger
-      })
-  })
+      .then(setPokemonList)
+  }, [domain])
 
   return (
     <>
-      <span>Pokemon list</span>
+      <h1>Pokemon list</h1>
+      <pre>{JSON.stringify(pokemonList, null, 2)}</pre>
     </>
   )
 }
