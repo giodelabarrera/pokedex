@@ -1,8 +1,12 @@
-export default function RESTRepository({httpClient}) {
+export default function RESTRepository({
+  httpClient,
+  pokemonJsonToPokemonEntityMapper
+}) {
   return {
-    async getPokemon(idOrName) {
-      const pokemon = await httpClient(`pokemon/${idOrName}`)
-      return pokemon
+    async getPokemon({idOrName}) {
+      const pokemonJson = await httpClient(`pokemon/${idOrName}`)
+      const pokemonEntity = pokemonJsonToPokemonEntityMapper.map(pokemonJson)
+      return pokemonEntity
     },
     async getPokemonList({
       query = '',

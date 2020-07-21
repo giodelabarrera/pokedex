@@ -1,4 +1,5 @@
 import RESTRepository from './index'
+import PokemonJsonToPokemonEntityMapperFactory from '../../mappers/PokemonJsonToPokemonEntityMapper/factory'
 
 const apiURL = 'http://localhost:3030'
 
@@ -12,5 +13,8 @@ function httpClient(endpoint, {...customConfig} = {}) {
 }
 
 export default () => {
-  return RESTRepository({httpClient})
+  return RESTRepository({
+    httpClient,
+    pokemonJsonToPokemonEntityMapper: PokemonJsonToPokemonEntityMapperFactory()
+  })
 }

@@ -22,7 +22,7 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<PokemonListScreen />} />
-      <Route path="/:pokemonId" element={<PokemonDetailScreen />} />
+      <Route path="/:pokemonIdOrName" element={<PokemonDetailScreen />} />
       <Route path="*" element={<NotFoundScreen />} />
     </Routes>
   )
