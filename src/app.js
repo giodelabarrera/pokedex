@@ -7,6 +7,8 @@ import NotFoundScreen from './screens/notFound'
 
 import Header from './components/shell/header'
 
+import './app.css'
+
 function App() {
   return (
     <div className="App">
