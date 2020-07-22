@@ -2,8 +2,9 @@ import React, {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 
 import {useDomain} from '../context/domain'
+import PokemonCard from '../components/pokemon/card'
 
-export default function PokemonListScreen() {
+function PokemonListScreen() {
   const domain = useDomain()
 
   const [pokemonList, setPokemonList] = useState([])
@@ -18,14 +19,25 @@ export default function PokemonListScreen() {
   return (
     <div className="pk-PokemonList">
       {pokemonList.map(({id, number, name, imageUrl, slug}) => (
-        <div key={id}>
-          <Link to={`/${slug}`}>
-            <img src={imageUrl} alt={name} />
-          </Link>
-          <h4>{name}</h4>
-          <span>{number}</span>
+        <div className="pk-PokemonList-item" key={id}>
+          <PokemonCard
+            id={id}
+            number={number}
+            name={name}
+            imageUrl={imageUrl}
+            slug={slug}
+            link={makePokemonDetailLink(slug)}
+          />
         </div>
       ))}
     </div>
   )
 }
+
+function makePokemonDetailLink(slug) {
+  return function (props) {
+    return <Link {...props} to={`/${slug}`} />
+  }
+}
+
+export default PokemonListScreen
