@@ -1,0 +1,12 @@
+.pk-Header-search {
+  width: inherit;
+
+  &Input {
+    width: inherit;
+    padding: 8px 12px;
+    border-radius: 24px;
+    background: #eee;
+    border: none;
+    height: 32px;
+  }
+}

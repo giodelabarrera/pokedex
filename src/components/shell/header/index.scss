@@ -1,3 +1,38 @@
 .pk-Header {
-  border-bottom: 1px solid gray;
+  height: 56px;
+
+  &-content {
+    display: flex;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: inherit;
+    align-items: center;
+  }
+
+  &-logoContainer {
+    flex: 0 0 auto;
+    padding: 12px;
+    display: inline-flex;
+    margin-left: -16px;
+  }
+
+  &-offset {
+    flex: 1 1 auto;
+  }
+
+  &-searchContainer {
+    width: 100%;
+    display: flex;
+
+    @media (min-width: 576px) {
+      width: auto;
+    }
+  }
+
+  &-themeModeContainer {
+    flex: 0 0 auto;
+    padding: 12px;
+    display: inline-flex;
+    margin-right: -16px;
+  }
 }

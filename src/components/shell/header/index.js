@@ -1,10 +1,13 @@
 import React, {useState} from 'react'
+import {Link} from 'react-router-dom'
 
 import Logo from './logo'
-import SearchInput from './searchInput'
+import Search from './search'
 import ToggleTheme from '../../ui/toggleTheme'
 
 import './index.scss'
+
+const prefix = 'pk-Header'
 
 export default function Header() {
   const [query, setQuery] = useState('')
@@ -14,10 +17,19 @@ export default function Header() {
   const handleThemeModeChange = e => setThemeMode(e.target.value)
 
   return (
-    <header className="pk-Header">
-      <Logo />
-      <SearchInput value={query} onChange={handleInputChange} />
-      <ToggleTheme mode={themeMode} onChange={handleThemeModeChange} />
+    <header className={prefix}>
+      <div className={`${prefix}-content`}>
+        <Link to="/" className={`${prefix}-logoContainer`}>
+          <Logo />
+        </Link>
+        <div className={`${prefix}-offset`} />
+        <div className={`${prefix}-searchContainer`}>
+          <Search value={query} onChange={handleInputChange} />
+        </div>
+        <div className={`${prefix}-themeModeContainer`}>
+          <ToggleTheme mode={themeMode} onChange={handleThemeModeChange} />
+        </div>
+      </div>
     </header>
   )
 }
