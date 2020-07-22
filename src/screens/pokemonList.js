@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 
-import {useDomain} from '../context/domainProvider'
+import {useDomain} from '../context/domain'
 
 export default function PokemonListScreen() {
   const domain = useDomain()
