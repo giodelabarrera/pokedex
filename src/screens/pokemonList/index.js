@@ -5,18 +5,21 @@ import {useDomain} from '../../context/domain'
 import PokemonCard from '../../components/pokemon/card'
 
 import './index.scss'
+import useQueryParam, {StringParam} from '../../hooks/useQueryParam'
 
 function PokemonListScreen() {
   const domain = useDomain()
+
+  const [query = ''] = useQueryParam('query', StringParam)
 
   const [pokemonList, setPokemonList] = useState([])
 
   useEffect(() => {
     domain
       .get('pokemon__get_pokemon_list_use_case')
-      .execute({limit: 48})
+      .execute({query, limit: 48})
       .then(setPokemonList)
-  }, [domain])
+  }, [domain, query])
 
   return (
     <div className="pk-PokemonList">

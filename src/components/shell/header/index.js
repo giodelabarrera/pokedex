@@ -6,12 +6,14 @@ import Search from './search'
 import ToggleTheme from '../../ui/toggleTheme'
 
 import './index.scss'
+import useQueryParam, {StringParam} from '../../../hooks/useQueryParam'
 
 const prefix = 'pk-Header'
 
 export default function Header() {
-  const [query, setQuery] = useState('')
   const [themeMode, setThemeMode] = useState('light')
+
+  const [query, setQuery] = useQueryParam('query', StringParam)
 
   const handleInputChange = e => setQuery(e.target.value)
   const handleThemeModeChange = e => setThemeMode(e.target.value)
