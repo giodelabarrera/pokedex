@@ -7,11 +7,11 @@ import NotFoundScreen from './screens/notFound'
 
 import Header from './components/shell/header'
 
-import './app.css'
+import './app.scss'
 
 function App() {
   return (
-    <div className="App">
+    <div className="pk-App">
       <Header />
       <main>
         <AppRoutes />

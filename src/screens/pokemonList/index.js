@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 
-import {useDomain} from '../context/domain'
-import PokemonCard from '../components/pokemon/card'
+import {useDomain} from '../../context/domain'
+import PokemonCard from '../../components/pokemon/card'
+
+import './index.scss'
 
 function PokemonListScreen() {
   const domain = useDomain()
