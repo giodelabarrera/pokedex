@@ -3,7 +3,7 @@ import React from 'react'
 import SearchIcon from './searchIcon'
 import './index.scss'
 
-export default function Search({value, onChange}) {
+export default function Search({value, placeholder, onChange}) {
   return (
     <div className="pk-Header-search">
       <SearchIcon />
@@ -11,7 +11,7 @@ export default function Search({value, onChange}) {
         className="pk-Header-searchInput"
         type="text"
         value={value}
-        placeholder="Number or name"
+        placeholder={placeholder}
         onChange={onChange}
       />
     </div>
