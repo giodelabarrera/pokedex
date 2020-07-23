@@ -6,56 +6,9 @@ import Search from './search'
 import ToggleTheme from '../../ui/toggleTheme'
 
 import './index.scss'
-import useQueryParam from '../../../hooks/useQueryParams/useQueryParam'
+import useQueryParam, {StringParam} from '../../../hooks/useQueryParam'
 
 const prefix = 'pk-Header'
-
-/**
- * Interprets an encoded string and returns either the string or null/undefined if not available.
- * Ignores array inputs (takes just first element in array)
- * @param input encoded string
- */
-function getEncodedValue(input, allowEmptyString) {
-  if (input == null) {
-    return input
-  }
-  // '' or []
-  if (
-    input.length === 0 &&
-    (!allowEmptyString || (allowEmptyString && input !== ''))
-  ) {
-    return null
-  }
-
-  const str = input instanceof Array ? input[0] : input
-  if (str == null) {
-    return str
-  }
-  if (!allowEmptyString && str === '') {
-    return null
-  }
-
-  return str
-}
-
-function encodeString(str) {
-  if (str === null) {
-    return str
-  }
-  return String(str)
-}
-
-export function decodeString(input) {
-  const str = getEncodedValue(input, true)
-  if (str === null) return str
-
-  return String(str)
-}
-
-const StringParam = {
-  encode: encodeString,
-  decode: decodeString
-}
 
 export default function Header() {
   const [themeMode, setThemeMode] = useState('light')
