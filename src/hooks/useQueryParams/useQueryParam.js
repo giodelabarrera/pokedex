@@ -1,7 +1,8 @@
 import {useMemo, useCallback} from 'react'
 import {useNavigate, useLocation} from 'react-router-dom'
+import {parse} from 'query-string'
 
-import {setLocation} from './utils'
+import setLocation from './setLocation'
 
 function useQueryParam(name, paramConfig) {
   const location = useLocation()
@@ -24,13 +25,8 @@ function useQueryParam(name, paramConfig) {
   return [decodedValue, setValue]
 }
 
-// external function
-function parseQueryString(string) {
-  return {}
-}
-
 function getDecodedValue(location, name, paramConfig) {
-  const parsedQueryParams = parseQueryString(location.search)
+  const parsedQueryParams = parse(location.search)
   const encodedValue = parsedQueryParams[name]
   return paramConfig.decode(encodedValue)
 }

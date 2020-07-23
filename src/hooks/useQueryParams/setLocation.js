@@ -1,10 +1,16 @@
-// external function
-function updateLocation(queryReplacements, location) {
-  return 'pepe'
-}
+import {stringify, parseUrl} from 'query-string'
 
 function createLocationWithChanges(queryReplacements, location) {
-  return updateLocation(queryReplacements, location)
+  const encodedSearchString = stringify(queryReplacements)
+  const search = encodedSearchString && `?${encodedSearchString}`
+  const href = parseUrl(location.href || '').url + search
+
+  return {
+    ...location,
+    key: `${Date.now()}`,
+    href,
+    search
+  }
 }
 
 function updateUrlQuery(navigate, location, updateType) {
@@ -24,4 +30,4 @@ function setLocation(queryReplacements, updateType, location, navigate) {
   updateUrlQuery(navigate, newLocation, updateType)
 }
 
-export {createLocationWithChanges, setLocation, updateUrlQuery}
+export default setLocation
