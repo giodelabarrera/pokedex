@@ -28,6 +28,7 @@ function useQueryParam(name, paramConfig) {
 function getDecodedValue(location, name, paramConfig) {
   const parsedQueryParams = parse(location.search)
   const encodedValue = parsedQueryParams[name]
+  if (typeof encodedValue === 'undefined') return
   return paramConfig.decode(encodedValue)
 }
 
