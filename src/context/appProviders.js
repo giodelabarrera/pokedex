@@ -1,7 +1,7 @@
 import React from 'react'
 import {BrowserRouter as Router} from 'react-router-dom'
 
-import {DomainProvider} from './domainProvider'
+import {DomainProvider} from './domain'
 import domain from '../domain'
 
 export default function AppProviders({children}) {

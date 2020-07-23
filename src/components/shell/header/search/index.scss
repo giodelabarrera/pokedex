@@ -1,12 +1,25 @@
 .pk-Header-search {
   width: inherit;
+  position: relative;
 
   &Input {
     width: inherit;
-    padding: 8px 12px;
-    border-radius: 24px;
+    padding: 8px 16px;
+    border-radius: 8px;
     background: #eee;
     border: none;
-    height: 32px;
+    height: 40px;
+    font-size: 16px;
+    background: rgb(64, 77, 86);
+    color: rgb(194, 216, 255);
+    padding-left: 42px;
+  }
+
+  svg {
+    fill: gray;
+    top: 8px;
+    bottom: 0;
+    position: absolute;
+    left: 12px;
   }
 }

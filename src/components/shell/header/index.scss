@@ -1,19 +1,22 @@
 .pk-Header {
-  height: 56px;
+  padding-left: 16px;
+  padding-right: 16px;
 
   &-content {
     display: flex;
-    padding-left: 16px;
-    padding-right: 16px;
     height: inherit;
     align-items: center;
   }
 
   &-logoContainer {
     flex: 0 0 auto;
-    padding: 12px;
+    padding: 16px;
     display: inline-flex;
     margin-left: -16px;
+
+    svg {
+      fill: rgb(194, 216, 255);
+    }
   }
 
   &-offset {
@@ -31,8 +34,12 @@
 
   &-themeModeContainer {
     flex: 0 0 auto;
-    padding: 12px;
+    padding: 16px;
     display: inline-flex;
     margin-right: -16px;
+
+    svg {
+      stroke: rgb(194, 216, 255);
+    }
   }
 }

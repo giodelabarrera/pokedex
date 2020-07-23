@@ -24,7 +24,11 @@ export default function Header() {
         </Link>
         <div className={`${prefix}-offset`} />
         <div className={`${prefix}-searchContainer`}>
-          <Search value={query} onChange={handleInputChange} />
+          <Search
+            value={query}
+            placeholder="Number or name"
+            onChange={handleInputChange}
+          />
         </div>
         <div className={`${prefix}-themeModeContainer`}>
           <ToggleTheme mode={themeMode} onChange={handleThemeModeChange} />
