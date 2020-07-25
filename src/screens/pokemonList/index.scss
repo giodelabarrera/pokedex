@@ -1,7 +1,9 @@
 .pk-PokemonList {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  // display: grid;
+  // grid-template-columns: repeat(2, 1fr);
+  // gap: 16px;
+  // min-height: calc(100vh - 72px);
+  height: 4000px;
 
   @media (min-width: 576px) {
     grid-template-columns: repeat(3, 1fr);

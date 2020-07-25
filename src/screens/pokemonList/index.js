@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import {Link} from 'react-router-dom'
 
 import {useDomain} from '../../context/domain'
@@ -6,6 +6,7 @@ import PokemonCard from '../../components/pokemon/card'
 
 import './index.scss'
 import useQueryParam, {StringParam} from '../../hooks/useQueryParam'
+import useIntersection from '../../hooks/useIntersection'
 
 function PokemonListScreen() {
   const domain = useDomain()
@@ -13,6 +14,9 @@ function PokemonListScreen() {
   const [query = ''] = useQueryParam('query', StringParam)
 
   const [pokemonList, setPokemonList] = useState([])
+
+  const loadMoreRef = useRef(null)
+  const intersection = useIntersection({target: loadMoreRef})
 
   useEffect(() => {
     domain
@@ -35,6 +39,14 @@ function PokemonListScreen() {
           />
         </div>
       ))}
+      <div ref={loadMoreRef} className="loadMore">
+        <h1>Load more</h1>
+        <span>
+          {intersection && intersection.isIntersecting
+            ? 'Fully in view'
+            : 'Obscured'}
+        </span>
+      </div>
     </div>
   )
 }
