@@ -1,32 +1,31 @@
-import {useState, useEffect} from 'react'
+import {useEffect} from 'react'
+import 'intersection-observer'
 
-export default function useIntersection({ref, options}) {
-  const [intersectionObserverEntry, setIntersectionObserverEntry] = useState(
-    null
-  )
-
+export default function useIntersection({
+  target,
+  root,
+  rootMargin,
+  threshold,
+  onIntersect
+}) {
   useEffect(() => {
-    if (ref.current) {
-      Promise.resolve(() =>
-        typeof IntersectionObserver !== 'undefined'
-          ? IntersectionObserver
-          : import('intersection-observer')
-      ).then(() => {
-        function handler(entries) {
-          setIntersectionObserverEntry(entries[0])
-        }
-
-        const observer = new IntersectionObserver(handler, options)
-        observer.observe(ref.current)
-
-        return () => {
-          setIntersectionObserverEntry(null)
-          observer.disconnect()
-        }
-      })
+    function handler(entries) {
+      entries[0].isIntersecting && onIntersect()
     }
-    return () => {}
-  }, [options, ref])
 
-  return intersectionObserverEntry
+    const observer = new IntersectionObserver(handler, {
+      root: root && root.current,
+      rootMargin,
+      threshold
+    })
+
+    const element = target && target.current
+    if (!element) return
+
+    observer.observe(element)
+
+    return () => {
+      observer.unobserve(element)
+    }
+  }, [onIntersect, root, rootMargin, target, threshold])
 }
