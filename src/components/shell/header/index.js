@@ -8,31 +8,31 @@ import ToggleTheme from '../../ui/toggleTheme'
 import './index.scss'
 import useQueryParam, {StringParam} from '../../../hooks/useQueryParam'
 
-const prefix = 'pk-Header'
+const baseClass = 'pk-Header'
 
 export default function Header() {
   const [themeMode, setThemeMode] = useState('light')
 
   const [query, setQuery] = useQueryParam('query', StringParam)
 
-  const handleInputChange = e => setQuery(e.target.value)
+  const handleSearchSubmit = value => setQuery(value)
   const handleThemeModeChange = e => setThemeMode(e.target.value)
 
   return (
-    <header className={prefix}>
-      <div className={`${prefix}-content`}>
-        <Link to="/" className={`${prefix}-logoContainer`}>
+    <header className={baseClass}>
+      <div className={`${baseClass}-content`}>
+        <Link to="/" className={`${baseClass}-logoContainer`}>
           <Logo />
         </Link>
-        <div className={`${prefix}-offset`} />
-        <div className={`${prefix}-searchContainer`}>
+        <div className={`${baseClass}-offset`} />
+        <div className={`${baseClass}-searchContainer`}>
           <Search
-            value={query}
+            initialValue={query}
             placeholder="Number or name"
-            onChange={handleInputChange}
+            onSubmit={handleSearchSubmit}
           />
         </div>
-        <div className={`${prefix}-themeModeContainer`}>
+        <div className={`${baseClass}-themeModeContainer`}>
           <ToggleTheme mode={themeMode} onChange={handleThemeModeChange} />
         </div>
       </div>
