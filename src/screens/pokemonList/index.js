@@ -79,12 +79,7 @@ function PokemonListScreen() {
       {data && (
         <>
           <PokemonList pokemonList={data} />
-          {total > data.length && (
-            <div ref={loadMoreRef}>
-              <h5>Load more</h5>
-              <span>{isIntersecting ? 'Fully in view' : 'Obscured'}</span>
-            </div>
-          )}
+          {total > data.length && <div ref={loadMoreRef} />}
         </>
       )}
     </div>
