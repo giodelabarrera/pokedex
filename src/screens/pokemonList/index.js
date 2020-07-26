@@ -9,23 +9,6 @@ import useIntersection from '../../hooks/useIntersection'
 
 import './index.scss'
 
-// function usePokemonList({query, limit}) {
-//   const domain = useDomain()
-
-//   const fetchGetPokemonList = useCallback(
-//     (key, params) =>
-//       domain.get('pokemon__get_pokemon_list_use_case').execute(params),
-//     [domain]
-//   )
-
-//   const {error, data, status} = useQuery(
-//     ['get_pokemon_list', {query, limit}],
-//     fetchGetPokemonList
-//   )
-
-//   return {error, data, status}
-// }
-
 const LIMIT = 48
 
 function PokemonListScreen() {
