@@ -6,7 +6,7 @@ export default function GetPokemonListUseCase({
   return {
     async execute(params) {
       const pokemonEntityList = await pokemonRepository.getPokemonList(params)
-      return pokemonEntityList.map(pokemonEntity => {
+      const results = pokemonEntityList.results.map(pokemonEntity => {
         const slug = getPokemonSlugService.execute({
           pokemonName: pokemonEntity.name
         })
@@ -19,6 +19,10 @@ export default function GetPokemonListUseCase({
           slug
         }
       })
+      return {
+        total: pokemonEntityList.total,
+        results
+      }
     }
   }
 }
