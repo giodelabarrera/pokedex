@@ -1,6 +1,6 @@
 import GetPokemonImageUrlsService from '.'
 
-const IMAGE_BASE_URL = 'https://assets.pokemon.com/assets/cms2/img/pokedex'
+const IMAGE_BASE_URL = process.env.REACT_APP_IMAGE_BASE_URL
 
 export default () => {
   return GetPokemonImageUrlsService({
