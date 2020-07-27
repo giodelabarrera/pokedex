@@ -2,7 +2,7 @@ import RESTRepository from './index'
 import PokemonResponseJsonToPokemonEntityJsonMapperFactory from '../../mappers/PokemonResponseJsonToPokemonEntityJsonMapper/factory'
 import PokemonEntityFactory from '../../entity/Pokemon/factory'
 
-const apiURL = 'https://ec2-3-15-46-54.us-east-2.compute.amazonaws.com:443'
+const apiURL = 'http://pokedex-api-elb-1439135411.us-east-2.elb.amazonaws.com'
 
 function httpClient(endpoint, {...customConfig} = {}) {
   const config = {method: 'GET', ...customConfig}
