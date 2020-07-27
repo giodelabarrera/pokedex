@@ -6,7 +6,7 @@ import Search from './search'
 import ToggleTheme from '../../ui/toggleTheme'
 
 import './index.scss'
-import useQueryParam, {StringParam} from '../../../hooks/useQueryParam'
+import useQueryParam, {StringParam} from 'hooks/useQueryParam'
 
 const baseClass = 'pk-Header'
 
