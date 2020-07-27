@@ -1,11 +1,11 @@
 import React, {useRef, useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 
-import {useDomain} from '../../context/domain'
-import PokemonCard from '../../components/pokemon/card'
+import {useDomain} from 'context/domain'
+import PokemonCard from 'components/pokemon/card'
 
-import useQueryParam, {StringParam} from '../../hooks/useQueryParam'
-import useIntersection from '../../hooks/useIntersection'
+import useQueryParam, {StringParam} from 'hooks/useQueryParam'
+import useIntersection from 'hooks/useIntersection'
 
 import './index.scss'
 
