@@ -2,9 +2,10 @@
   &-title {
     color: rgb(194, 216, 255);
     margin-top: 0;
+    margin-bottom: 16px;
   }
 
-  &-subtitle {
+  &-number {
     color: gray;
   }
 
@@ -12,6 +13,7 @@
     width: 100%;
     background: rgb(64, 77, 86);
     border-radius: 8px;
+    margin-bottom: 16px;
 
     img {
       width: 100%;
@@ -19,5 +21,14 @@
       object-fit: contain;
       object-position: center center;
     }
+  }
+
+  &-subtitle {
+    color: rgb(194, 216, 255);
+    margin-top: 0;
+  }
+
+  &-section {
+    margin-bottom: 16px;
   }
 }

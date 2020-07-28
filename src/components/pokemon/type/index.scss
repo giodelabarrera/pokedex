@@ -4,8 +4,12 @@
   text-align: center;
   border-radius: 4px;
   padding: 8px;
+  color: #fff;
 
-  &.pk-PokemonType--medium {
-    background: gray;
+  &.u-grass {
+    background-color: #9bcc50;
+  }
+  &.u-poison {
+    background-color: #b97fc9;
   }
 }
