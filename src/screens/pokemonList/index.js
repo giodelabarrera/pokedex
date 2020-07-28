@@ -90,7 +90,7 @@ function PokemonList({pokemonList}) {
 
 function makePokemonDetailLink(slug) {
   return function (props) {
-    return <Link {...props} to={`/${slug}`} />
+    return <Link {...props} to={`/p/${slug}`} />
   }
 }
 

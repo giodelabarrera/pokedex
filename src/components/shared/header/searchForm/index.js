@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import SearchIcon from './searchIcon'
 import './index.scss'
 
-export default function Search({initialValue = '', placeholder, onSubmit}) {
+export default function SearchForm({initialValue = '', placeholder, onSubmit}) {
   const [value, setValue] = useState(initialValue)
 
   const handleSubmit = e => {
@@ -15,11 +15,11 @@ export default function Search({initialValue = '', placeholder, onSubmit}) {
   const handleChange = e => setValue(e.target.value)
 
   return (
-    <div className="pk-Header-search">
+    <div className="pk-SharedHeader-searchForm">
       <form onSubmit={handleSubmit}>
         <SearchIcon />
         <input
-          className="pk-Header-searchInput"
+          className="pk-SharedHeader-searchForm-input"
           type="text"
           value={value}
           placeholder={placeholder}

@@ -1,0 +1,9 @@
+.pk-PokemonStats-stat {
+  display: grid;
+  grid-template-columns: 48px 32px 1fr;
+  gap: 16px;
+
+  &-value {
+    text-align: right;
+  }
+}

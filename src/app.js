@@ -5,7 +5,7 @@ import PokemonListScreen from './screens/pokemonList'
 import PokemonDetailScreen from './screens/pokemonDetail'
 import NotFoundScreen from './screens/notFound'
 
-import Header from './components/shell/header'
+import Header from './components/shared/header'
 
 import './app.scss'
 
@@ -24,7 +24,7 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<PokemonListScreen />} />
-      <Route path="/:pokemonIdOrName" element={<PokemonDetailScreen />} />
+      <Route path="/p/:idOrSlug" element={<PokemonDetailScreen />} />
       <Route path="*" element={<NotFoundScreen />} />
     </Routes>
   )
