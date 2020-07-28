@@ -24,7 +24,7 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<PokemonListScreen />} />
-      <Route path="/:pokemonIdOrName" element={<PokemonDetailScreen />} />
+      <Route path="/p/:idOrSlug" element={<PokemonDetailScreen />} />
       <Route path="*" element={<NotFoundScreen />} />
     </Routes>
   )

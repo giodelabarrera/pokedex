@@ -1,15 +1,13 @@
 export const statusTypes = {
-  pending: 'pending',
-  fulfilled: 'fulfilled',
-  rejected: 'rejected'
+  loading: 'loading',
+  success: 'success',
+  error: 'error'
 }
 
 export const getStatusProps = status => ({
   status,
-  isPending: status === statusTypes.pending,
-  isLoading: status === statusTypes.pending,
-  isFulfilled: status === statusTypes.fulfilled,
-  isResolved: status === statusTypes.fulfilled,
-  isRejected: status === statusTypes.rejected,
-  isSettled: status === statusTypes.fulfilled || status === statusTypes.rejected
+  isLoading: status === statusTypes.loading,
+  isSuccess: status === statusTypes.success,
+  isError: status === statusTypes.error,
+  isSettled: status === statusTypes.success || status === statusTypes.error
 })
