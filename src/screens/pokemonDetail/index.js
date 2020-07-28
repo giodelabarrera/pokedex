@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom'
 
 import {useDomain} from 'context/domain'
 import useAsync from 'hooks/useAsync'
+import PokemonDetail from 'components/pokemon/detail'
 
 import './index.scss'
 
@@ -24,31 +25,7 @@ function PokemonDetailScreen() {
     <div className={baseClass}>
       {isLoading && <span>Loading...</span>}
       {error && <span>{error.message}</span>}
-      {data && (
-        <>
-          <pre>{JSON.stringify(data, null, 2)}</pre>
-          <h1>
-            Bulbasaur <span>Nº 001</span>
-          </h1>
-          <div>
-            <img src="" />
-            <div>
-              <div>
-                <span>Grass</span>
-                <span>Poison</span>
-              </div>
-              <div>
-                <ul>
-                  <li>Atack</li>
-                  <li>Atack</li>
-                  <li>Atack</li>
-                  <li>Atack</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </>
-      )}
+      {data && <PokemonDetail pokemon={data} />}
     </div>
   )
 }

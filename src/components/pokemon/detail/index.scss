@@ -1,0 +1,22 @@
+.pk-PokemonDetail {
+  &-title {
+    color: rgb(194, 216, 255);
+  }
+
+  &-subtitle {
+    color: gray;
+  }
+
+  &-imageContainer {
+    width: 100%;
+    background: rgb(64, 77, 86);
+    border-radius: 8px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center center;
+    }
+  }
+}
