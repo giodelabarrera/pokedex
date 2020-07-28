@@ -4,9 +4,12 @@ import './index.scss'
 
 const baseClass = 'pk-PokemonStats-linearProgress'
 
-export default function LinearProgress({value}) {
+const MAX_STAT = 240
+
+function LinearProgress({value}) {
+  const lengthPercentage = getLengthPercentage(value, MAX_STAT)
   const barStyle = {
-    transform: `translateX(-${value}%)`
+    transform: `translateX(-${lengthPercentage}%)`
   }
   return (
     <div className={baseClass}>
@@ -14,3 +17,9 @@ export default function LinearProgress({value}) {
     </div>
   )
 }
+
+function getLengthPercentage(value, maxValue) {
+  return 100 - Math.round((value * 100) / maxValue)
+}
+
+export default LinearProgress
