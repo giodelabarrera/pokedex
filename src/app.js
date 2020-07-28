@@ -5,7 +5,7 @@ import PokemonListScreen from './screens/pokemonList'
 import PokemonDetailScreen from './screens/pokemonDetail'
 import NotFoundScreen from './screens/notFound'
 
-import Header from './components/shell/header'
+import Header from './components/shared/header'
 
 import './app.scss'
 

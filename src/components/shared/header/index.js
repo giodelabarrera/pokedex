@@ -2,20 +2,20 @@ import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 
 import Logo from './logo'
-import Search from './search'
+import SearchForm from './searchForm'
 import ToggleTheme from '../../ui/toggleTheme'
 
 import './index.scss'
 import useQueryParam, {StringParam} from 'hooks/useQueryParam'
 
-const baseClass = 'pk-Header'
+const baseClass = 'pk-SharedHeader'
 
 export default function Header() {
   const [themeMode, setThemeMode] = useState('light')
 
   const [query, setQuery] = useQueryParam('query', StringParam)
 
-  const handleSearchSubmit = value => setQuery(value)
+  const handleSearchFormSubmit = value => setQuery(value)
   const handleThemeModeChange = e => setThemeMode(e.target.value)
 
   return (
@@ -26,10 +26,10 @@ export default function Header() {
         </Link>
         <div className={`${baseClass}-offset`} />
         <div className={`${baseClass}-searchContainer`}>
-          <Search
+          <SearchForm
             initialValue={query}
             placeholder="Number or name"
-            onSubmit={handleSearchSubmit}
+            onSubmit={handleSearchFormSubmit}
           />
         </div>
         <div className={`${baseClass}-themeModeContainer`}>
