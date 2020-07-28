@@ -2,6 +2,7 @@ import React from 'react'
 
 import PokemonTypes from 'components/pokemon/types'
 import PokemonType from 'components/pokemon/type'
+import PokemonStats from 'components/pokemon/stats'
 
 import './index.scss'
 
@@ -12,7 +13,7 @@ export default function PokemonDetail({pokemon}) {
   return (
     <section className={baseClass}>
       <h1 className={`${baseClass}-title`}>
-        {name} <span className={`${baseClass}-number`}>Nº {number}</span>
+        {name} <span className={`${baseClass}-number`}>#{number}</span>
       </h1>
       <div>
         <div className={`${baseClass}-imageContainer`}>
@@ -27,16 +28,7 @@ export default function PokemonDetail({pokemon}) {
           </div>
           <div className={`${baseClass}-section`}>
             <h3 className={`${baseClass}-subtitle`}>Stats</h3>
-            <div>
-              <ul>
-                <li>HP: {stats.hp}</li>
-                <li>Attack: {stats.attack}</li>
-                <li>Defense: {stats.defense}</li>
-                <li>Special Attack: {stats.special_attack}</li>
-                <li>Special Defense: {stats.special_defense}</li>
-                <li>Speed: {stats.speed}</li>
-              </ul>
-            </div>
+            <PokemonStats stats={stats} />
           </div>
         </div>
       </div>

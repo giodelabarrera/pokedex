@@ -2,7 +2,7 @@
   &-title {
     color: rgb(194, 216, 255);
     margin-top: 0;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
   }
 
   &-number {
@@ -26,9 +26,14 @@
   &-subtitle {
     color: rgb(194, 216, 255);
     margin-top: 0;
+    margin-bottom: 8px;
   }
 
   &-section {
     margin-bottom: 16px;
+  }
+
+  &-stats {
+    color: #ffffff;
   }
 }

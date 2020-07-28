@@ -1,0 +1,13 @@
+.pk-PokemonStats {
+  color: #ffffff;
+
+  &-list {
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+  }
+
+  &-item {
+    margin-bottom: 8px;
+  }
+}
