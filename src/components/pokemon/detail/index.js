@@ -1,5 +1,7 @@
 import React from 'react'
 
+import PokemonType from 'components/pokemon/type'
+
 import './index.scss'
 
 const baseClass = 'pk-PokemonDetail'
@@ -18,7 +20,9 @@ export default function PokemonDetail({pokemon}) {
         <div>
           <div>
             {types.map(type => (
-              <span>{type}</span>
+              <div>
+                <PokemonType type={type} />
+              </div>
             ))}
           </div>
           <div>
