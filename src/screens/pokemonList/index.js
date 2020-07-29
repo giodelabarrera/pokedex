@@ -58,13 +58,12 @@ function PokemonListScreen() {
     return (
       <>
         <PokemonList pokemonList={results}>
-          {({id, number, name, imageUrl, slug}) => (
+          {({id, number, name, imageUrl, slug, types}) => (
             <PokemonCard
-              id={id}
               number={number}
               name={name}
               imageUrl={imageUrl}
-              slug={slug}
+              types={types}
               link={makePokemonDetailLink(slug)}
             />
           )}

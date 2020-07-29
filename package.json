@@ -14,7 +14,7 @@
     "prettier": "prettier \"**/*.+(js|json|scss|html)\"",
     "format": "npm run prettier -- --write",
     "check-format": "npm run prettier -- --list-different",
-    "validate": "npm-run-all --parallel check-format lint test:coverage build"
+    "validate": "npm-run-all --parallel format lint test:coverage build"
   },
   "dependencies": {
     "history": "^5.0.0",
