@@ -17,7 +17,7 @@ export default function ToggleTheme({mode = 'light', onClick}) {
 
   return (
     <button className={baseClass} onClick={handleClick}>
-      {<ModeIcon />}
+      <ModeIcon />
     </button>
   )
 }
