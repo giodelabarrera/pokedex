@@ -1,6 +1,5 @@
 import React from 'react'
 
-import PokemonTypes from 'components/pokemon/types'
 import PokemonType from 'components/pokemon/type'
 import PokemonStats from 'components/pokemon/stats'
 
@@ -25,9 +24,13 @@ export default function PokemonDetail({pokemon}) {
           <div className={`${baseClass}-info`}>
             <div className={`${baseClass}-section`}>
               <h3 className={`${baseClass}-subtitle`}>Type</h3>
-              <PokemonTypes types={types}>
-                {type => <PokemonType type={type} />}
-              </PokemonTypes>
+              <div className={`${baseClass}-types`}>
+                {types.map(type => (
+                  <div className={`${baseClass}-typeItem`} key={type}>
+                    <PokemonType type={type} />
+                  </div>
+                ))}
+              </div>
             </div>
             <div className={`${baseClass}-section`}>
               <h3 className={`${baseClass}-subtitle`}>Stats</h3>
