@@ -3,6 +3,7 @@ import {Listbox, ListboxOption} from '@reach/listbox'
 import '@reach/listbox/styles.css'
 
 import {SORT_TYPES} from './types'
+import './index.scss'
 
 const baseClass = 'pk-FilterSort'
 

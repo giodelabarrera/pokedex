@@ -9,6 +9,8 @@ import PokemonList from 'components/pokemon/list'
 import PokemonCard from 'components/pokemon/card'
 import SortFilter, {sortFilterTypes} from 'components/filter/sort'
 
+import './index.scss'
+
 const LIMIT = 48
 
 const baseClass = 'pk-PokemonListScreen'
@@ -84,8 +86,10 @@ function PokemonListScreen() {
 
   return (
     <div className={baseClass}>
+      <div className={`${baseClass}-filterBar`}>
+        <SortFilter value={sort} onChange={handleSortFilterChange} />
+      </div>
       {isLoading && <div>Loading...</div>}
-      <SortFilter value={sort} onChange={handleSortFilterChange} />
       {data && renderSuccessContent()}
     </div>
   )
