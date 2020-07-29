@@ -18,7 +18,7 @@ function PokemonListScreen() {
   const [query = ''] = useQueryParam('query', StringParam)
 
   const [offset, setOffset] = useState(0)
-  const [data, setData] = useState([])
+  const [data, setData] = useState()
   const [total, setTotal] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
 
