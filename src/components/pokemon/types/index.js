@@ -8,9 +8,9 @@ export default function PokemonTypes({types, children}) {
   return (
     <div className={baseClass}>
       {types.map(type => (
-        <React.Fragment key={type}>
-          <div className={`${baseClass}-item`}>{children(type)}</div>
-        </React.Fragment>
+        <div className={`${baseClass}-item`} key={type}>
+          {children(type)}
+        </div>
       ))}
     </div>
   )

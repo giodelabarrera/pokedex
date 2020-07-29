@@ -2,14 +2,15 @@ import React, {useRef, useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 
 import {useDomain} from 'context/domain'
-import PokemonCard from 'components/pokemon/card'
-
 import useQueryParam, {StringParam} from 'hooks/useQueryParam'
 import useIntersection from 'hooks/useIntersection'
 
-import './index.scss'
+import PokemonList from 'components/pokemon/list'
+import PokemonCard from 'components/pokemon/card'
 
 const LIMIT = 48
+
+const baseClass = 'pk-PokemonListScreen'
 
 function PokemonListScreen() {
   const domain = useDomain()
@@ -57,33 +58,25 @@ function PokemonListScreen() {
   }, [isIntersecting])
 
   return (
-    <div className="pk-PokemonList">
+    <div className={baseClass}>
       {isLoading && <div>Loading...</div>}
       {data && (
         <>
-          <PokemonList pokemonList={data} />
+          <PokemonList pokemonList={data}>
+            {({id, number, name, imageUrl, slug}) => (
+              <PokemonCard
+                id={id}
+                number={number}
+                name={name}
+                imageUrl={imageUrl}
+                slug={slug}
+                link={makePokemonDetailLink(slug)}
+              />
+            )}
+          </PokemonList>
           {total > data.length && <div ref={loadMoreRef} />}
         </>
       )}
-    </div>
-  )
-}
-
-function PokemonList({pokemonList}) {
-  return (
-    <div className="pk-PokemonList-results">
-      {pokemonList.map(({id, number, name, imageUrl, slug}) => (
-        <div className="pk-PokemonList-item" key={id}>
-          <PokemonCard
-            id={id}
-            number={number}
-            name={name}
-            imageUrl={imageUrl}
-            slug={slug}
-            link={makePokemonDetailLink(slug)}
-          />
-        </div>
-      ))}
     </div>
   )
 }
