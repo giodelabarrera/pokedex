@@ -1,7 +1,5 @@
 import React, {useRef, useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
-import {Listbox, ListboxOption} from '@reach/listbox'
-import '@reach/listbox/styles.css'
 
 import {useDomain} from 'context/domain'
 import useQueryParam, {StringParam} from 'hooks/useQueryParam'
@@ -9,22 +7,16 @@ import useIntersection from 'hooks/useIntersection'
 
 import PokemonList from 'components/pokemon/list'
 import PokemonCard from 'components/pokemon/card'
+import SortFilter, {sortFilterTypes} from 'components/filter/sort'
 
 const LIMIT = 48
 
 const baseClass = 'pk-PokemonListScreen'
 
-const SORT_TYPES = {
-  lowestNumber: 'lowest_number',
-  highestNumber: 'highest_number',
-  aZ: 'a_z',
-  zA: 'z_a'
-}
-
 function PokemonListScreen() {
   const domain = useDomain()
   const [query = ''] = useQueryParam('query', StringParam)
-  const [sort = SORT_TYPES['lowestNumber'], setSort] = useQueryParam(
+  const [sort = sortFilterTypes['lowestNumber'], setSort] = useQueryParam(
     'sort',
     StringParam
   )
@@ -95,20 +87,6 @@ function PokemonListScreen() {
       {isLoading && <div>Loading...</div>}
       <SortFilter value={sort} onChange={handleSortFilterChange} />
       {data && renderSuccessContent()}
-    </div>
-  )
-}
-
-function SortFilter({value = SORT_TYPES['lowestNumber'], onChange}) {
-  return (
-    <div>
-      <Listbox aria-labelledby="my-label" value={value} onChange={onChange}>
-        {Object.keys(SORT_TYPES).map(sortTypeKey => (
-          <ListboxOption key={sortTypeKey} value={SORT_TYPES[sortTypeKey]}>
-            {sortTypeKey}
-          </ListboxOption>
-        ))}
-      </Listbox>
     </div>
   )
 }
