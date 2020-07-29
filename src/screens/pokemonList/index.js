@@ -1,5 +1,7 @@
 import React, {useRef, useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
+import {Listbox, ListboxOption} from '@reach/listbox'
+import '@reach/listbox/styles.css'
 
 import {useDomain} from 'context/domain'
 import useQueryParam, {StringParam} from 'hooks/useQueryParam'
@@ -12,9 +14,20 @@ const LIMIT = 48
 
 const baseClass = 'pk-PokemonListScreen'
 
+const SORT_TYPES = {
+  lowestNumber: 'lowest_number',
+  highestNumber: 'highest_number',
+  aZ: 'a_z',
+  zA: 'z_a'
+}
+
 function PokemonListScreen() {
   const domain = useDomain()
   const [query = ''] = useQueryParam('query', StringParam)
+  const [sort = SORT_TYPES['lowestNumber'], setSort] = useQueryParam(
+    'sort',
+    StringParam
+  )
   const [offset, setOffset] = useState(0)
   const [data, setData] = useState()
   const [isLoading, setIsLoading] = useState(true)
@@ -23,26 +36,26 @@ function PokemonListScreen() {
     setIsLoading(true)
     domain
       .get('pokemon__get_pokemon_list_use_case')
-      .execute({query, limit: LIMIT})
+      .execute({query, limit: LIMIT, sort})
       .then(data => {
         setData(data)
         setOffset(0)
         setIsLoading(false)
       })
-  }, [domain, query])
+  }, [domain, query, sort])
 
   useEffect(() => {
     if (offset === 0) return
     domain
       .get('pokemon__get_pokemon_list_use_case')
-      .execute({query, offset, limit: LIMIT})
+      .execute({query, offset, limit: LIMIT, sort})
       .then(data => {
         setData(prevData => ({
           ...data,
           results: prevData.results.concat(data.results)
         }))
       })
-  }, [domain, offset, query])
+  }, [domain, offset, query, sort])
 
   const loadMoreRef = useRef()
   const isIntersecting = useIntersection({
@@ -73,10 +86,29 @@ function PokemonListScreen() {
     )
   }
 
+  function handleSortFilterChange(value) {
+    setSort(value)
+  }
+
   return (
     <div className={baseClass}>
       {isLoading && <div>Loading...</div>}
+      <SortFilter value={sort} onChange={handleSortFilterChange} />
       {data && renderSuccessContent()}
+    </div>
+  )
+}
+
+function SortFilter({value = SORT_TYPES['lowestNumber'], onChange}) {
+  return (
+    <div>
+      <Listbox aria-labelledby="my-label" value={value} onChange={onChange}>
+        {Object.keys(SORT_TYPES).map(sortTypeKey => (
+          <ListboxOption key={sortTypeKey} value={SORT_TYPES[sortTypeKey]}>
+            {sortTypeKey}
+          </ListboxOption>
+        ))}
+      </Listbox>
     </div>
   )
 }
