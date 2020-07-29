@@ -2,12 +2,14 @@
   --c-primary: #44649e;
   --c-secondary: #d8e3ec;
   --c-background: #ffffff;
+  --c-font: #000000;
 }
 
 [data-theme='dark'] {
   --c-primary: #c2d8ff;
   --c-secondary: #404d56;
   --c-background: #353b40;
+  --c-font: #ffffff;
 }
 
 * {

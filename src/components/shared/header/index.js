@@ -3,10 +3,10 @@ import {Link} from 'react-router-dom'
 
 import Logo from './logo'
 import SearchForm from './searchForm'
-import ToggleTheme from '../../ui/toggleTheme'
+import ToggleTheme from './toggleTheme'
+import useQueryParam, {StringParam} from 'hooks/useQueryParam'
 
 import './index.scss'
-import useQueryParam, {StringParam} from 'hooks/useQueryParam'
 
 const baseClass = 'pk-SharedHeader'
 
@@ -16,7 +16,7 @@ export default function Header() {
   const [query, setQuery] = useQueryParam('query', StringParam)
 
   const handleSearchFormSubmit = value => setQuery(value)
-  const handleThemeModeChange = e => setThemeMode(e.target.value)
+  const handleThemeModeClick = mode => setThemeMode(mode)
 
   return (
     <header className={baseClass}>
@@ -33,7 +33,7 @@ export default function Header() {
           />
         </div>
         <div className={`${baseClass}-themeModeContainer`}>
-          <ToggleTheme mode={themeMode} onChange={handleThemeModeChange} />
+          <ToggleTheme mode={themeMode} onClick={handleThemeModeClick} />
         </div>
       </div>
     </header>
