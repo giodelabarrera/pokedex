@@ -1,7 +1,7 @@
 .pk-PokemonCard {
   height: 136px;
   width: 100%;
-  background: rgb(64, 77, 86);
+  background: var(--c-secondary);
   border-radius: 8px;
 
   @media (min-width: 576px) {

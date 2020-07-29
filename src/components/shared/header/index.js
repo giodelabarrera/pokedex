@@ -1,22 +1,22 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
 
 import Logo from './logo'
 import SearchForm from './searchForm'
-import ToggleTheme from '../../ui/toggleTheme'
+import ToggleTheme from './toggleTheme'
+import useQueryParam, {StringParam} from 'hooks/useQueryParam'
+import {useThemeMode} from 'context/themeMode'
 
 import './index.scss'
-import useQueryParam, {StringParam} from 'hooks/useQueryParam'
 
 const baseClass = 'pk-SharedHeader'
 
 export default function Header() {
-  const [themeMode, setThemeMode] = useState('light')
-
+  const {themeMode, setThemeMode} = useThemeMode()
   const [query, setQuery] = useQueryParam('query', StringParam)
 
   const handleSearchFormSubmit = value => setQuery(value)
-  const handleThemeModeChange = e => setThemeMode(e.target.value)
+  const handleThemeModeClick = themeMode => setThemeMode(themeMode)
 
   return (
     <header className={baseClass}>
@@ -33,7 +33,7 @@ export default function Header() {
           />
         </div>
         <div className={`${baseClass}-themeModeContainer`}>
-          <ToggleTheme mode={themeMode} onChange={handleThemeModeChange} />
+          <ToggleTheme mode={themeMode} onClick={handleThemeModeClick} />
         </div>
       </div>
     </header>

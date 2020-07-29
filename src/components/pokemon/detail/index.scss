@@ -1,6 +1,6 @@
 .pk-PokemonDetail {
   &-title {
-    color: rgb(194, 216, 255);
+    color: var(--c-primary);
     margin-top: 0;
     margin-bottom: 8px;
   }
@@ -28,7 +28,7 @@
 
   &-imageContainer {
     width: 100%;
-    background: rgb(64, 77, 86);
+    background: var(--c-secondary);
     border-radius: 8px;
     margin-bottom: 16px;
 
@@ -41,7 +41,7 @@
   }
 
   &-subtitle {
-    color: rgb(194, 216, 255);
+    color: var(--c-primary);
     margin-top: 0;
     margin-bottom: 8px;
   }
