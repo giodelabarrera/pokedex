@@ -14,12 +14,9 @@ const baseClass = 'pk-PokemonListScreen'
 
 function PokemonListScreen() {
   const domain = useDomain()
-
   const [query = ''] = useQueryParam('query', StringParam)
-
   const [offset, setOffset] = useState(0)
   const [data, setData] = useState()
-  const [total, setTotal] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -27,9 +24,8 @@ function PokemonListScreen() {
     domain
       .get('pokemon__get_pokemon_list_use_case')
       .execute({query, limit: LIMIT})
-      .then(({total, results}) => {
-        setTotal(total)
-        setData(results)
+      .then(data => {
+        setData(data)
         setOffset(0)
         setIsLoading(false)
       })
@@ -40,9 +36,11 @@ function PokemonListScreen() {
     domain
       .get('pokemon__get_pokemon_list_use_case')
       .execute({query, offset, limit: LIMIT})
-      .then(({total, results}) => {
-        setTotal(total)
-        setData(prevData => prevData.concat(results))
+      .then(data => {
+        setData(prevData => ({
+          ...data,
+          results: prevData.results.concat(data.results)
+        }))
       })
   }, [domain, offset, query])
 
@@ -52,31 +50,34 @@ function PokemonListScreen() {
   })
 
   useEffect(() => {
-    if (isIntersecting) {
-      setOffset(prevOffset => prevOffset + 1)
-    }
+    if (isIntersecting) setOffset(prevOffset => prevOffset + 1)
   }, [isIntersecting])
+
+  function renderSuccessContent() {
+    const {total, results} = data
+    return (
+      <>
+        <PokemonList pokemonList={results}>
+          {({id, number, name, imageUrl, slug}) => (
+            <PokemonCard
+              id={id}
+              number={number}
+              name={name}
+              imageUrl={imageUrl}
+              slug={slug}
+              link={makePokemonDetailLink(slug)}
+            />
+          )}
+        </PokemonList>
+        {total > results.length && <div ref={loadMoreRef} />}
+      </>
+    )
+  }
 
   return (
     <div className={baseClass}>
       {isLoading && <div>Loading...</div>}
-      {data && (
-        <>
-          <PokemonList pokemonList={data}>
-            {({id, number, name, imageUrl, slug}) => (
-              <PokemonCard
-                id={id}
-                number={number}
-                name={name}
-                imageUrl={imageUrl}
-                slug={slug}
-                link={makePokemonDetailLink(slug)}
-              />
-            )}
-          </PokemonList>
-          {total > data.length && <div ref={loadMoreRef} />}
-        </>
-      )}
+      {data && renderSuccessContent()}
     </div>
   )
 }

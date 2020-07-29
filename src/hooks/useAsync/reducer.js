@@ -1,6 +1,7 @@
 import {getStatusProps, statusTypes} from './status'
 
 export const actionTypes = {
+  start: 'start',
   fulfill: 'fulfill',
   reject: 'reject'
 }
@@ -13,6 +14,12 @@ export const initialState = {
 
 export function reducer(state, {type, payload}) {
   switch (type) {
+    case actionTypes.start: {
+      return {
+        ...state,
+        ...getStatusProps(statusTypes.loading)
+      }
+    }
     case actionTypes.fulfill: {
       return {
         ...state,
