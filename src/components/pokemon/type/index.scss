@@ -3,8 +3,19 @@
   width: 100%;
   text-align: center;
   border-radius: 4px;
-  padding: 8px;
   color: #fff;
+
+  &--small {
+    padding: 4px;
+    font-size: 14px;
+    width: 72px;
+  }
+
+  &--medium {
+    padding: 8px;
+    font-size: 16px;
+    width: 104px;
+  }
 
   &.u-normal {
     background-color: #a4acaf;

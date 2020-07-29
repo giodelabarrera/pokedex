@@ -3,9 +3,8 @@ import {useParams} from 'react-router-dom'
 
 import {useDomain} from 'context/domain'
 import useAsync from 'hooks/useAsync'
-import PokemonDetail from 'components/pokemon/detail'
 
-import './index.scss'
+import PokemonDetail from 'components/pokemon/detail'
 
 const baseClass = 'pk-PokemonDetailScreen'
 
