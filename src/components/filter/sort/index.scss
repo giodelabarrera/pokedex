@@ -5,10 +5,15 @@
     border-radius: 8px;
     vertical-align: middle;
     display: flex;
+    min-width: 208px;
   }
 
   [data-reach-listbox-button] {
     border: none;
     padding: 8px 16px;
+  }
+
+  [data-reach-listbox-option][aria-selected='true'] {
+    background: var(--c-third);
   }
 }
