@@ -1,15 +1,17 @@
 :root {
   --c-primary: #44649e;
   --c-secondary: #d8e3ec;
+  --c-third: #baaf78;
   --c-background: #ffffff;
-  --c-font: #000000;
+  --c-font: #424242;
 }
 
 [data-theme='dark'] {
   --c-primary: #c2d8ff;
   --c-secondary: #404d56;
+  --c-third: #c1b785;
   --c-background: #353b40;
-  --c-font: #ffffff;
+  --c-font: #e1e1ff;
 }
 
 * {

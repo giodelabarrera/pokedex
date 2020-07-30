@@ -1,5 +1,14 @@
 .pk-FilterSort {
   [data-reach-listbox-input] {
-    background-color: green;
+    background-color: var(--c-third);
+    color: #ffffff;
+    border-radius: 8px;
+    vertical-align: middle;
+    display: flex;
+  }
+
+  [data-reach-listbox-button] {
+    border: none;
+    padding: 8px 16px;
   }
 }

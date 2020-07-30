@@ -15,11 +15,14 @@ function SortFilter({value = SORT_TYPES['lowestNumber'], onChange}) {
         value={value}
         onChange={onChange}
       >
-        {Object.keys(SORT_TYPES).map(sortTypeKey => (
-          <ListboxOption key={sortTypeKey} value={SORT_TYPES[sortTypeKey]}>
-            {sortTypeKey}
-          </ListboxOption>
-        ))}
+        <ListboxOption value={SORT_TYPES['lowestNumber']}>
+          Lowest Number (First)
+        </ListboxOption>
+        <ListboxOption value={SORT_TYPES['highestNumber']}>
+          Highest Number (First)
+        </ListboxOption>
+        <ListboxOption value={SORT_TYPES['aZ']}>A - Z</ListboxOption>
+        <ListboxOption value={SORT_TYPES['zA']}>Z - A</ListboxOption>
       </Listbox>
     </div>
   )
