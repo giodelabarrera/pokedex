@@ -11,9 +11,33 @@
   [data-reach-listbox-button] {
     border: none;
     padding: 8px 16px;
-  }
+    width: 100%;
 
-  [data-reach-listbox-option][aria-selected='true'] {
-    background: var(--c-secondary);
+    &[aria-expanded='true'] {
+      box-shadow: 0 0 0 2px var(--c-secondary-light);
+      border-radius: 8px;
+    }
+  }
+}
+
+[data-reach-listbox-popover] {
+  margin-top: 2px;
+  border-radius: 8px;
+  background-color: var(--c-background);
+  color: var(--c-font);
+
+  &:focus-within {
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+[data-reach-listbox-option] {
+  padding: 8px 16px;
+  color: var(--c-font);
+
+  &[aria-selected='true'] {
+    color: var(--c-font);
+    background-color: var(--c-default);
   }
 }
