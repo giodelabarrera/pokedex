@@ -10,13 +10,13 @@
     border: none;
     height: 40px;
     font-size: 16px;
-    background: var(--c-secondary);
-    color: var(--c-primary);
+    background: var(--c-default);
+    color: var(--c-font);
     padding-left: 42px;
   }
 
   svg {
-    fill: gray;
+    fill: var(--c-gray);
     top: 8px;
     bottom: 0;
     position: absolute;

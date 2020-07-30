@@ -3,6 +3,7 @@ import 'react-app-polyfill/stable'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import 'styles/theme.scss'
 import './global.scss'
 
 import AppProviders from './context/appProviders'

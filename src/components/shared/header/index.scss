@@ -13,10 +13,7 @@
     padding: 16px;
     display: inline-flex;
     margin-left: -16px;
-
-    svg {
-      fill: var(--c-primary);
-    }
+    color: var(--c-primary);
   }
 
   &-offset {
@@ -37,9 +34,5 @@
     padding: 16px;
     display: inline-flex;
     margin-right: -16px;
-
-    svg {
-      stroke: var(--c-primary);
-    }
   }
 }

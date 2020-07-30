@@ -7,6 +7,9 @@ import useIntersection from 'hooks/useIntersection'
 
 import PokemonList from 'components/pokemon/list'
 import PokemonCard from 'components/pokemon/card'
+import SortFilter, {sortFilterTypes} from 'components/filter/sort'
+
+import './index.scss'
 
 const LIMIT = 48
 
@@ -15,6 +18,10 @@ const baseClass = 'pk-PokemonListScreen'
 function PokemonListScreen() {
   const domain = useDomain()
   const [query = ''] = useQueryParam('query', StringParam)
+  const [sort = sortFilterTypes['lowestNumber'], setSort] = useQueryParam(
+    'sort',
+    StringParam
+  )
   const [offset, setOffset] = useState(0)
   const [data, setData] = useState()
   const [isLoading, setIsLoading] = useState(true)
@@ -23,26 +30,26 @@ function PokemonListScreen() {
     setIsLoading(true)
     domain
       .get('pokemon__get_pokemon_list_use_case')
-      .execute({query, limit: LIMIT})
+      .execute({query, limit: LIMIT, sort})
       .then(data => {
         setData(data)
         setOffset(0)
         setIsLoading(false)
       })
-  }, [domain, query])
+  }, [domain, query, sort])
 
   useEffect(() => {
     if (offset === 0) return
     domain
       .get('pokemon__get_pokemon_list_use_case')
-      .execute({query, offset, limit: LIMIT})
+      .execute({query, offset, limit: LIMIT, sort})
       .then(data => {
         setData(prevData => ({
           ...data,
           results: prevData.results.concat(data.results)
         }))
       })
-  }, [domain, offset, query])
+  }, [domain, offset, query, sort])
 
   const loadMoreRef = useRef()
   const isIntersecting = useIntersection({
@@ -73,8 +80,15 @@ function PokemonListScreen() {
     )
   }
 
+  function handleSortFilterChange(value) {
+    setSort(value)
+  }
+
   return (
     <div className={baseClass}>
+      <div className={`${baseClass}-filterBar`}>
+        <SortFilter value={sort} onChange={handleSortFilterChange} />
+      </div>
       {isLoading && <div>Loading...</div>}
       {data && renderSuccessContent()}
     </div>
