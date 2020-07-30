@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 
 import Logo from './logo'
@@ -15,8 +15,24 @@ export default function Header() {
   const {themeMode, setThemeMode} = useThemeMode()
   const [query, setQuery] = useQueryParam('query', StringParam)
 
-  const handleSearchFormSubmit = value => setQuery(value)
-  const handleThemeModeClick = themeMode => setThemeMode(themeMode)
+  const [value, setValue] = useState(query)
+
+  useEffect(() => {
+    setValue(query)
+  }, [query])
+
+  function handleSearchChange(value) {
+    setValue(value)
+  }
+
+  function handleSearchFormSubmit(e) {
+    e.preventDefault()
+    setQuery(value)
+  }
+
+  function handleThemeModeClick(themeMode) {
+    setThemeMode(themeMode)
+  }
 
   return (
     <header className={baseClass}>
@@ -26,11 +42,13 @@ export default function Header() {
         </Link>
         <div className={`${baseClass}-offset`} />
         <div className={`${baseClass}-searchContainer`}>
-          <SearchForm
-            initialValue={query}
-            placeholder="Number or name"
-            onSubmit={handleSearchFormSubmit}
-          />
+          <form onSubmit={handleSearchFormSubmit}>
+            <SearchForm
+              value={value}
+              placeholder="Number or name"
+              onChange={handleSearchChange}
+            />
+          </form>
         </div>
         <div className={`${baseClass}-themeModeContainer`}>
           <ToggleTheme mode={themeMode} onClick={handleThemeModeClick} />
