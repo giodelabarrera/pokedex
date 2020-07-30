@@ -7,9 +7,9 @@ export default function Logo() {
       width="40"
       height="40"
       viewBox="0 0 1024 1024"
+      fill="currentColor"
     >
       <path
-        stroke="none"
         strokeWidth="1"
         d="M 512.00,96.80
            C 304.28,96.94 132.17,249.33 101.24,448.41
