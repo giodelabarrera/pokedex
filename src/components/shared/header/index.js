@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate, useMatch} from 'react-router-dom'
 
 import Logo from './logo'
-import SearchForm from './searchForm'
+import Search from './search'
 import ToggleTheme from './toggleTheme'
 import useQueryParam, {StringParam} from 'hooks/useQueryParam'
 import {useThemeMode} from 'context/themeMode'
@@ -13,25 +13,34 @@ const baseClass = 'pk-SharedHeader'
 
 export default function Header() {
   const {themeMode, setThemeMode} = useThemeMode()
-  const [query, setQuery] = useQueryParam('query', StringParam)
+  const [query = '', setQuery] = useQueryParam('query', StringParam)
+  const navigate = useNavigate()
+  const match = useMatch('/')
 
-  const [value, setValue] = useState(query)
+  const [searchValue, setSearchValue] = useState(query)
 
   useEffect(() => {
-    setValue(query)
+    setSearchValue(query)
   }, [query])
 
-  function handleSearchChange(value) {
-    setValue(value)
+  function handleThemeModeClick(themeMode) {
+    setThemeMode(themeMode)
+  }
+
+  function handleSearchChange(searchValue) {
+    setSearchValue(searchValue)
   }
 
   function handleSearchFormSubmit(e) {
     e.preventDefault()
-    setQuery(value)
-  }
-
-  function handleThemeModeClick(themeMode) {
-    setThemeMode(themeMode)
+    // match if it is homepage
+    if (match) {
+      // simply update query param
+      setQuery(searchValue)
+    } else {
+      // go to homepage with query param
+      navigate(`/?query=${searchValue}`)
+    }
   }
 
   return (
@@ -43,9 +52,9 @@ export default function Header() {
         <div className={`${baseClass}-offset`} />
         <div className={`${baseClass}-searchContainer`}>
           <form onSubmit={handleSearchFormSubmit}>
-            <SearchForm
-              value={value}
-              placeholder="Number or name"
+            <Search
+              value={searchValue}
+              placeholder="Name or Number"
               onChange={handleSearchChange}
             />
           </form>
