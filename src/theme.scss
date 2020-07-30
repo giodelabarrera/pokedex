@@ -1,0 +1,26 @@
+:root {
+  --c-default: #d8e3ec;
+  --c-primary: #44649e;
+  --c-secondary: #baaf78;
+  --c-gray: gray;
+  --c-white: #ffffff;
+  --c-black: #424242;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --ff-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  --p-base: 8px;
+
+  --c-font: var(--c-black);
+}
+
+[data-theme='dark'] {
+  --c-default: #404d56;
+  --c-primary: #c2d8ff;
+  --c-secondary: #5e5531;
+
+  --c-font: var(--c-white);
+}

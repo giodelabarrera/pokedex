@@ -1,7 +1,7 @@
 .pk-FilterSort {
   [data-reach-listbox-input] {
-    background-color: var(--c-third);
-    color: #ffffff;
+    background-color: var(--c-secondary);
+    color: var(--c-white);
     border-radius: 8px;
     vertical-align: middle;
     display: flex;
@@ -14,6 +14,6 @@
   }
 
   [data-reach-listbox-option][aria-selected='true'] {
-    background: var(--c-third);
+    background: var(--c-secondary);
   }
 }
