@@ -1,9 +1,19 @@
-.pk-PokemonStats-stat {
+.pk-PokemonStats-stat-contentLoader {
   display: grid;
   grid-template-columns: 48px 32px 1fr;
   gap: 16px;
 
+  &-name {
+    text-align: right;
+    width: 48px;
+    border-radius: 4px;
+    background-color: var(--c-default);
+  }
+
   &-value {
     text-align: right;
+    width: 32px;
+    border-radius: 4px;
+    background-color: var(--c-default);
   }
 }

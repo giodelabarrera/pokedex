@@ -10,9 +10,7 @@ export default function StatContentLoader() {
   return (
     <div className={baseClass}>
       <div className={`${baseClass}-name`}></div>
-      <div className={`${baseClass}-value`}>
-        <span></span>
-      </div>
+      <div className={`${baseClass}-value`}></div>
       <div className={`${baseClass}-progressContainer`}>
         <LinearProgressContentLoader />
       </div>
