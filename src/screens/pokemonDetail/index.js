@@ -4,7 +4,9 @@ import {useParams} from 'react-router-dom'
 import {useDomain} from 'context/domain'
 import useAsync from 'hooks/useAsync'
 
-import PokemonDetail from 'components/pokemon/detail'
+import PokemonDetail, {
+  PokemonDetailContentLoader
+} from 'components/pokemon/detail'
 
 const baseClass = 'pk-PokemonDetailScreen'
 
@@ -22,7 +24,7 @@ function PokemonDetailScreen() {
 
   return (
     <div className={baseClass}>
-      {isLoading && <span>Loading...</span>}
+      {isLoading && <PokemonDetailContentLoader />}
       {error && <span>{error.message}</span>}
       {data && <PokemonDetail pokemon={data} />}
     </div>

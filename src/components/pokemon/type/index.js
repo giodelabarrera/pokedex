@@ -1,11 +1,5 @@
-import React from 'react'
+import PokemonType from './type'
+import PokemonTypeContentLoader from './contentLoader'
 
-import './index.scss'
-
-const baseClass = 'pk-PokemonType'
-
-export default function PokemonType({type, size = 'medium'}) {
-  return (
-    <div className={`${baseClass} ${baseClass}--${size} u-${type}`}>{type}</div>
-  )
-}
+export default PokemonType
+export {PokemonTypeContentLoader}

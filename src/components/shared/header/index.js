@@ -51,7 +51,10 @@ export default function Header() {
         </Link>
         <div className={`${baseClass}-offset`} />
         <div className={`${baseClass}-searchContainer`}>
-          <form onSubmit={handleSearchFormSubmit}>
+          <form
+            className={`${baseClass}-searchForm`}
+            onSubmit={handleSearchFormSubmit}
+          >
             <Search
               value={searchValue}
               placeholder="Name or Number"
