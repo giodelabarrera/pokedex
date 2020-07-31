@@ -1,5 +1,7 @@
 import React from 'react'
 
+import {PokemonTypeContentLoader} from 'components/pokemon/type'
+
 import './index.scss'
 
 const baseClass = 'pk-PokemonDetail-contentLoader'
@@ -18,7 +20,7 @@ export default function DetailContentLoader() {
               <div className={`${baseClass}-subtitle`}></div>
               <div className={`${baseClass}-types`}>
                 <div className={`${baseClass}-typeItem`}>
-                  {/* <PokemonType type={type} /> */}
+                  <PokemonTypeContentLoader />
                 </div>
               </div>
             </div>
