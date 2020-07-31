@@ -1,12 +1,13 @@
 import React from 'react'
 
 import {PokemonTypeContentLoader} from 'components/pokemon/type'
+import {PokemonStatsContentLoader} from 'components/pokemon/stats'
 
 import './index.scss'
 
 const baseClass = 'pk-PokemonDetail-contentLoader'
 
-export default function DetailContentLoader() {
+export default function PokemonDetailContentLoader() {
   return (
     <div className={baseClass}>
       <div className={`${baseClass}-title`}></div>
@@ -26,7 +27,7 @@ export default function DetailContentLoader() {
             </div>
             <div className={`${baseClass}-section`}>
               <div className={`${baseClass}-subtitle`}></div>
-              {/* <PokemonStats stats={stats} /> */}
+              <PokemonStatsContentLoader />
             </div>
           </div>
         </div>
