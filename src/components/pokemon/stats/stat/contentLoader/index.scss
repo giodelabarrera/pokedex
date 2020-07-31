@@ -1,19 +1,39 @@
 .pk-PokemonStats-stat-contentLoader {
-  display: grid;
-  grid-template-columns: 48px 32px 1fr;
-  gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -8px;
+  margin-right: -8px;
+
+  &-nameContainer {
+    width: 64px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 
   &-name {
-    text-align: right;
     width: 48px;
+    height: 16px;
     border-radius: 4px;
     background-color: var(--c-default);
+  }
+
+  &-valueContainer {
+    width: 48px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 
   &-value {
     text-align: right;
     width: 32px;
+    height: 16px;
     border-radius: 4px;
     background-color: var(--c-default);
+  }
+
+  &-progressContainer {
+    flex: 1;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }

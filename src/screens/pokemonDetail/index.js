@@ -24,7 +24,7 @@ function PokemonDetailScreen() {
 
   return (
     <div className={baseClass}>
-      {isLoading && <div>Loading...</div>}
+      {isLoading && <PokemonDetailContentLoader />}
       {error && <span>{error.message}</span>}
       {data && <PokemonDetail pokemon={data} />}
     </div>
