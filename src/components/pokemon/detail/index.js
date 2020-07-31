@@ -3,11 +3,13 @@ import React from 'react'
 import PokemonType from 'components/pokemon/type'
 import PokemonStats from 'components/pokemon/stats'
 
+import ContentLoader from './contentLoader'
+
 import './index.scss'
 
 const baseClass = 'pk-PokemonDetail'
 
-export default function PokemonDetail({pokemon}) {
+function PokemonDetail({pokemon}) {
   const {name, number, types, stats, imageUrl} = pokemon
   return (
     <section className={baseClass}>
@@ -42,3 +44,6 @@ export default function PokemonDetail({pokemon}) {
     </section>
   )
 }
+
+export default PokemonDetail
+export {ContentLoader as PokemonDetailContentLoader}
