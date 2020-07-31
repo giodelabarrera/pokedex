@@ -33,6 +33,10 @@
     width: 100%;
     border-radius: 8px;
     background-color: var(--c-default);
+
+    @media (min-width: 992px) {
+      height: 551px;
+    }
   }
 
   &-subtitle {
