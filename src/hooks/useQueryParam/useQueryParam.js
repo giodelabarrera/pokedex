@@ -14,7 +14,7 @@ function useQueryParam(name, paramConfig) {
   )
 
   const setValue = useCallback(
-    (newValue, updateType) => {
+    (newValue, updateType = 'pushIn') => {
       const newEncodedValue = paramConfig.encode(newValue)
       // update new url
       setLocation({[name]: newEncodedValue}, updateType, location, navigate)

@@ -1,8 +1,8 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React, {useState, useEffect} from 'react'
+import {Link, useNavigate, useMatch} from 'react-router-dom'
 
 import Logo from './logo'
-import SearchForm from './searchForm'
+import Search from './search'
 import ToggleTheme from './toggleTheme'
 import useQueryParam, {StringParam} from 'hooks/useQueryParam'
 import {useThemeMode} from 'context/themeMode'
@@ -13,10 +13,35 @@ const baseClass = 'pk-SharedHeader'
 
 export default function Header() {
   const {themeMode, setThemeMode} = useThemeMode()
-  const [query, setQuery] = useQueryParam('query', StringParam)
+  const [query = '', setQuery] = useQueryParam('query', StringParam)
+  const navigate = useNavigate()
+  const match = useMatch('/')
 
-  const handleSearchFormSubmit = value => setQuery(value)
-  const handleThemeModeClick = themeMode => setThemeMode(themeMode)
+  const [searchValue, setSearchValue] = useState(query)
+
+  useEffect(() => {
+    setSearchValue(query)
+  }, [query])
+
+  function handleThemeModeClick(themeMode) {
+    setThemeMode(themeMode)
+  }
+
+  function handleSearchChange(searchValue) {
+    setSearchValue(searchValue)
+  }
+
+  function handleSearchFormSubmit(e) {
+    e.preventDefault()
+    // match if it is homepage
+    if (match) {
+      // simply update query param
+      setQuery(searchValue)
+    } else {
+      // go to homepage with query param
+      navigate(`/?query=${searchValue}`)
+    }
+  }
 
   return (
     <header className={baseClass}>
@@ -26,11 +51,13 @@ export default function Header() {
         </Link>
         <div className={`${baseClass}-offset`} />
         <div className={`${baseClass}-searchContainer`}>
-          <SearchForm
-            initialValue={query}
-            placeholder="Number or name"
-            onSubmit={handleSearchFormSubmit}
-          />
+          <form onSubmit={handleSearchFormSubmit}>
+            <Search
+              value={searchValue}
+              placeholder="Name or Number"
+              onChange={handleSearchChange}
+            />
+          </form>
         </div>
         <div className={`${baseClass}-themeModeContainer`}>
           <ToggleTheme mode={themeMode} onClick={handleThemeModeClick} />
