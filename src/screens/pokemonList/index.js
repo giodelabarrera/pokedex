@@ -27,8 +27,7 @@ function PokemonListScreen() {
   const [data, setData] = useState()
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [isNextLoading, setIsNextLoading] = useState(true)
-  const [nextError, setNextError] = useState(null)
+  const [isLoadingMore, setIsLoadingMore] = useState(false)
 
   useEffect(() => {
     setIsLoading(true)
@@ -45,7 +44,7 @@ function PokemonListScreen() {
 
   useEffect(() => {
     if (offset === 0) return
-    setIsNextLoading(true)
+    setIsLoadingMore(true)
     domain
       .get('pokemon__get_pokemon_list_use_case')
       .execute({query, offset, limit: LIMIT, sort})
@@ -54,10 +53,14 @@ function PokemonListScreen() {
           ...data,
           results: prevData.results.concat(data.results)
         }))
-        setIsNextLoading(false)
+        setIsLoadingMore(false)
       })
-      .catch(error => setNextError(error))
   }, [domain, offset, query, sort])
+
+  let canLoadMore = false
+  if (data) {
+    canLoadMore = data.total > data.results.length
+  }
 
   const loadMoreRef = useRef()
   const isIntersecting = useIntersection({
@@ -72,26 +75,6 @@ function PokemonListScreen() {
     setSort(value)
   }
 
-  // function renderSuccessContent() {
-  //   const {total, results} = data
-  //   return (
-  //     <>
-  //       <PokemonList pokemonList={results}>
-  //         {({id, number, name, imageUrl, slug, types}) => (
-  //           <PokemonCard
-  //             number={number}
-  //             name={name}
-  //             imageUrl={imageUrl}
-  //             types={types}
-  //             link={makePokemonDetailLink(slug)}
-  //           />
-  //         )}
-  //       </PokemonList>
-  //       {total > results.length && <div ref={loadMoreRef} />}
-  //     </>
-  //   )
-  // }
-
   return (
     <div className={baseClass}>
       <div className={`${baseClass}-filterBar`}>
@@ -103,11 +86,11 @@ function PokemonListScreen() {
             <Spinner />
           </div>
         ) : error ? (
-          <div>Error... </div>
+          <div>{error.message}</div>
         ) : (
           <>
             <PokemonList pokemonList={data.results}>
-              {({id, number, name, imageUrl, slug, types}) => (
+              {({number, name, imageUrl, slug, types}) => (
                 <PokemonCard
                   number={number}
                   name={name}
@@ -117,29 +100,12 @@ function PokemonListScreen() {
                 />
               )}
             </PokemonList>
-            {data.total > data.results.length && <div ref={loadMoreRef} />}
-          </>
-        )}
-        {isNextLoading ? (
-          <div className={`${baseClass}-spinnerContainer`}>
-            <Spinner />
-          </div>
-        ) : nextError ? (
-          <div>Error... </div>
-        ) : (
-          <>
-            <PokemonList pokemonList={data.results}>
-              {({id, number, name, imageUrl, slug, types}) => (
-                <PokemonCard
-                  number={number}
-                  name={name}
-                  imageUrl={imageUrl}
-                  types={types}
-                  link={makePokemonDetailLink(slug)}
-                />
-              )}
-            </PokemonList>
-            {data.total > data.results.length && <div ref={loadMoreRef} />}
+            {canLoadMore && <div ref={loadMoreRef} />}
+            {canLoadMore && isLoadingMore && (
+              <div className={`${baseClass}-spinnerContainer`}>
+                <Spinner />
+              </div>
+            )}
           </>
         )}
       </div>
