@@ -1,6 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react'
 
-const INITIAL_THEME_MODE = process.env.INITIAL_THEME_MODE
+const INITIAL_THEME_MODE = process.env.REACT_APP_INITIAL_THEME_MODE
 
 const ThemeModeContext = React.createContext()
 
@@ -20,6 +20,7 @@ function ThemeModeProvider({...restProps}) {
 }
 
 function getInitialThemeMode() {
+  debugger
   const modeFromLocalStorage = localStorage.getItem('theme')
   if (modeFromLocalStorage) return modeFromLocalStorage
 
