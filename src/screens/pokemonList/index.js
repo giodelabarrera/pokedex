@@ -1,66 +1,36 @@
-import React, {useRef, useState, useEffect} from 'react'
+import React, {useRef, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 
-import {useDomain} from 'context/domain'
 import useQueryParam, {StringParam} from 'hooks/useQueryParam'
 import useIntersection from 'hooks/useIntersection'
 
 import PokemonList from 'components/pokemon/list'
 import PokemonCard from 'components/pokemon/card'
+import usePokemonList from 'components/pokemon/usePokemonList'
 import SortFilter, {sortFilterTypes} from 'components/filter/sort'
 import Spinner from 'components/feedback/spinner'
 
 import './index.scss'
 
-const LIMIT = 12
+const LIMIT = 48
 
 const baseClass = 'pk-PokemonListScreen'
 
 function PokemonListScreen() {
-  const domain = useDomain()
   const [query = ''] = useQueryParam('query', StringParam)
   const [sort = sortFilterTypes['lowestNumber'], setSort] = useQueryParam(
     'sort',
     StringParam
   )
-  const [offset, setOffset] = useState(0)
-  const [data, setData] = useState()
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState(null)
-  const [isLoadingMore, setIsLoadingMore] = useState(false)
 
-  useEffect(() => {
-    setIsLoading(true)
-    domain
-      .get('pokemon__get_pokemon_list_use_case')
-      .execute({query, limit: LIMIT, sort})
-      .then(data => {
-        setData(data)
-        setOffset(0)
-        setIsLoading(false)
-      })
-      .catch(error => setError(error))
-  }, [domain, query, sort])
-
-  useEffect(() => {
-    if (offset === 0) return
-    setIsLoadingMore(true)
-    domain
-      .get('pokemon__get_pokemon_list_use_case')
-      .execute({query, offset, limit: LIMIT, sort})
-      .then(data => {
-        setData(prevData => ({
-          ...data,
-          results: prevData.results.concat(data.results)
-        }))
-        setIsLoadingMore(false)
-      })
-  }, [domain, offset, query, sort])
-
-  let canLoadMore = false
-  if (data) {
-    canLoadMore = data.total > data.results.length
-  }
+  const {
+    canLoadMore,
+    data,
+    error,
+    isLoading,
+    isLoadingMore,
+    setOffset
+  } = usePokemonList({query, sort, limit: LIMIT})
 
   const loadMoreRef = useRef()
   const isIntersecting = useIntersection({
@@ -69,7 +39,7 @@ function PokemonListScreen() {
 
   useEffect(() => {
     if (isIntersecting) setOffset(prevOffset => prevOffset + 1)
-  }, [isIntersecting])
+  }, [isIntersecting, setOffset])
 
   function handleSortFilterChange(value) {
     setSort(value)
