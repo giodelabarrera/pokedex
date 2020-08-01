@@ -12,7 +12,7 @@ import Spinner from 'components/feedback/spinner'
 
 import './index.scss'
 
-const LIMIT = 12
+const LIMIT = 24
 
 const baseClass = 'pk-PokemonListScreen'
 
@@ -35,7 +35,7 @@ function PokemonListScreen() {
   const loadMoreRef = useRef()
   const isIntersecting = useIntersection({
     target: isLoading ? null : loadMoreRef,
-    rootMargin: '500px'
+    rootMargin: '200px'
   })
 
   useEffect(() => {
