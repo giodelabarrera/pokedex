@@ -1,0 +1,19 @@
+@keyframes pk-FeedbackSpinner-circularProgress {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.pk-FeedbackSpinner {
+  color: var(--c-default);
+  display: inline-block;
+
+  svg {
+    width: 80px;
+    height: 80px;
+    animation: pk-FeedbackSpinner-circularProgress infinite 1s linear;
+  }
+}
