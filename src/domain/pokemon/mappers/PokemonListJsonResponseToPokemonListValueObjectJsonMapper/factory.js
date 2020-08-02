@@ -1,5 +1,8 @@
 import PokemonListJsonResponseToPokemonListValueObjectJsonMapper from '.'
+import PokemonJsonResponseToPokemonEntityJsonMapperFactory from '../../mappers/PokemonJsonResponseToPokemonEntityJsonMapper/factory'
 
 export default () => {
-  return PokemonListJsonResponseToPokemonListValueObjectJsonMapper()
+  return PokemonListJsonResponseToPokemonListValueObjectJsonMapper({
+    pokemonJsonResponseToPokemonEntityJsonMapper: PokemonJsonResponseToPokemonEntityJsonMapperFactory()
+  })
 }

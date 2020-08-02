@@ -1,23 +1,18 @@
-export default function PokemonListJsonResponseToPokemonListValueObjectJsonMapper() {
+export default function PokemonListJsonResponseToPokemonListValueObjectJsonMapper({
+  pokemonJsonResponseToPokemonEntityJsonMapper
+}) {
   return {
     map(pokemonListJsonResponse) {
       const {results, total} = pokemonListJsonResponse
 
-      // const {
-      //   id,
-      //   name: originName,
-      //   type: originType,
-      //   base: originBase
-      // } = pokemonResponseJson
-      // const name = mapTranslationsOfNameToName(originName)
-      // const types = mapTypesToLowerCase(originType)
-      // const stats = mapStatsKeysToSnakeCase(originBase)
-      // return {
-      //   id,
-      //   name,
-      //   types,
-      //   stats
-      // }
+      const pokemonEntityJsonList = results.map(
+        pokemonJsonResponseToPokemonEntityJsonMapper.map
+      )
+
+      return {
+        total,
+        results: pokemonEntityJsonList
+      }
     }
   }
 }
