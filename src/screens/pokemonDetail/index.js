@@ -7,6 +7,7 @@ import useAsync from 'hooks/useAsync'
 import PokemonDetail, {
   PokemonDetailContentLoader
 } from 'components/pokemon/detail'
+import ErrorFeedback from 'components/feedback/error'
 
 const baseClass = 'pk-PokemonDetailScreen'
 
@@ -24,7 +25,7 @@ function PokemonDetailScreen() {
   return (
     <div className={baseClass}>
       {isLoading && <PokemonDetailContentLoader />}
-      {error && <span>{error.message}</span>}
+      {error && <ErrorFeedback error={error} />}
       {data && <PokemonDetail pokemon={data} />}
     </div>
   )
