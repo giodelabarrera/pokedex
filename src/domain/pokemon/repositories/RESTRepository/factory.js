@@ -1,6 +1,9 @@
-import RESTRepository from './index'
-import PokemonResponseJsonToPokemonEntityJsonMapperFactory from '../../mappers/PokemonResponseJsonToPokemonEntityJsonMapper/factory'
+import {stringify} from 'query-string'
+import RESTRepository from '.'
+import PokemonJsonResponseToPokemonEntityJsonMapperFactory from '../../mappers/PokemonJsonResponseToPokemonEntityJsonMapper/factory'
+import PokemonListJsonResponseToPokemonListValueObjectJsonMapperFactory from '../../mappers/PokemonListJsonResponseToPokemonListValueObjectJsonMapper/factory'
 import PokemonEntityFactory from '../../entity/Pokemon/factory'
+import PokemonListValueObjectFactory from '../../valueObjects/PokemonListValueObject/factory'
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
 
@@ -18,7 +21,10 @@ function httpClient(endpoint, {...customConfig} = {}) {
 export default () => {
   return RESTRepository({
     httpClient,
-    pokemonResponseJsonToPokemonEntityJsonMapper: PokemonResponseJsonToPokemonEntityJsonMapperFactory(),
-    pokemonEntityFactory: PokemonEntityFactory
+    pokemonJsonResponseToPokemonEntityJsonMapper: PokemonJsonResponseToPokemonEntityJsonMapperFactory(),
+    pokemonListJsonResponseToPokemonListValueObjectJsonMapper: PokemonListJsonResponseToPokemonListValueObjectJsonMapperFactory(),
+    pokemonEntityFactory: PokemonEntityFactory,
+    pokemonListValueObjectFactory: PokemonListValueObjectFactory,
+    stringify
   })
 }

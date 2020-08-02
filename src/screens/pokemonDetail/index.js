@@ -14,11 +14,10 @@ function PokemonDetailScreen() {
   const domain = useDomain()
   const {idOrSlug} = useParams()
 
-  const fetchGetPokemonUseCase = useCallback(() => {
-    return domain
-      .get('pokemon__get_pokemon_use_case')
-      .execute({idOrName: idOrSlug})
-  }, [domain, idOrSlug])
+  const fetchGetPokemonUseCase = useCallback(
+    () => domain.get('pokemon__get_pokemon_use_case').execute({idOrSlug}),
+    [domain, idOrSlug]
+  )
 
   const {data, isLoading, error} = useAsync(fetchGetPokemonUseCase)
 

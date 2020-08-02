@@ -1,12 +1,15 @@
 export default function RESTRepository({
   httpClient,
-  pokemonResponseJsonToPokemonEntityJsonMapper,
-  pokemonEntityFactory
+  pokemonJsonResponseToPokemonEntityJsonMapper,
+  pokemonListJsonResponseToPokemonListValueObjectJsonMapper,
+  pokemonEntityFactory,
+  pokemonListValueObjectFactory,
+  stringify
 }) {
-  async function getPokemon({idOrName}) {
-    const pokemonResponseJson = await httpClient(`pokemon/${idOrName}`)
-    const pokemonEntityJson = pokemonResponseJsonToPokemonEntityJsonMapper.map(
-      pokemonResponseJson
+  async function getPokemon({idOrSlug}) {
+    const pokemonJsonResponse = await httpClient(`pokemon/${idOrSlug}`)
+    const pokemonEntityJson = pokemonJsonResponseToPokemonEntityJsonMapper.map(
+      pokemonJsonResponse
     )
     const pokemonEntity = pokemonEntityFactory(pokemonEntityJson)
     return pokemonEntity
@@ -19,44 +22,22 @@ export default function RESTRepository({
     limit = 12,
     offset = 0
   } = {}) {
-    function toQueryString({query, types, sort, limit, offset}) {
-      const searchParams = new URLSearchParams()
-      if (query) searchParams.append('query', query)
-      if (types.length)
-        types.forEach(type => searchParams.append('types[]', type))
-      searchParams.append('sort', sort)
-      searchParams.append('limit', limit)
-      searchParams.append('offset', offset)
-      return searchParams.toString()
-    }
-
     const params = {query, types, sort, limit, offset}
-    const queryString = toQueryString(params)
+    const queryString = stringify(params, {arrayFormat: 'bracket'})
     const endpoint = 'pokemon' + (queryString && `?${queryString}`)
-    const pokemonResponseJsonList = await httpClient(endpoint)
+    const pokemonListJsonResponse = await httpClient(endpoint)
 
-    // TODO: refactor with mapper new response
-
-    // map from REST response json list to pokemon domain entity json list
-    const pokemonEntityJsonList = pokemonResponseJsonList.results.map(
-      pokemonResponseJsonToPokemonEntityJsonMapper.map
+    const pokemonListValueObjectJson = pokemonListJsonResponseToPokemonListValueObjectJsonMapper.map(
+      pokemonListJsonResponse
     )
-
-    const pokemonEntityList = pokemonEntityJsonList.map(pokemonEntityFactory)
-    return {
-      total: pokemonResponseJsonList.total,
-      results: pokemonEntityList
-    }
-  }
-
-  async function getTypeList() {
-    const typeList = await httpClient('type')
-    return typeList
+    const pokemonListValueObject = pokemonListValueObjectFactory(
+      pokemonListValueObjectJson
+    )
+    return pokemonListValueObject
   }
 
   return {
     getPokemon,
-    getPokemonList,
-    getTypeList
+    getPokemonList
   }
 }
