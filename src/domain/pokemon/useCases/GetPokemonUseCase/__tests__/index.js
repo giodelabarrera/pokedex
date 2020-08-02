@@ -27,8 +27,8 @@ test('should return a pokemon by name', async () => {
   fetchMock.get('*', mockPokemon)
 
   const getSingleUseCase = GetPokemonUseCaseFactory()
-  const idOrName = 'pikachu'
-  const pokemon = await getSingleUseCase.execute({idOrName})
+  const idOrSlug = 'pikachu'
+  const pokemon = await getSingleUseCase.execute({idOrSlug})
 
   expect(pokemon).toBeDefined()
   expect(pokemon).not.toBeNull()
@@ -56,8 +56,8 @@ test('should return a pokemon by id', async () => {
   fetchMock.get('*', mockPokemon)
 
   const getSingleUseCase = GetPokemonUseCaseFactory()
-  const idOrName = '25'
-  const pokemon = await getSingleUseCase.execute({idOrName})
+  const idOrSlug = '25'
+  const pokemon = await getSingleUseCase.execute({idOrSlug})
 
   expect(pokemon).toBeDefined()
   expect(pokemon).not.toBeNull()
@@ -67,8 +67,8 @@ test('should fail when it happens a not found error', async () => {
   fetchMock.get('*', 404)
 
   const getSingleUseCase = GetPokemonUseCaseFactory()
-  const idOrName = '25'
-  await expect(getSingleUseCase.execute({idOrName})).rejects.toHaveProperty(
+  const idOrSlug = '25'
+  await expect(getSingleUseCase.execute({idOrSlug})).rejects.toHaveProperty(
     'status',
     404
   )
@@ -78,8 +78,8 @@ test('should fail when it happens a server error', async () => {
   fetchMock.get('*', 500)
 
   const getSingleUseCase = GetPokemonUseCaseFactory()
-  const idOrName = '25'
-  await expect(getSingleUseCase.execute({idOrName})).rejects.toHaveProperty(
+  const idOrSlug = '25'
+  await expect(getSingleUseCase.execute({idOrSlug})).rejects.toHaveProperty(
     'status',
     500
   )

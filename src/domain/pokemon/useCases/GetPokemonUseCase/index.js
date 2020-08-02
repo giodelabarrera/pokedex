@@ -4,8 +4,8 @@ export default function GetPokemonUseCase({
   getPokemonSlugService
 }) {
   return {
-    async execute({idOrName}) {
-      const pokemonEntity = await pokemonRepository.getPokemon({idOrName})
+    async execute({idOrSlug}) {
+      const pokemonEntity = await pokemonRepository.getPokemon({idOrSlug})
       const slug = getPokemonSlugService.execute({
         pokemonName: pokemonEntity.name
       })
