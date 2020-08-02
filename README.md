@@ -1,12 +1,12 @@
 <h1> <a href="https://pokedex.giodelabarrera.vercel.app" alt="Pokédex"><img src="./docs/pokeball.svg" width="24px" style="vertical-align: middle;"/> Pokédex</a> </h1>
 
-Single Page Aplication of the characters of the Pokémon series created with React, dark/light mode, mobile first and Clean Architecture consuming data from my own [REST Pokédex API](https://github.com/giodelabarrera/pokedex-api) and compatible with IE11.
+Single Page Aplication of the characters of the Pokémon series created with React, dark/light mode, mobile first and Clean Architecture consuming data from my own [Pokédex REST API](https://github.com/giodelabarrera/pokedex-api) and compatible with IE11.
 
 [See it online](https://pokedex.giodelabarrera.vercel.app)️ ↗️
 
 ## Getting Started
 
-Depends on the Pokédex api server. You can follow the manual [here](#). This will default to port 3030.
+It depends on the [Pokédex REST API](https://github.com/giodelabarrera/pokedex-api) is running. You can follow the manual [here](#). This will default to port 3030.
 
 ## Installation
 
