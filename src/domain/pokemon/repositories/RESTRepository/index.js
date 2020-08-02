@@ -1,12 +1,13 @@
 export default function RESTRepository({
   httpClient,
   pokemonJsonResponseToPokemonEntityJsonMapper,
+  pokemonListJsonResponseToPokemonListValueObjectJsonMapper,
   pokemonEntityFactory
 }) {
   async function getPokemon({idOrSlug}) {
-    const pokemonResponseJson = await httpClient(`pokemon/${idOrSlug}`)
+    const pokemonJsonResponse = await httpClient(`pokemon/${idOrSlug}`)
     const pokemonEntityJson = pokemonJsonResponseToPokemonEntityJsonMapper.map(
-      pokemonResponseJson
+      pokemonJsonResponse
     )
     const pokemonEntity = pokemonEntityFactory(pokemonEntityJson)
     return pokemonEntity
@@ -33,18 +34,22 @@ export default function RESTRepository({
     const params = {query, types, sort, limit, offset}
     const queryString = toQueryString(params)
     const endpoint = 'pokemon' + (queryString && `?${queryString}`)
-    const pokemonResponseJsonList = await httpClient(endpoint)
+    const pokemonListJsonResponse = await httpClient(endpoint)
 
-    // TODO: refactor with mapper new response
+    // const pokemonListValueObjectJson = pokemonListJsonResponseToPokemonListValueObjectJsonMapper.map(
+    //   pokemonListJsonResponse
+    // )
+    // create value object
+    // return value object
 
     // map from REST response json list to pokemon domain entity json list
-    const pokemonEntityJsonList = pokemonResponseJsonList.results.map(
+    const pokemonEntityJsonList = pokemonListJsonResponse.results.map(
       pokemonJsonResponseToPokemonEntityJsonMapper.map
     )
 
     const pokemonEntityList = pokemonEntityJsonList.map(pokemonEntityFactory)
     return {
-      total: pokemonResponseJsonList.total,
+      total: pokemonListJsonResponse.total,
       results: pokemonEntityList
     }
   }
