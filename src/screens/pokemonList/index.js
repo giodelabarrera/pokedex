@@ -9,6 +9,9 @@ import PokemonCard from 'components/pokemon/card'
 import usePokemonList from 'components/pokemon/usePokemonList'
 import SortFilter, {sortFilterTypes} from 'components/filter/sort'
 import Spinner from 'components/feedback/spinner'
+import ErrorFeedback from 'components/feedback/error'
+
+import NoSearchResults from './noSearchResults'
 
 import './index.scss'
 
@@ -57,25 +60,31 @@ function PokemonListScreen() {
             <Spinner />
           </div>
         ) : error ? (
-          <div>{error.message}</div>
+          <ErrorFeedback error={error} />
         ) : (
           <>
-            <PokemonList pokemonList={data.results}>
-              {({number, name, imageUrl, slug, types}) => (
-                <PokemonCard
-                  number={number}
-                  name={name}
-                  imageUrl={imageUrl}
-                  types={types}
-                  link={makePokemonDetailLink(slug)}
-                />
-              )}
-            </PokemonList>
-            {canLoadMore && <div ref={loadMoreRef} />}
-            {canLoadMore && isLoadingMore && (
-              <div className={`${baseClass}-spinnerContainer`}>
-                <Spinner />
-              </div>
+            {data.total ? (
+              <>
+                <PokemonList pokemonList={data.results}>
+                  {({number, name, imageUrl, slug, types}) => (
+                    <PokemonCard
+                      number={number}
+                      name={name}
+                      imageUrl={imageUrl}
+                      types={types}
+                      link={makePokemonDetailLink(slug)}
+                    />
+                  )}
+                </PokemonList>
+                {canLoadMore && <div ref={loadMoreRef} />}
+                {canLoadMore && isLoadingMore && (
+                  <div className={`${baseClass}-spinnerContainer`}>
+                    <Spinner />
+                  </div>
+                )}
+              </>
+            ) : (
+              <NoSearchResults />
             )}
           </>
         )}
