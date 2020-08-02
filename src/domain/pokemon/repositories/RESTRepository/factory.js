@@ -1,4 +1,5 @@
-import RESTRepository from './index'
+import {stringify} from 'query-string'
+import RESTRepository from '.'
 import PokemonJsonResponseToPokemonEntityJsonMapperFactory from '../../mappers/PokemonJsonResponseToPokemonEntityJsonMapper/factory'
 import PokemonListJsonResponseToPokemonListValueObjectJsonMapperFactory from '../../mappers/PokemonListJsonResponseToPokemonListValueObjectJsonMapper/factory'
 import PokemonEntityFactory from '../../entity/Pokemon/factory'
@@ -23,6 +24,7 @@ export default () => {
     pokemonJsonResponseToPokemonEntityJsonMapper: PokemonJsonResponseToPokemonEntityJsonMapperFactory(),
     pokemonListJsonResponseToPokemonListValueObjectJsonMapper: PokemonListJsonResponseToPokemonListValueObjectJsonMapperFactory(),
     pokemonEntityFactory: PokemonEntityFactory,
-    pokemonListValueObjectFactory: PokemonListValueObjectFactory
+    pokemonListValueObjectFactory: PokemonListValueObjectFactory,
+    stringify
   })
 }
