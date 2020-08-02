@@ -9,6 +9,7 @@ import PokemonCard from 'components/pokemon/card'
 import usePokemonList from 'components/pokemon/usePokemonList'
 import SortFilter, {sortFilterTypes} from 'components/filter/sort'
 import Spinner from 'components/feedback/spinner'
+import ErrorFeedback from 'components/feedback/error'
 
 import './index.scss'
 
@@ -57,7 +58,7 @@ function PokemonListScreen() {
             <Spinner />
           </div>
         ) : error ? (
-          <div>{error.message}</div>
+          <ErrorFeedback error={error} />
         ) : (
           <>
             <PokemonList pokemonList={data.results}>
