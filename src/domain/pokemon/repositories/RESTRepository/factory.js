@@ -2,6 +2,7 @@ import RESTRepository from './index'
 import PokemonJsonResponseToPokemonEntityJsonMapperFactory from '../../mappers/PokemonJsonResponseToPokemonEntityJsonMapper/factory'
 import PokemonListJsonResponseToPokemonListValueObjectJsonMapperFactory from '../../mappers/PokemonListJsonResponseToPokemonListValueObjectJsonMapper/factory'
 import PokemonEntityFactory from '../../entity/Pokemon/factory'
+import PokemonListValueObjectFactory from '../../valueObjects/PokemonListValueObject/factory'
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
 
@@ -21,6 +22,7 @@ export default () => {
     httpClient,
     pokemonJsonResponseToPokemonEntityJsonMapper: PokemonJsonResponseToPokemonEntityJsonMapperFactory(),
     pokemonListJsonResponseToPokemonListValueObjectJsonMapper: PokemonListJsonResponseToPokemonListValueObjectJsonMapperFactory(),
-    pokemonEntityFactory: PokemonEntityFactory
+    pokemonEntityFactory: PokemonEntityFactory,
+    pokemonListValueObjectFactory: PokemonListValueObjectFactory
   })
 }

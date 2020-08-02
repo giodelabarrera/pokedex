@@ -11,7 +11,7 @@ export default function PokemonListJsonResponseToPokemonListValueObjectJsonMappe
 
       return {
         total,
-        results: pokemonEntityJsonList
+        items: pokemonEntityJsonList
       }
     }
   }
