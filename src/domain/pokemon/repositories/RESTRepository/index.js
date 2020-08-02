@@ -47,14 +47,8 @@ export default function RESTRepository({
     return pokemonListValueObject
   }
 
-  async function getTypeList() {
-    const typeList = await httpClient('type')
-    return typeList
-  }
-
   return {
     getPokemon,
-    getPokemonList,
-    getTypeList
+    getPokemonList
   }
 }
