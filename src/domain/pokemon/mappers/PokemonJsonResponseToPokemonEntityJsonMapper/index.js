@@ -1,4 +1,4 @@
-export default function PokemonResponseJsonToPokemonEntityJsonMapper() {
+export default function PokemonJsonResponseToPokemonEntityJsonMapper() {
   function mapTranslationsOfNameToName(translationsOfName) {
     const {english: name} = translationsOfName
     return name
@@ -20,13 +20,13 @@ export default function PokemonResponseJsonToPokemonEntityJsonMapper() {
   }
 
   return {
-    map(pokemonResponseJson) {
+    map(pokemonJsonResponse) {
       const {
         id,
         name: originName,
         type: originType,
         base: originBase
-      } = pokemonResponseJson
+      } = pokemonJsonResponse
 
       const name = mapTranslationsOfNameToName(originName)
       const types = mapTypesToLowerCase(originType)

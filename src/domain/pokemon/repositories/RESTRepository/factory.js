@@ -1,5 +1,5 @@
 import RESTRepository from './index'
-import PokemonResponseJsonToPokemonEntityJsonMapperFactory from '../../mappers/PokemonResponseJsonToPokemonEntityJsonMapper/factory'
+import PokemonJsonResponseToPokemonEntityJsonMapperFactory from '../../mappers/PokemonJsonResponseToPokemonEntityJsonMapper/factory'
 import PokemonEntityFactory from '../../entity/Pokemon/factory'
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
@@ -18,7 +18,7 @@ function httpClient(endpoint, {...customConfig} = {}) {
 export default () => {
   return RESTRepository({
     httpClient,
-    pokemonResponseJsonToPokemonEntityJsonMapper: PokemonResponseJsonToPokemonEntityJsonMapperFactory(),
+    pokemonJsonResponseToPokemonEntityJsonMapper: PokemonJsonResponseToPokemonEntityJsonMapperFactory(),
     pokemonEntityFactory: PokemonEntityFactory
   })
 }
