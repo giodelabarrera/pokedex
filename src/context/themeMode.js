@@ -20,7 +20,6 @@ function ThemeModeProvider({...restProps}) {
 }
 
 function getInitialThemeMode() {
-  debugger
   const modeFromLocalStorage = localStorage.getItem('theme')
   if (modeFromLocalStorage) return modeFromLocalStorage
 
