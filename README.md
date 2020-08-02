@@ -6,40 +6,22 @@ Single Page Aplication of the characters of the Pokémon series created with Rea
 
 ## Getting Started
 
-### Pokedex API
+Depends on the Pokédex api server. You can follow the manual [here](#). This will default to port 3030.
 
-Run REST Pokédex API, you can follow the manual [here](#). This by default will run on port 3030.
-
-### Pokedex
-
-When the server is running, create a `.env` file.
-
-```sh
-touch .env
-```
-
-And set the environment variable
-
-```env
-REACT_APP_API_BASE_URL=http://localhost:3030
-REACT_APP_IMAGE_BASE_URL=https://assets.pokemon.com/assets/cms2/img/pokedex
-REACT_APP_INITIAL_THEME_MODE=dark
-```
-
-Install the dependencies
+## Installation
 
 ```sh
 npm i
+cp .env.example .env
 ```
 
-And run the development server
+## Development server
 
 ```sh
 npm start
 ```
 
 Then you should be able to open a browser at http://localhost:3000 and see the application.
-
 
 ## License
 
