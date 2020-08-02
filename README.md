@@ -8,14 +8,14 @@ Single Page Aplication of the characters of the Pokémon series created with Rea
 
 It depends on the [Pokédex REST API](https://github.com/giodelabarrera/pokedex-api) is running. You can follow the manual [here](#). This will default to port 3030.
 
-## Installation
+### Installation
 
 ```sh
 npm i
 cp .env.example .env
 ```
 
-## Development server
+### Development server
 
 ```sh
 npm start
