@@ -1,75 +1,28 @@
-# Pokedex
+<h1> <a href="https://pokedex.giodelabarrera.vercel.app" alt="Pokédex"><img src="./docs/pokeball.svg" width="24px" style="vertical-align: middle;"/> Pokédex</a> </h1>
 
-## Structure
+Single Page Aplication of the characters of the Pokémon series created with React, dark/light mode, mobile first and Clean Architecture consuming data from my own [Pokédex REST API](https://github.com/giodelabarrera/pokedex-api) and compatible with IE11.
 
-```md
-components
-  ui
-    button
-    chip
-    dialog
-    drawer  
-    popover
-    selectDrawer
-    selectPopover
-    toggleTheme
-  shell
-    filterBar
-    footer
-    header
-  pokemon
-    attributes
-    card
-    description
-    evolutions
-    stats
-    type
-    types
-    weaknesses
-context
-domain
-hooks
-screens
-  not-found
-  pokemon
-  pokemon-list
-  no-results
+[See it online](https://pokedex.giodelabarrera.vercel.app)️ ↗️
+
+## Getting Started
+
+It depends on the [Pokédex REST API](https://github.com/giodelabarrera/pokedex-api) is running. You can follow the manual [here](https://github.com/giodelabarrera/pokedex-api#getting-started). This will default to port 3030.
+
+### Installation
+
+```sh
+npm i
+cp .env.example .env
 ```
 
-## Use cases
+### Development server
 
-```md
-- get_list_pokemon_use_case
-  - params
-    - query?: string (nombre o numero)
-    - type?: string[] (electrico, bicho, volador) = []
-    - sort?: string (a-z, z-a, numero superior, numero inferior) = numero superior
-    - limit?: number (numero de resultados a traer) = 25
-    - offset?: number (indice de paginacion) = 0
-
-- get_single_pokemon_use_case
-  - params
-    - slug: string (nombre o numero)
-
-- get_types_pokemon_use_case
+```sh
+npm start
 ```
 
-## Pages
+Then you should be able to open a browser at http://localhost:3000 and see the application.
 
-```md
-- detail
-poked.es/p/totodile
-poked.es/p/charmander
+## License
 
-- home|search
-poked.es?q=pikachu  // query
-poked.es?q=25
-poked.es?t=electrico  // type
-poked.es?t=electrico,bicho
-poked.es?s=az // sort
-poked.es?s=za
-poked.es?s=ns
-poked.es?s=ni
-poked.es?o=2  // offset
-poked.es?t=electrico&s=az&o=4  // full
-```
+MIT © Giorgio de la Barrera
