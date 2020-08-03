@@ -6,7 +6,7 @@ Single Page Aplication of the characters of the Pokémon series created with Rea
 
 ## Getting Started
 
-It depends on the [Pokédex REST API](https://github.com/giodelabarrera/pokedex-api) is running. You can follow the manual [here](#). This will default to port 3030.
+It depends on the [Pokédex REST API](https://github.com/giodelabarrera/pokedex-api) is running. You can follow the manual [here](https://github.com/giodelabarrera/pokedex-api#getting-started). This will default to port 3030.
 
 ### Installation
 
