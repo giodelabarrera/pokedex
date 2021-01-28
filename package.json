@@ -5,14 +5,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest --watch",
-    "test:coverage": "jest",
+    "test": "jest",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --watch --runInBand",
     "lint": "eslint . --cache-location node_modules/.cache/eslint",
     "prettier": "prettier \"**/*.+(js|json|scss|html)\"",
     "format": "npm run prettier -- --write",
     "check-format": "npm run prettier -- --list-different",
-    "validate": "npm-run-all --parallel check-format lint test:coverage build"
+    "validate": "npm-run-all --parallel check-format lint test build"
   },
   "dependencies": {
     "@reach/listbox": "^0.10.5",

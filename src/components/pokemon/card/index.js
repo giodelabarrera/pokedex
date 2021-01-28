@@ -4,7 +4,6 @@ import PokemonType from 'components/pokemon/type'
 
 import './index.scss'
 
-const pepaa = 'keke'
 const baseClass = 'pk-PokemonCard'
 
 export default function PokemonCard({

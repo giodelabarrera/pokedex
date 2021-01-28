@@ -18,7 +18,7 @@ function httpClient(endpoint, {...customConfig} = {}) {
     })
 }
 
-export default () => {
+export default function createRESTRepository() {
   return RESTRepository({
     httpClient,
     pokemonJsonResponseToPokemonEntityJsonMapper: PokemonJsonResponseToPokemonEntityJsonMapperFactory(),

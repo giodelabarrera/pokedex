@@ -3,7 +3,7 @@ import GetPokemonImageUrlsServiceFactory from '../../services/GetPokemonImageUrl
 import GetPokemonSlugServiceFactory from '../../services/GetPokemonSlugService/factory'
 import GetPokemonUseCase from '.'
 
-export default () => {
+export default function createGetPokemonUseCase() {
   return GetPokemonUseCase({
     pokemonRepository: RESTRepositoryFactory(),
     getPokemonImageUrlsService: GetPokemonImageUrlsServiceFactory(),
