@@ -26,7 +26,7 @@
     "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.13.1",
     "react-router-dom": "^6.0.0-beta.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "^4.0.1"
   },
   "devDependencies": {
     "fetch-mock": "^9.10.4",
