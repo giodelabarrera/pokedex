@@ -1,5 +1,5 @@
 import GetPokemonSlugService from '.'
 
-export default () => {
+export default function createGetPokemonSlugService() {
   return GetPokemonSlugService()
 }

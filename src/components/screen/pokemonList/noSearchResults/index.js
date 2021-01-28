@@ -2,7 +2,7 @@ import React from 'react'
 
 import './index.scss'
 
-const baseClass = 'pk-PokemonListScreen-noSearchResults'
+const baseClass = 'pk-ScreenPokemonList-noSearchResults'
 
 export default function NoSearchResults() {
   return (

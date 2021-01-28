@@ -6,7 +6,13 @@ import './index.scss'
 
 const baseClass = 'pk-PokemonCard'
 
-export default function Card({number, name, imageUrl, types, link: Link}) {
+export default function PokemonCard({
+  number,
+  name,
+  imageUrl,
+  types,
+  link: Link
+}) {
   return (
     <div className={baseClass}>
       <div className={`${baseClass}-imageContainer`}>

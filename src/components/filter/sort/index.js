@@ -7,7 +7,7 @@ import './index.scss'
 
 const baseClass = 'pk-FilterSort'
 
-function SortFilter({value = SORT_TYPES['lowestNumber'], onChange}) {
+function FilterSort({value = SORT_TYPES['lowestNumber'], onChange}) {
   return (
     <div className={baseClass}>
       <Listbox
@@ -28,5 +28,5 @@ function SortFilter({value = SORT_TYPES['lowestNumber'], onChange}) {
   )
 }
 
-export default SortFilter
-export {SORT_TYPES as sortFilterTypes}
+export default FilterSort
+export {SORT_TYPES as filterSortTypes}

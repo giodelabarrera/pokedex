@@ -9,9 +9,9 @@ import PokemonDetail, {
 } from 'components/pokemon/detail'
 import ErrorFeedback from 'components/feedback/error'
 
-const baseClass = 'pk-PokemonDetailScreen'
+const baseClass = 'pk-ScreenPokemonDetail'
 
-function PokemonDetailScreen() {
+export default function ScreenPokemonDetail() {
   const domain = useDomain()
   const {idOrSlug} = useParams()
 
@@ -30,5 +30,3 @@ function PokemonDetailScreen() {
     </div>
   )
 }
-
-export default PokemonDetailScreen
