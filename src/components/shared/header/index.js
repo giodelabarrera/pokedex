@@ -11,7 +11,7 @@ import './index.scss'
 
 const baseClass = 'pk-SharedHeader'
 
-export default function Header() {
+export default function SharedHeader() {
   const {themeMode, setThemeMode} = useThemeMode()
   const [query = '', setQuery] = useQueryParam('query', StringParam)
   const navigate = useNavigate()
