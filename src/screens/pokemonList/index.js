@@ -7,7 +7,7 @@ import useIntersection from 'hooks/useIntersection'
 import PokemonList from 'components/pokemon/list'
 import PokemonCard from 'components/pokemon/card'
 import usePokemonList from 'components/pokemon/usePokemonList'
-import SortFilter, {sortFilterTypes} from 'components/filter/sort'
+import FilterSort, {filterSortTypes} from 'components/filter/sort'
 import Spinner from 'components/feedback/spinner'
 import ErrorFeedback from 'components/feedback/error'
 
@@ -21,7 +21,7 @@ const baseClass = 'pk-PokemonListScreen'
 
 function PokemonListScreen() {
   const [query = ''] = useQueryParam('query', StringParam)
-  const [sort = sortFilterTypes['lowestNumber'], setSort] = useQueryParam(
+  const [sort = filterSortTypes['lowestNumber'], setSort] = useQueryParam(
     'sort',
     StringParam
   )
@@ -45,14 +45,14 @@ function PokemonListScreen() {
     if (isIntersecting) setOffset(prevOffset => prevOffset + 1)
   }, [isIntersecting, setOffset])
 
-  function handleSortFilterChange(value) {
+  function handleFilterSortChange(value) {
     setSort(value)
   }
 
   return (
     <div className={baseClass}>
       <div className={`${baseClass}-filterBar`}>
-        <SortFilter value={sort} onChange={handleSortFilterChange} />
+        <FilterSort value={sort} onChange={handleFilterSortChange} />
       </div>
       <div className={`${baseClass}-content`}>
         {isLoading ? (
