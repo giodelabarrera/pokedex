@@ -4,7 +4,7 @@ import PokemonType from 'components/pokemon/type'
 
 import './index.scss'
 
-const pepe = 'keke'
+const pepa = 'keke'
 const baseClass = 'pk-PokemonCard'
 
 export default function PokemonCard({number, name, imageUrl, types, link: Link}) {
