@@ -2,7 +2,7 @@ import React from 'react'
 
 import './index.scss'
 
-const baseClass = 'pk-EmptyPokeball'
+const baseClass = 'pk-ScreenNotFound-emptyPokeball'
 
 export default function EmptyPokeball() {
   return (

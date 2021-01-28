@@ -3,9 +3,9 @@ import React from 'react'
 import EmptyPokeball from './emptyPokeball'
 import './index.scss'
 
-const baseClass = 'pk-NotFoundScreen'
+const baseClass = 'pk-ScreenNotFound'
 
-export default function NotFoundScreen() {
+export default function ScreenNotFound() {
   return (
     <div className={baseClass}>
       <h1 className={`${baseClass}-title`}>404</h1>
