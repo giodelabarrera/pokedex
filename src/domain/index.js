@@ -1,11 +1,11 @@
 const USE_CASES = {
   pokemon__get_pokemon_list_use_case: () =>
     import(
-      /* webpackChunkName: "[request]-factory" */ `./pokemon/useCases/GetPokemonListUseCase/factory`
+      /* webpackChunkName: "pokemon__get_pokemon_list_use_case" */ `./pokemon/useCases/GetPokemonListUseCase/factory`
     ),
   pokemon__get_pokemon_use_case: () =>
     import(
-      /* webpackChunkName: "[request]-factory" */ `./pokemon/useCases/GetPokemonUseCase/factory`
+      /* webpackChunkName: "pokemon__get_pokemon_use_case" */ `./pokemon/useCases/GetPokemonUseCase/factory`
     )
 }
 
