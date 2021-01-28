@@ -4,10 +4,16 @@ import PokemonType from 'components/pokemon/type'
 
 import './index.scss'
 
-const pepa = 'keke'
+const pepaa = 'keke'
 const baseClass = 'pk-PokemonCard'
 
-export default function PokemonCard({number, name, imageUrl, types, link: Link}) {
+export default function PokemonCard({
+  number,
+  name,
+  imageUrl,
+  types,
+  link: Link
+}) {
   return (
     <div className={baseClass}>
       <div className={`${baseClass}-imageContainer`}>
