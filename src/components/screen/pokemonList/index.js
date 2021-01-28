@@ -17,9 +17,9 @@ import './index.scss'
 
 const LIMIT = 24
 
-const baseClass = 'pk-PokemonListScreen'
+const baseClass = 'pk-ScreenPokemonList'
 
-function PokemonListScreen() {
+function ScreenPokemonList() {
   const [query = ''] = useQueryParam('query', StringParam)
   const [sort = filterSortTypes['lowestNumber'], setSort] = useQueryParam(
     'sort',
@@ -99,4 +99,4 @@ function makePokemonDetailLink(slug) {
   }
 }
 
-export default PokemonListScreen
+export default ScreenPokemonList

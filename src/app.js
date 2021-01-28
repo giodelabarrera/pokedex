@@ -1,12 +1,10 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
 
-import PokemonListScreen from './screens/pokemonList'
-import PokemonDetailScreen from './screens/pokemonDetail'
-import NotFoundScreen from './screens/notFound'
-
-import Header from './components/shared/header'
-
+import ScreenPokemonList from 'components/screen/pokemonList'
+import ScreenPokemonDetail from 'components/screen/pokemonDetail'
+import ScreenNotFound from 'components/screen/notFound'
+import Header from 'components/shared/header'
 import './app.scss'
 
 function App() {
@@ -23,9 +21,9 @@ function App() {
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<PokemonListScreen />} />
-      <Route path="/p/:idOrSlug" element={<PokemonDetailScreen />} />
-      <Route path="*" element={<NotFoundScreen />} />
+      <Route path="/" element={<ScreenPokemonList />} />
+      <Route path="/p/:idOrSlug" element={<ScreenPokemonDetail />} />
+      <Route path="*" element={<ScreenNotFound />} />
     </Routes>
   )
 }
