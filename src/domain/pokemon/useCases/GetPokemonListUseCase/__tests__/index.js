@@ -1,5 +1,4 @@
-import {rest} from 'msw'
-import {server} from 'mocks/server'
+import {rest, server} from 'test/server'
 import GetPokemonListUseCaseFactory from '../factory'
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
@@ -227,9 +226,9 @@ test('should return a pokemon list', async () => {
     ]
   }
   server.use(
-    rest.get(`${API_BASE_URL}/pokemon`, async (req, res, ctx) => {
-      return res(ctx.json(mockPokemonList))
-    })
+    rest.get(`${API_BASE_URL}/pokemon`, async (req, res, ctx) =>
+      res(ctx.json(mockPokemonList))
+    )
   )
 
   const getListUseCase = GetPokemonListUseCaseFactory()
@@ -283,9 +282,9 @@ test('should return a pokemon list filtered by query', async () => {
     ]
   }
   server.use(
-    rest.get(`${API_BASE_URL}/pokemon`, async (req, res, ctx) => {
-      return res(ctx.json(mockPokemonList))
-    })
+    rest.get(`${API_BASE_URL}/pokemon`, async (req, res, ctx) =>
+      res(ctx.json(mockPokemonList))
+    )
   )
 
   const getListUseCase = GetPokemonListUseCaseFactory()
@@ -412,9 +411,9 @@ test('should return a pokemon list filtered by types', async () => {
     ]
   }
   server.use(
-    rest.get(`${API_BASE_URL}/pokemon`, async (req, res, ctx) => {
-      return res(ctx.json(mockPokemonList))
-    })
+    rest.get(`${API_BASE_URL}/pokemon`, async (req, res, ctx) =>
+      res(ctx.json(mockPokemonList))
+    )
   )
 
   const getListUseCase = GetPokemonListUseCaseFactory()

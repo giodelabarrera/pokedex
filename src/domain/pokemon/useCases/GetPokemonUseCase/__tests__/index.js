@@ -1,5 +1,4 @@
-import {rest} from 'msw'
-import {server} from 'mocks/server'
+import {rest, server} from 'test/server'
 import GetPokemonUseCaseFactory from '../factory'
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
