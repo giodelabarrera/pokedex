@@ -19,6 +19,7 @@ It depends on the [Pokédex REST API](https://github.com/giodelabarrera/pokedex-
 ```sh
 npm i
 cp .env.example .env.local
+cp .env.example .env.test.local
 ```
 
 ### Run web server

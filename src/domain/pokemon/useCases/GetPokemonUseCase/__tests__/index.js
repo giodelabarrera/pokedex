@@ -1,9 +1,7 @@
-import fetchMock from 'fetch-mock'
+import {rest, server} from 'test/server'
 import GetPokemonUseCaseFactory from '../factory'
 
-afterEach(() => {
-  fetchMock.reset()
-})
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
 
 test('should return a pokemon by name', async () => {
   const mockPokemon = {
@@ -24,7 +22,11 @@ test('should return a pokemon by name', async () => {
       Speed: 90
     }
   }
-  fetchMock.get('*', mockPokemon)
+  server.use(
+    rest.get(`${API_BASE_URL}/pokemon/:idOrSlug`, (req, res, ctx) =>
+      res(ctx.json(mockPokemon))
+    )
+  )
 
   const getSingleUseCase = GetPokemonUseCaseFactory()
   const idOrSlug = 'pikachu'
@@ -53,7 +55,11 @@ test('should return a pokemon by id', async () => {
       Speed: 90
     }
   }
-  fetchMock.get('*', mockPokemon)
+  server.use(
+    rest.get(`${API_BASE_URL}/pokemon/:idOrSlug`, (req, res, ctx) =>
+      res(ctx.json(mockPokemon))
+    )
+  )
 
   const getSingleUseCase = GetPokemonUseCaseFactory()
   const idOrSlug = '25'
@@ -64,7 +70,11 @@ test('should return a pokemon by id', async () => {
 })
 
 test('should fail when it happens a not found error', async () => {
-  fetchMock.get('*', 404)
+  server.use(
+    rest.get(`${API_BASE_URL}/pokemon/:idOrSlug`, (req, res, ctx) =>
+      res(ctx.status(404))
+    )
+  )
 
   const getSingleUseCase = GetPokemonUseCaseFactory()
   const idOrSlug = '25'
@@ -75,7 +85,11 @@ test('should fail when it happens a not found error', async () => {
 })
 
 test('should fail when it happens a server error', async () => {
-  fetchMock.get('*', 500)
+  server.use(
+    rest.get(`${API_BASE_URL}/pokemon/:idOrSlug`, (req, res, ctx) =>
+      res(ctx.status(500))
+    )
+  )
 
   const getSingleUseCase = GetPokemonUseCaseFactory()
   const idOrSlug = '25'

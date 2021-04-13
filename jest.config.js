@@ -13,6 +13,8 @@ module.exports = {
   testEnvironment: resolve.sync('jest-environment-jsdom', {
     basedir: require.resolve('jest')
   }),
+  setupFiles: [require.resolve('whatwg-fetch')],
+  setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
   moduleDirectories: ['node_modules', path.join(__dirname, './src')],
   transform: {
     '^.+\\.(js|jsx)$': require.resolve(
