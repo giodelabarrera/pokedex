@@ -25,12 +25,12 @@
     "react-scripts": "^4.0.1"
   },
   "devDependencies": {
-    "fetch-mock": "^9.10.4",
     "husky": "^4.3.8",
     "lint-staged": "^10.5.3",
-    "node-fetch": "^2.6.0",
+    "msw": "^0.28.1",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "whatwg-fetch": "^3.6.2"
   },
   "eslintConfig": {
     "extends": [
