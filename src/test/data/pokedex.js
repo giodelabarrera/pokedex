@@ -92,4 +92,4 @@ async function search({
   }
 }
 
-export {read, search}
+export {read, search, SORT_TYPES}
