@@ -17,17 +17,18 @@
     "@reach/listbox": "^0.10.5",
     "history": "^5.0.0",
     "intersection-observer": "^0.11.0",
+    "msw": "^0.28.1",
     "node-sass": "^4.14.1",
     "query-string": "^5.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^6.0.0-beta.0",
-    "react-scripts": "^4.0.1"
+    "react-scripts": "^4.0.1",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "husky": "^4.3.8",
     "lint-staged": "^10.5.3",
-    "msw": "^0.28.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.5",
     "whatwg-fetch": "^3.6.2"
@@ -59,5 +60,8 @@
       "last 1 safari version"
     ]
   },
-  "license": "MIT"
+  "license": "MIT",
+  "msw": {
+    "workerDirectory": "public"
+  }
 }
