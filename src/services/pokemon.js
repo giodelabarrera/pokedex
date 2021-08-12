@@ -1,17 +1,20 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
+import {createApi} from '@reduxjs/toolkit/query/react'
 
-// import domain from '../domain'
-
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
+import domain from '../domain'
 
 export const pokemonApi = createApi({
   reducerPath: 'pokemonApi',
-  // baseQuery: fetchBaseQuery({baseUrl: '/'}),
-  baseQuery: fetchBaseQuery({baseUrl: API_BASE_URL}),
   endpoints: builder => ({
     getPokemon: builder.query({
-      query: (arg, queryApi, extraOptions, baseQuery) => {
-        return '/pokemon/' + arg
+      async queryFn(arg, queryApi, extraOptions, baseQuery) {
+        try {
+          const response = await domain
+            .get('pokemon__get_pokemon_use_case')
+            .execute({idOrSlug: arg})
+          return {data: response}
+        } catch (error) {
+          return {error}
+        }
       }
     })
   })
