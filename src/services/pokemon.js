@@ -16,8 +16,25 @@ export const pokemonApi = createApi({
           return {error}
         }
       }
+    }),
+    listPokemon: builder.query({
+      async queryFn(
+        {query, limit, sort, offset},
+        queryApi,
+        extraOptions,
+        baseQuery
+      ) {
+        try {
+          const response = await domain
+            .get('pokemon__get_pokemon_list_use_case')
+            .execute({query, limit, sort, offset})
+          return {data: response}
+        } catch (error) {
+          return {error}
+        }
+      }
     })
   })
 })
 
-export const {useGetPokemonQuery} = pokemonApi
+export const {useGetPokemonQuery, useListPokemonQuery} = pokemonApi

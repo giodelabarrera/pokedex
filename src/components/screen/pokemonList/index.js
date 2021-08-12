@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react'
+import React, {useRef, useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 
 import useQueryParam, {StringParam} from 'hooks/useQueryParam'
@@ -6,10 +6,10 @@ import useIntersection from 'hooks/useIntersection'
 
 import PokemonList from 'components/pokemon/list'
 import PokemonCard from 'components/pokemon/card'
-import usePokemonList from 'components/pokemon/usePokemonList'
 import FilterSort, {filterSortTypes} from 'components/filter/sort'
 import Spinner from 'components/feedback/spinner'
 import ErrorFeedback from 'components/feedback/error'
+import usePokemonList from 'components/pokemon/usePokemonList'
 
 import NoSearchResults from './noSearchResults'
 
@@ -25,28 +25,33 @@ function ScreenPokemonList() {
     'sort',
     StringParam
   )
+  const [offset, setOffset] = useState(0)
 
-  const {
-    canLoadMore,
-    data,
-    error,
-    isLoading,
-    isLoadingMore,
-    setOffset
-  } = usePokemonList({query, sort, limit: LIMIT})
-
-  const loadMoreRef = useRef()
-  const isIntersecting = useIntersection({
-    target: isLoading ? null : loadMoreRef,
-    rootMargin: '200px'
+  const {data, isLoading, error, canLoadMore} = usePokemonList({
+    query,
+    limit: LIMIT,
+    sort,
+    offset
   })
 
-  useEffect(() => {
-    if (isIntersecting) setOffset(prevOffset => prevOffset + 1)
-  }, [isIntersecting, setOffset])
+  const loadMoreRef = useRef()
+  // const isIntersecting = useIntersection({
+  //   target: isLoading ? null : loadMoreRef,
+  //   rootMargin: '200px'
+  // })
+
+  // useEffect(() => {
+  //   if (isIntersecting) {
+  //     setOffset(prevOffset => prevOffset + 1)
+  //   }
+  // }, [isIntersecting, setOffset])
 
   function handleFilterSortChange(value) {
     setSort(value)
+  }
+
+  function handleLoadMore() {
+    setOffset(prevOffset => prevOffset + 1)
   }
 
   return (
@@ -61,7 +66,7 @@ function ScreenPokemonList() {
           </div>
         ) : error ? (
           <ErrorFeedback error={error} />
-        ) : (
+        ) : data ? (
           <>
             {data.total ? (
               <>
@@ -76,8 +81,12 @@ function ScreenPokemonList() {
                     />
                   )}
                 </PokemonList>
-                {canLoadMore && <div ref={loadMoreRef} />}
-                {canLoadMore && isLoadingMore && (
+                {canLoadMore && (
+                  <div ref={loadMoreRef}>
+                    <button onClick={handleLoadMore}>Load More</button>
+                  </div>
+                )}
+                {canLoadMore && isLoading && (
                   <div className={`${baseClass}-spinnerContainer`}>
                     <Spinner />
                   </div>
@@ -87,7 +96,7 @@ function ScreenPokemonList() {
               <NoSearchResults />
             )}
           </>
-        )}
+        ) : null}
       </div>
     </div>
   )
