@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 import useQueryParam, {StringParam} from 'hooks/useQueryParam'
 import useIntersectionObserver from 'hooks/useIntersectionObserver'
-import useInfiniteSearchPokemonQuery from 'components/pokemon/useInfiniteSearchPokemonQuery'
+import {useInfiniteSearchPokemonQuery} from 'utils/pokemon'
 
 import PokemonList from 'components/pokemon/list'
 import PokemonCard from 'components/pokemon/card'

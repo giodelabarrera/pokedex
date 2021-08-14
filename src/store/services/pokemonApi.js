@@ -1,8 +1,8 @@
 import {createApi} from '@reduxjs/toolkit/query/react'
 
-import domain from '../domain'
+import domain from '../../domain'
 
-export const pokemonApi = createApi({
+const pokemonApi = createApi({
   reducerPath: 'pokemonApi',
   endpoints: builder => ({
     pokemon: builder.query({
@@ -30,4 +30,4 @@ export const pokemonApi = createApi({
   })
 })
 
-export const {usePokemonQuery, useSearchPokemonQuery} = pokemonApi
+export default pokemonApi

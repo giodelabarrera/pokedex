@@ -1,13 +1,10 @@
-import {useState, useEffect} from 'react'
+import {useEffect, useState} from 'react'
 
-import {useSearchPokemonQuery} from 'services/pokemon'
+import pokemonApi from 'store/services/pokemonApi'
 
-export default function useInfiniteSearchPokemonQuery({
-  query,
-  limit,
-  sort,
-  offset
-}) {
+const {usePokemonQuery, useSearchPokemonQuery} = pokemonApi
+
+function useInfiniteSearchPokemonQuery({query, limit, sort, offset}) {
   const [historicalData, setHistoricalData] = useState()
 
   const firstListPokemonState = useSearchPokemonQuery(
@@ -49,3 +46,5 @@ export default function useInfiniteSearchPokemonQuery({
     isFetchingMore: restListPokemonState.isFetching
   }
 }
+
+export {usePokemonQuery, useSearchPokemonQuery, useInfiniteSearchPokemonQuery}

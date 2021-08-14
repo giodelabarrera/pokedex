@@ -5,7 +5,7 @@ import PokemonDetail, {
   PokemonDetailContentLoader
 } from 'components/pokemon/detail'
 import ErrorFeedback from 'components/feedback/error'
-import {usePokemonQuery} from 'services/pokemon'
+import {usePokemonQuery} from 'utils/pokemon'
 
 const baseClass = 'pk-ScreenPokemonDetail'
 
