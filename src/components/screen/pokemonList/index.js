@@ -3,16 +3,15 @@ import {Link} from 'react-router-dom'
 
 import useQueryParam, {StringParam} from 'hooks/useQueryParam'
 import useIntersectionObserver from 'hooks/useIntersectionObserver'
+import useInfiniteSearchPokemonQuery from 'components/pokemon/useInfiniteSearchPokemonQuery'
 
 import PokemonList from 'components/pokemon/list'
 import PokemonCard from 'components/pokemon/card'
 import FilterSort, {filterSortTypes} from 'components/filter/sort'
 import Spinner from 'components/feedback/spinner'
 import ErrorFeedback from 'components/feedback/error'
-import useInfiniteSearchPokemonQuery from 'components/pokemon/useInfiniteSearchPokemonQuery'
 
 import NoSearchResults from './noSearchResults'
-
 import './index.scss'
 
 const LIMIT = 24
