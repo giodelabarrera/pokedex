@@ -39,6 +39,8 @@ export default function useInfinitePokemonList({query, limit, sort, offset}) {
     data: historicalData,
     error: firstListPokemonState.error || restListPokemonState.error,
     isLoading: firstListPokemonState.isLoading,
-    isLoadingMore: restListPokemonState.isLoading
+    isFetching: firstListPokemonState.isFetching,
+    isLoadingMore: restListPokemonState.isLoading,
+    isFetchingMore: restListPokemonState.isFetching
   }
 }
