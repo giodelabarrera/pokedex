@@ -1,4 +1,4 @@
-// import 'test/server'
+import 'test/server'
 import * as React from 'react'
 import ReactDOM from 'react-dom'
 
