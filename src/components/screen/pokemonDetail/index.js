@@ -5,13 +5,13 @@ import PokemonDetail, {
   PokemonDetailContentLoader
 } from 'components/pokemon/detail'
 import ErrorFeedback from 'components/feedback/error'
-import {useGetPokemonQuery} from 'services/pokemon'
+import {usePokemonQuery} from 'services/pokemon'
 
 const baseClass = 'pk-ScreenPokemonDetail'
 
 export default function ScreenPokemonDetail() {
   const {idOrSlug} = useParams()
-  const {data, isLoading, error} = useGetPokemonQuery(idOrSlug)
+  const {data, isLoading, error} = usePokemonQuery(idOrSlug)
 
   return (
     <div className={baseClass}>

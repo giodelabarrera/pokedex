@@ -5,36 +5,29 @@ import domain from '../domain'
 export const pokemonApi = createApi({
   reducerPath: 'pokemonApi',
   endpoints: builder => ({
-    getPokemon: builder.query({
-      async queryFn(arg, queryApi, extraOptions, baseQuery) {
-        try {
-          const response = await domain
-            .get('pokemon__get_pokemon_use_case')
-            .execute({idOrSlug: arg})
-          return {data: response}
-        } catch (error) {
-          return {error}
-        }
+    pokemon: builder.query({
+      queryFn(idOrSlug) {
+        return domain
+          .get('pokemon__get_pokemon_use_case')
+          .execute({idOrSlug})
+          .then(
+            response => ({data: response}),
+            error => ({error})
+          )
       }
     }),
-    listPokemon: builder.query({
-      async queryFn(
-        {query, limit, sort, offset},
-        queryApi,
-        extraOptions,
-        baseQuery
-      ) {
-        try {
-          const response = await domain
-            .get('pokemon__get_pokemon_list_use_case')
-            .execute({query, limit, sort, offset})
-          return {data: response}
-        } catch (error) {
-          return {error}
-        }
+    searchPokemon: builder.query({
+      queryFn({query, limit, sort, offset}) {
+        return domain
+          .get('pokemon__get_pokemon_list_use_case')
+          .execute({query, limit, sort, offset})
+          .then(
+            response => ({data: response}),
+            error => ({error})
+          )
       }
     })
   })
 })
 
-export const {useGetPokemonQuery, useListPokemonQuery} = pokemonApi
+export const {usePokemonQuery, useSearchPokemonQuery} = pokemonApi
