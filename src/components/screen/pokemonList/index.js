@@ -9,7 +9,7 @@ import PokemonCard from 'components/pokemon/card'
 import FilterSort, {filterSortTypes} from 'components/filter/sort'
 import Spinner from 'components/feedback/spinner'
 import ErrorFeedback from 'components/feedback/error'
-import useInfinitePokemonList from 'components/pokemon/useInfinitePokemonList'
+import useInfiniteSearchPokemonQuery from 'components/pokemon/useInfiniteSearchPokemonQuery'
 
 import NoSearchResults from './noSearchResults'
 
@@ -29,7 +29,7 @@ function ScreenPokemonList() {
   const loadMoreRef = useRef()
 
   const {data, isLoading, isFetchingMore, error, canLoadMore} =
-    useInfinitePokemonList({
+    useInfiniteSearchPokemonQuery({
       query,
       limit: LIMIT,
       sort,
