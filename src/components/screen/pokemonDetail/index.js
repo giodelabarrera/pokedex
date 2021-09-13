@@ -11,11 +11,11 @@ const baseClass = 'pk-ScreenPokemonDetail'
 
 export default function ScreenPokemonDetail() {
   const {idOrSlug} = useParams()
-  const {data, isLoading, error} = usePokemonQuery(idOrSlug)
+  const {data, loading, error} = usePokemonQuery(idOrSlug)
 
   return (
     <div className={baseClass}>
-      {isLoading && <PokemonDetailContentLoader />}
+      {loading && <PokemonDetailContentLoader />}
       {error && <ErrorFeedback error={error} />}
       {data && <PokemonDetail pokemon={data} />}
     </div>
