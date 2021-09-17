@@ -1,6 +1,7 @@
 import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {types} from 'store/actions'
+
+import {types} from 'store/character'
 
 // import pokemonApi from 'store/services/pokemonApi'
 

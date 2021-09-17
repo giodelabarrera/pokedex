@@ -1,9 +1,9 @@
 import {takeLatest} from '@redux-saga/core/effects'
 
-import {fetchCharacter, types} from './actions'
+import {fetchCharacter, types} from './character'
 
 function* mySaga() {
   yield takeLatest(types.FETCH_CHARACTER_REQUEST, fetchCharacter)
 }
 
-export {mySaga}
+export default mySaga

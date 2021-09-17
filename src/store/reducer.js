@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux'
 
-import characterReducer from './character'
+import {characterReducer} from './character'
 
 const rootReducer = combineReducers({
   character: characterReducer

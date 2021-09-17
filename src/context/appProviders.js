@@ -6,7 +6,7 @@ import {DomainProvider} from './domain'
 import {ThemeModeProvider} from './themeMode'
 
 import domain from '../domain'
-import {store} from '../store'
+import store from '../store'
 
 export default function AppProviders({children}) {
   return (
