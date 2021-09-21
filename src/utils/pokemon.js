@@ -1,63 +1,47 @@
 import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
-import {types} from 'store/character'
+import {types as characterTypes} from 'store/character'
+import {types as charactersTypes} from 'store/characters'
 
-// import pokemonApi from 'store/services/pokemonApi'
+function useInfiniteSearchPokemonQuery({query, limit, sort, offset}) {
+  const dispatch = useDispatch()
 
-// const {useSearchPokemonQuery} = pokemonApi
+  const charactersState = useSelector(state => state.characters)
+  const {data, loading, error, loadingMore} = charactersState
 
-// function useInfiniteSearchPokemonQuery({query, limit, sort, offset}) {
-//   const [historicalData, setHistoricalData] = useState()
+  useEffect(() => {
+    dispatch({
+      type: charactersTypes.FETCH_CHARACTERS_REQUEST,
+      payload: {query, limit, sort}
+    })
+  }, [dispatch, limit, query, sort])
 
-//   const firstListPokemonState = useSearchPokemonQuery(
-//     {query, limit, sort},
-//     {skip: offset !== 0}
-//   )
+  useEffect(() => {
+    if (offset === 0) return
+    dispatch({
+      type: charactersTypes.FETCH_CHARACTERS_LOAD_MORE_REQUEST,
+      payload: {query, limit, sort, offset}
+    })
+  }, [dispatch, limit, offset, query, sort])
 
-//   const restListPokemonState = useSearchPokemonQuery(
-//     {query, limit, sort, offset},
-//     {skip: offset === 0}
-//   )
+  const canLoadMore = data ? data.total > data.results.length : false
 
-//   useEffect(() => {
-//     if (firstListPokemonState.data) {
-//       setHistoricalData(firstListPokemonState.data)
-//     }
-//   }, [firstListPokemonState.data])
-
-//   useEffect(() => {
-//     if (restListPokemonState.data) {
-//       setHistoricalData(prevData => ({
-//         ...restListPokemonState.data,
-//         results: prevData.results.concat(restListPokemonState.data.results)
-//       }))
-//     }
-//   }, [restListPokemonState.data])
-
-//   const canLoadMore = historicalData
-//     ? historicalData.total > historicalData.results.length
-//     : false
-
-//   return {
-//     canLoadMore,
-//     data: historicalData,
-//     error: firstListPokemonState.error || restListPokemonState.error,
-//     isLoading: firstListPokemonState.isLoading,
-//     isFetching: firstListPokemonState.isFetching,
-//     isLoadingMore: restListPokemonState.isLoading,
-//     isFetchingMore: restListPokemonState.isFetching
-//   }
-// }
-
-function useInfiniteSearchPokemonQuery({query, limit, sort, offset}) {}
+  return {
+    canLoadMore,
+    data,
+    error: error,
+    isLoading: loading,
+    isLoadingMore: loadingMore
+  }
+}
 
 function usePokemonQuery(idOrSlug) {
   const charactersState = useSelector(state => state.character)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch({type: types.FETCH_CHARACTER_REQUEST, payload: idOrSlug})
+    dispatch({type: characterTypes.FETCH_CHARACTER_REQUEST, payload: idOrSlug})
   }, [dispatch, idOrSlug])
 
   return {...charactersState}
