@@ -24,10 +24,15 @@ function ScreenPokemonList() {
     'sort',
     StringParam
   )
+
   const [offset, setOffset] = useState(0)
   const loadMoreRef = useRef()
 
-  const {data, isLoading, isFetchingMore, error, canLoadMore} =
+  useEffect(() => {
+    setOffset(0)
+  }, [sort])
+
+  const {data, isLoading, isLoadingMore, error, canLoadMore} =
     useInfiniteSearchPokemonQuery({
       query,
       limit: LIMIT,
@@ -36,7 +41,7 @@ function ScreenPokemonList() {
     })
 
   const entry = useIntersectionObserver(loadMoreRef, {
-    enabled: canLoadMore,
+    enabled: isLoading || isLoadingMore ? false : canLoadMore,
     rootMargin: '200px'
   })
   const isVisible = !!entry?.isIntersecting
@@ -45,9 +50,7 @@ function ScreenPokemonList() {
     if (isVisible) setOffset(prevOffset => prevOffset + 1)
   }, [isVisible])
 
-  function handleFilterSortChange(value) {
-    setSort(value)
-  }
+  const handleFilterSortChange = value => setSort(value)
 
   return (
     <div className={baseClass}>
@@ -78,7 +81,7 @@ function ScreenPokemonList() {
                     )}
                   </PokemonList>
                   {canLoadMore && <div ref={loadMoreRef} />}
-                  {canLoadMore && isFetchingMore && (
+                  {canLoadMore && isLoadingMore && (
                     <div className={`${baseClass}-spinnerContainer`}>
                       <Spinner />
                     </div>

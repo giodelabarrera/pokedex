@@ -1,14 +1,13 @@
-import {configureStore} from '@reduxjs/toolkit'
-import {setupListeners} from '@reduxjs/toolkit/query/react'
+import {applyMiddleware, createStore} from 'redux'
+import createSagaMiddleware from 'redux-saga'
 
-import pokemonApi from 'store/services/pokemonApi'
+import rootReducer from './reducer'
+import mySaga from './sagas'
 
-export const store = configureStore({
-  reducer: {
-    [pokemonApi.reducerPath]: pokemonApi.reducer
-  },
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(pokemonApi.middleware)
-})
+const sagaMiddleware = createSagaMiddleware()
 
-setupListeners(store.dispatch)
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
+
+sagaMiddleware.run(mySaga)
+
+export default store
