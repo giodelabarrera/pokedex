@@ -1,5 +1,4 @@
 import 'test/server'
-import * as React from 'react'
 import ReactDOM from 'react-dom'
 
 import 'styles/theme.scss'
