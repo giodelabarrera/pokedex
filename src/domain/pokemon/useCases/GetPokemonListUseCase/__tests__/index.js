@@ -1,7 +1,7 @@
-import {rest, server} from 'test/server'
+import {rest, server} from '../../../../../test/server'
 import GetPokemonListUseCaseFactory from '../factory'
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 test('should return a pokemon list', async () => {
   const mockPokemonList = {

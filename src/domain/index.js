@@ -1,24 +1,20 @@
 const USE_CASES = {
   pokemon__get_pokemon_list_use_case: () =>
-    import(
-      /* webpackChunkName: "pokemon__get_pokemon_list_use_case" */ `./pokemon/useCases/GetPokemonListUseCase/factory`
-    ),
+    import("./pokemon/useCases/GetPokemonListUseCase/factory"),
   pokemon__get_pokemon_use_case: () =>
-    import(
-      /* webpackChunkName: "pokemon__get_pokemon_use_case" */ `./pokemon/useCases/GetPokemonUseCase/factory`
-    )
-}
+    import("./pokemon/useCases/GetPokemonUseCase/factory"),
+};
 
 const entryPoint = {
-  get: useCaseName => {
+  get: (useCaseName) => {
     return {
       async execute(...params) {
-        const {default: useCaseFactory} = await USE_CASES[useCaseName]()
+        const { default: useCaseFactory } = await USE_CASES[useCaseName]();
         // eslint-disable-next-line
-        return useCaseFactory().execute(...params)
-      }
-    }
-  }
-}
+        return useCaseFactory().execute(...params);
+      },
+    };
+  },
+};
 
-export default entryPoint
+export default entryPoint;
