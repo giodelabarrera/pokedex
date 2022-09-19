@@ -1,0 +1,21 @@
+.pk-PokemonStats-linearProgress {
+  background-color: var(--c-default);
+  height: 16px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+
+  &-bar {
+    border-radius: 4px;
+    background-color: #30a7d7;
+    transition: transform 0.4s linear;
+    top: 0;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    transition: transform 0.2s linear;
+    transform-origin: left;
+  }
+}

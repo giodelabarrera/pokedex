@@ -5,7 +5,7 @@ import PokemonListJsonResponseToPokemonListValueObjectJsonMapperFactory from '..
 import PokemonEntityFactory from '../../entity/Pokemon/factory'
 import PokemonListValueObjectFactory from '../../valueObjects/PokemonListValueObject/factory'
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 function httpClient(endpoint, {...customConfig} = {}) {
   const config = {method: 'GET', ...customConfig}

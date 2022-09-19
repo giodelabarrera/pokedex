@@ -1,0 +1,28 @@
+.pk-PokemonStats-stat {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -8px;
+  margin-right: -8px;
+
+  &-nameContainer {
+    width: 64px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  &-valueContainer {
+    width: 48px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  &-value {
+    text-align: right;
+  }
+
+  &-progressContainer {
+    flex: 1;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
