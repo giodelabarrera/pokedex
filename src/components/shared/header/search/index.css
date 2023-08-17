@@ -2,7 +2,7 @@
   width: inherit;
   position: relative;
 
-  &-input {
+  .pk-SharedHeader-search-input {
     width: 100%;
     padding: 8px 16px;
     border-radius: 8px;
@@ -15,7 +15,7 @@
     padding-left: 42px;
   }
 
-  svg {
+  & svg {
     fill: var(--c-gray);
     top: 8px;
     bottom: 0;

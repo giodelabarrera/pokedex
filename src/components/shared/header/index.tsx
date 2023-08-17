@@ -1,18 +1,18 @@
-import React, {useState, useEffect} from 'react'
-import {Link, useNavigate, useMatch} from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Link, useNavigate, useMatch } from 'react-router-dom'
 
 import Logo from './logo'
 import Search from './search'
 import ToggleTheme from './toggleTheme'
-import useQueryParam, {StringParam} from '../../../hooks/useQueryParam'
-import {useThemeMode} from '../../../context/themeMode'
+import useQueryParam, { StringParam } from '../../../hooks/useQueryParam'
+import { useThemeMode } from '../../../context/themeMode'
 
-import './index.scss'
+import './index.css'
 
 const baseClass = 'pk-SharedHeader'
 
 export default function SharedHeader() {
-  const {themeMode, setThemeMode} = useThemeMode()
+  const { themeMode, setThemeMode } = useThemeMode()
   const [query = '', setQuery] = useQueryParam('query', StringParam)
   const navigate = useNavigate()
   const match = useMatch('/')

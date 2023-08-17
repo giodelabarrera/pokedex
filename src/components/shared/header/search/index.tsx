@@ -1,7 +1,7 @@
 import React from 'react'
 
 import SearchIcon from './searchIcon'
-import './index.scss'
+import './index.css'
 
 const baseClass = 'pk-SharedHeader-search'
 

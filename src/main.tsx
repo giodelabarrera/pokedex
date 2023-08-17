@@ -12,7 +12,7 @@ initServer().then(() =>
   ReactDOM.render(
     <React.StrictMode>
       <AppProviders>
-        <h1>Hello</h1>
+        <App />
       </AppProviders>
     </React.StrictMode>,
     document.getElementById('root')

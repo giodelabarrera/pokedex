@@ -3,7 +3,7 @@ import React from 'react'
 import SunIcon from './sunIcon'
 import MoonIcon from './moonIcon'
 
-import './index.scss'
+import './index.css'
 
 const baseClass = 'pk-SharedHeader-toggleTheme'
 
