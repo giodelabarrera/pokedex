@@ -8,7 +8,7 @@ import './index.css'
 
 const baseClass = 'pk-SharedHeader-toggleTheme'
 
-type ToggleThemeProps = {
+export type ToggleThemeProps = {
   mode: ThemeMode,
   onClick: (newMode: ThemeMode) => void
 }

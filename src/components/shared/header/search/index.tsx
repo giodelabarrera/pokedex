@@ -1,12 +1,16 @@
-import React from 'react'
-
 import SearchIcon from './searchIcon'
 import './index.css'
 
 const baseClass = 'pk-SharedHeader-search'
 
-export default function Search({value = '', placeholder, onChange}) {
-  function handleChange(e) {
+type SearchProps = {
+  value: string;
+  placeholder: string;
+  onChange: (value: string) => void;
+}
+
+export default function Search({ value = '', placeholder, onChange }: SearchProps) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     onChange(e.target.value)
   }
 

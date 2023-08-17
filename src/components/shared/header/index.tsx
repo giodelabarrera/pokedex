@@ -5,7 +5,7 @@ import Logo from './logo'
 import Search from './search'
 import ToggleTheme from './toggleTheme'
 import useQueryParam, { StringParam } from '../../../hooks/useQueryParam'
-import { useThemeMode } from '../../../context/themeMode'
+import { ThemeMode, useThemeMode } from '../../../context/themeMode'
 
 import './index.css'
 
@@ -23,15 +23,16 @@ export default function SharedHeader() {
     setSearchValue(query)
   }, [query])
 
-  function handleThemeModeClick(themeMode) {
+
+  function handleThemeModeClick(themeMode: ThemeMode) {
     setThemeMode(themeMode)
   }
 
-  function handleSearchChange(searchValue) {
+  function handleSearchChange(searchValue: string) {
     setSearchValue(searchValue)
   }
 
-  function handleSearchFormSubmit(e) {
+  function handleSearchFormSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     // match if it is homepage
     if (match) {
