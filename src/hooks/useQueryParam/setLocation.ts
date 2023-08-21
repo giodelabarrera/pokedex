@@ -25,15 +25,20 @@ function updateInLocation(queryReplacements: Record<string, any>, location: MyLo
   return updateLocation(newQueryReplacements, location)
 }
 
-type UpdateType = 'replace' | 'push' | 'replaceIn' | 'pushIn'
+export enum UpdateType {
+  Replace = 'replace',
+  Push = 'push',
+  ReplaceIn = 'replaceIn',
+  PushIn = 'pushIn'
+}
 
 function createLocationWithChanges(queryReplacements: Record<string, any>, location: MyLocation, updateType: UpdateType) {
   switch (updateType) {
-    case 'replace':
-    case 'push':
+    case UpdateType.Replace:
+    case UpdateType.Push:
       return updateLocation(queryReplacements, location)
-    case 'replaceIn':
-    case 'pushIn':
+    case UpdateType.ReplaceIn:
+    case UpdateType.PushIn:
     default:
       return updateInLocation(queryReplacements, location)
   }
@@ -41,12 +46,12 @@ function createLocationWithChanges(queryReplacements: Record<string, any>, locat
 
 function updateUrlQuery(navigate: NavigateFunction, location: Location, updateType: UpdateType) {
   switch (updateType) {
-    case 'pushIn':
-    case 'push':
+    case UpdateType.PushIn:
+    case UpdateType.Push:
       navigate(location)
       break
-    case 'replaceIn':
-    case 'replace':
+    case UpdateType.ReplaceIn:
+    case UpdateType.Replace:
     default:
       navigate(location, { replace: true })
       break

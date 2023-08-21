@@ -2,7 +2,7 @@ import { useMemo, useCallback } from 'react'
 import { useNavigate, useLocation, type Location } from 'react-router-dom'
 import queryString from 'query-string';
 
-import setLocation from './setLocation'
+import setLocation, { UpdateType } from './setLocation'
 import { type ParamConfig } from './params';
 
 function useQueryParam(name: string, paramConfig: ParamConfig) {
@@ -15,7 +15,7 @@ function useQueryParam(name: string, paramConfig: ParamConfig) {
   )
 
   const setValue = useCallback(
-    (newValue: string, updateType: 'pushIn' = 'pushIn') => {
+    (newValue: string, updateType: UpdateType = UpdateType.PushIn) => {
       const newEncodedValue = paramConfig.encode(newValue)
       // update new url
       setLocation({ [name]: newEncodedValue }, updateType, location, navigate)
