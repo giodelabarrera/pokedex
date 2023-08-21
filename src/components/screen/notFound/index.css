@@ -3,7 +3,7 @@
     text-align: center;
   }
 
-  &-title {
+  .pk-ScreenNotFound-title {
     color: var(--c-primary);
     font-size: 56px;
     margin: 0;
@@ -14,16 +14,16 @@
     }
   }
 
-  &-description {
+  .pk-ScreenNotFound-description {
     color: var(--c-font);
     margin-bottom: 24px;
 
-    h2,
-    p {
+    & h2,
+    & p {
       margin: 0;
     }
 
-    h2 {
+    & h2 {
       margin-bottom: 8px;
 
       @media (min-width: 768px) {
@@ -31,16 +31,16 @@
       }
     }
 
-    p {
+    & p {
       line-height: 24px;
     }
   }
 
-  &-imageContainer {
+  .pk-ScreenNotFound-imageContainer {
     display: flex;
     justify-content: center;
 
-    svg {
+    & svg {
       width: 344px;
       height: 344px;
     }
