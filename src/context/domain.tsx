@@ -1,8 +1,14 @@
-import React, {useContext} from 'react'
+import { useContext, createContext } from 'react'
+import { Domain } from '../domain';
 
-const DomainContext = React.createContext()
+const DomainContext = createContext<Domain>(undefined!)
 
-function DomainProvider({domain, ...restProps}) {
+type DomainProviderProps = {
+  domain: Domain,
+  children?: React.ReactNode;
+}
+
+function DomainProvider({ domain, ...restProps }: DomainProviderProps) {
   return <DomainContext.Provider value={domain} {...restProps} />
 }
 
@@ -14,4 +20,4 @@ function useDomain() {
   return context
 }
 
-export {DomainProvider, useDomain}
+export { DomainProvider, useDomain }
