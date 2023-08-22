@@ -9,4 +9,7 @@ const useCases = {
 
 const domain = createDomain(useCases)
 
+export type Domain = typeof domain
+
 export default domain
+
