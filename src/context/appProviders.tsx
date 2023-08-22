@@ -1,11 +1,15 @@
-import {BrowserRouter as Router} from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 
-import {DomainProvider} from './domain'
-import {ThemeModeProvider} from './themeMode'
+import { DomainProvider } from './domain'
+import { ThemeModeProvider } from './themeMode'
 
 import domain from '../domain'
 
-export default function AppProviders({children}) {
+type AppProvidersProps = {
+  children?: React.ReactNode;
+}
+
+export default function AppProviders({ children }: AppProvidersProps) {
   return (
     <DomainProvider domain={domain}>
       <ThemeModeProvider>
