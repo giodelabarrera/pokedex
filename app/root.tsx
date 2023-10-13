@@ -9,24 +9,14 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration,
-  useLoaderData,
+  ScrollRestoration
 } from "@remix-run/react";
-
-import { getPokedex } from "./data";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: appStylesHref },
 ];
 
-export const loader = async () => {
-  const pokedex = await getPokedex();
-  return json({ pokedex });
-};
-
 export default function App() {
-  const { pokedex } = useLoaderData<typeof loader>();
-
   return (
     <html lang="en">
       <head>
@@ -39,7 +29,6 @@ export default function App() {
         <div className="pk-App">
           <Header />
           <main>
-            <pre>{JSON.stringify(pokedex, null, 2)}</pre>
             <Outlet />
           </main>
         </div>
