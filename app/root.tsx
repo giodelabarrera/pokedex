@@ -1,4 +1,4 @@
-import { json, type LinksFunction } from "@remix-run/node";
+import { type LinksFunction } from "@remix-run/node";
 
 import appStylesHref from "./app.css";
 
