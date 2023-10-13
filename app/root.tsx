@@ -1,4 +1,4 @@
-import type { LinksFunction } from "@remix-run/node";
+import { json, type LinksFunction } from "@remix-run/node";
 
 import appStylesHref from "./app.css";
 
@@ -10,13 +10,22 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
+
+import { getPokedex } from "./data";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: appStylesHref },
 ];
 
+export const loader = async () => {
+  const pokedex = await getPokedex();
+  return json({ pokedex });
+};
+
 export default function App() {
+  const { pokedex } = useLoaderData<typeof loader>();
 
   return (
     <html lang="en">
@@ -30,39 +39,10 @@ export default function App() {
         <div className="pk-App">
           <Header />
           <main>
+            <pre>{JSON.stringify(pokedex, null, 2)}</pre>
             <Outlet />
           </main>
         </div>
-
-
-        {/* <div id="sidebar">
-          <h1>Remix Contacts</h1>
-          <div>
-            <Form id="search-form" role="search" >
-              <input
-                id="q"
-                aria-label="Search contacts"
-                defaultValue={""}
-                placeholder="Search"
-                type="search"
-                name="q"
-              />
-              <div id="search-spinner" aria-hidden hidden={true}
-              />
-            </Form>
-            <Form method="post">
-              <button type="submit">New</button>
-            </Form>
-          </div>
-          <nav>
-            <p>
-              <i>No contacts</i>
-            </p>
-          </nav>
-        </div>
-        <div id="detail">
-          <Outlet />
-        </div> */}
 
         <ScrollRestoration />
         <Scripts />
