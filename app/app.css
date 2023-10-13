@@ -1,4 +1,4 @@
-html {
+/* html {
   box-sizing: border-box;
 }
 *,
@@ -394,4 +394,135 @@ i {
   align-items: center;
   justify-content: center;
   width: 100%;
+} */
+
+:root {
+  --c-default: #d8e3ec;
+  --c-primary: #44649e;
+  --c-secondary: #baaf78;
+  --c-secondary-light: #d5cfae;
+  --c-gray: gray;
+  --c-white: #ffffff;
+  --c-black: #000000;
+  --ff-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --p-base: 8px;
+
+  --c-font: var(--c-black);
+  --c-background: #ffffff;
+}
+
+[data-theme="dark"] {
+  --c-default: #404d56;
+  --c-primary: #c2d8ff;
+  --c-secondary: #5e5531;
+  --c-secondary-light: #93854d;
+
+  --c-font: var(--c-white);
+  --c-background: #353b40;
+}
+
+* {
+  box-sizing: border-box;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  font-family: var(--ff-sans-serif);
+  margin: 0;
+  background-color: var(--c-background);
+}
+
+main {
+  margin-bottom: 40px;
+}
+
+.pk-App {
+  max-width: 1150px;
+  margin: 0 auto;
+
+  main {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.pk-SharedHeader {
+  padding-left: 16px;
+  padding-right: 16px;
+
+  .pk-SharedHeader-content {
+    display: flex;
+    height: inherit;
+    align-items: center;
+  }
+
+  .pk-SharedHeader-logoContainer {
+    flex: 0 0 auto;
+    padding: 16px;
+    display: inline-flex;
+    margin-left: -16px;
+    color: var(--c-primary);
+  }
+
+  .pk-SharedHeader-offset {
+    flex: 1 1 auto;
+  }
+
+  .pk-SharedHeader-searchContainer {
+    width: 100%;
+    display: flex;
+
+    @media (min-width: 576px) {
+      width: auto;
+    }
+  }
+
+  .pk-SharedHeader-searchForm {
+    width: inherit;
+  }
+
+  .pk-SharedHeader-themeModeContainer {
+    flex: 0 0 auto;
+    padding: 16px;
+    display: inline-flex;
+    margin-right: -16px;
+  }
+}
+
+.pk-SharedHeader-search {
+  width: inherit;
+  position: relative;
+
+  .pk-SharedHeader-search-input {
+    width: 100%;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: #eee;
+    border: none;
+    height: 40px;
+    font-size: 16px;
+    background: var(--c-default);
+    color: var(--c-font);
+    padding-left: 42px;
+  }
+
+  & svg {
+    fill: var(--c-gray);
+    top: 8px;
+    bottom: 0;
+    position: absolute;
+    left: 12px;
+  }
+}
+
+.pk-SharedHeader-toggleTheme {
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  padding: 0;
+  color: var(--c-primary);
 }

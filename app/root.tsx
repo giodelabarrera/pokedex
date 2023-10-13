@@ -1,60 +1,22 @@
-import { json, redirect } from "@remix-run/node";
-
-import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
-
-import { createEmptyContact, getContacts } from "./data";
+import type { LinksFunction } from "@remix-run/node";
 
 import appStylesHref from "./app.css";
 
 import {
-  Form,
+  Link,
   Links,
   LiveReload,
   Meta,
-  NavLink,
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
-  useNavigation,
-  useSubmit,
 } from "@remix-run/react";
-import { useEffect, useRef } from "react";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: appStylesHref },
 ];
 
-export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const url = new URL(request.url);
-  const q = url.searchParams.get("q");
-  const contacts = await getContacts(q);
-  return json({ contacts, q });
-};
-
-export const action = async () => {
-  const contact = await createEmptyContact();
-  return redirect(`/contacts/${contact.id}/edit`);
-};
-
 export default function App() {
-  const { contacts, q } = useLoaderData<typeof loader>();
-  const navigation = useNavigation();
-  const submit = useSubmit()
-  const searchInputRef = useRef<HTMLInputElement>(null)
-
-  const searching =
-    navigation.location &&
-    new URLSearchParams(navigation.location.search).has(
-      "q"
-    );
-
-  useEffect(() => {
-    const searchField = searchInputRef.current
-    if (searchField instanceof HTMLInputElement) {
-      searchField.value = q || "";
-    }
-  }, [q]);
 
   return (
     <html lang="en">
@@ -65,26 +27,27 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <div id="sidebar">
+        <div className="pk-App">
+          <Header />
+          <main>
+            <Outlet />
+          </main>
+        </div>
+
+
+        {/* <div id="sidebar">
           <h1>Remix Contacts</h1>
           <div>
-            <Form id="search-form" role="search" onChange={(event) => {
-              const isFirstSearch = q === null;
-              submit(event.currentTarget, {
-                replace: !isFirstSearch,
-              });
-            }}>
+            <Form id="search-form" role="search" >
               <input
-                ref={searchInputRef}
                 id="q"
                 aria-label="Search contacts"
-                className={searching ? "loading" : ""}
-                defaultValue={q || ""}
+                defaultValue={""}
                 placeholder="Search"
                 type="search"
                 name="q"
               />
-              <div id="search-spinner" aria-hidden hidden={!searching}
+              <div id="search-spinner" aria-hidden hidden={true}
               />
             </Form>
             <Form method="post">
@@ -92,48 +55,14 @@ export default function App() {
             </Form>
           </div>
           <nav>
-            {contacts.length ? (
-              <ul>
-                {contacts.map((contact) => (
-                  <li key={contact.id}>
-                    <NavLink
-                      className={({ isActive, isPending }) =>
-                        isActive
-                          ? "active"
-                          : isPending
-                            ? "pending"
-                            : ""
-                      }
-                      to={`contacts/${contact.id}`}
-                    >
-                      {contact.first || contact.last ? (
-                        <>
-                          {contact.first} {contact.last}
-                        </>
-                      ) : (
-                        <i>No Name</i>
-                      )}{" "}
-                      {contact.favorite ? (
-                        <span>★</span>
-                      ) : null}
-                    </NavLink>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>
-                <i>No contacts</i>
-              </p>
-            )}
-
+            <p>
+              <i>No contacts</i>
+            </p>
           </nav>
         </div>
-        <div className={
-          navigation.state === "loading" && !searching
-            ? "loading" : ""
-        } id="detail">
+        <div id="detail">
           <Outlet />
-        </div>
+        </div> */}
 
         <ScrollRestoration />
         <Scripts />
@@ -141,4 +70,202 @@ export default function App() {
       </body>
     </html>
   );
+}
+
+function useThemeMode() {
+  return {
+    themeMode: 'dark',
+    setThemeMode: () => { }
+  }
+}
+
+function Header() {
+  const { themeMode, setThemeMode } = useThemeMode()
+  // const [query = '', setQuery] = useQueryParam('query', StringParam)
+  // const navigate = useNavigate()
+  // const match = useMatch('/')
+
+  // const [searchValue, setSearchValue] = useState(query)
+  const searchValue = ''
+
+  // useEffect(() => {
+  //   setSearchValue(query)
+  // }, [query])
+
+  function handleThemeModeClick(themeMode) {
+    setThemeMode(themeMode)
+  }
+
+  function handleSearchChange(searchValue) {
+    // setSearchValue(searchValue)
+  }
+
+  function handleSearchFormSubmit(e) {
+    // e.preventDefault()
+    // // match if it is homepage
+    // if (match) {
+    //   // simply update query param
+    //   setQuery(searchValue)
+    // } else {
+    //   // go to homepage with query param
+    //   navigate(`/?query=${searchValue}`)
+    // }
+  }
+
+  const baseClass = 'pk-SharedHeader'
+
+  return (
+    <header className={baseClass}>
+      <div className={`${baseClass}-content`}>
+        <Link to="/" className={`${baseClass}-logoContainer`}>
+          <Logo />
+        </Link>
+        <div className={`${baseClass}-offset`} />
+        <div className={`${baseClass}-searchContainer`}>
+          <form
+            className={`${baseClass}-searchForm`}
+            onSubmit={handleSearchFormSubmit}
+          >
+            <Search
+              value={searchValue}
+              placeholder="Name or Number"
+              onChange={handleSearchChange}
+            />
+          </form>
+        </div>
+        <div className={`${baseClass}-themeModeContainer`}>
+          <ToggleTheme mode={themeMode} onClick={handleThemeModeClick} />
+        </div>
+      </div>
+    </header>
+  )
+}
+
+function Logo() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="40"
+      height="40"
+      viewBox="0 0 1024 1024"
+      fill="currentColor"
+    >
+      <path
+        strokeWidth="1"
+        d="M 512.00,96.80
+           C 304.28,96.94 132.17,249.33 101.24,448.41
+             101.24,448.41 312.51,448.80 312.51,448.80
+             339.50,364.37 418.60,303.25 512.00,303.20
+             605.25,303.31 684.24,364.33 711.33,448.61
+             711.33,448.61 922.53,448.80 922.53,448.80
+             891.82,249.60 719.75,97.06 512.00,96.80
+             512.00,96.80 512.00,96.80 512.00,96.80 Z
+           M 512.00,376.80
+           C 436.89,376.80 376.00,437.69 376.00,512.80
+             376.00,587.91 436.89,648.80 512.00,648.80
+             512.00,648.80 512.00,648.80 512.00,648.80
+             587.11,648.80 648.00,587.91 648.00,512.80
+             648.00,512.80 648.00,512.80 648.00,512.80
+             648.00,437.69 587.11,376.80 512.00,376.80
+             512.00,376.80 512.00,376.80 512.00,376.80
+             512.00,376.80 512.00,376.80 512.00,376.80 Z
+           M 101.47,576.80
+           C 132.18,776.00 304.25,928.54 512.00,928.80
+             719.72,928.66 891.83,776.27 922.76,577.19
+             922.76,577.19 711.49,576.80 711.49,576.80
+             684.50,661.23 605.40,722.35 512.00,722.40
+             418.75,722.29 339.76,661.27 312.67,576.99
+             312.67,576.99 101.47,576.80 101.47,576.80
+             101.47,576.80 101.47,576.80 101.47,576.80 Z"
+      />
+    </svg>
+  )
+}
+
+function Search({ value = '', placeholder, onChange }) {
+  function handleChange(event) {
+    onChange(event.target.value)
+  }
+
+  const baseClass = 'pk-SharedHeader-search'
+
+  return (
+    <div className={baseClass}>
+      <SearchIcon />
+      <input
+        className={`${baseClass}-input`}
+        type="text"
+        value={value}
+        placeholder={placeholder}
+        onChange={handleChange}
+      />
+    </div>
+  )
+}
+
+function SearchIcon() {
+  return (
+    <svg height="20" width="20" viewBox="0 0 24 24" role="img">
+      <path d="M10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6m13.12 2.88l-4.26-4.26A9.842 9.842 0 0 0 20 10c0-5.52-4.48-10-10-10S0 4.48 0 10s4.48 10 10 10c1.67 0 3.24-.41 4.62-1.14l4.26 4.26a3 3 0 0 0 4.24 0 3 3 0 0 0 0-4.24"></path>
+    </svg>
+  )
+}
+
+function ToggleTheme({ mode = 'light', onClick }) {
+  const handleClick = event => {
+    const newMode = mode === 'light' ? 'dark' : 'light'
+    onClick(newMode)
+  }
+
+  const ModeIcon = mode === 'light' ? MoonIcon : SunIcon
+
+  const baseClass = 'pk-SharedHeader-toggleTheme'
+
+  return (
+    <button className={baseClass} onClick={handleClick}>
+      <ModeIcon />
+    </button>
+  )
+}
+
+function MoonIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="40"
+      height="40"
+      stroke="currentColor"
+      strokeWidth="2"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  )
+}
+
+function SunIcon() {
+  return (
+    <svg
+      width="40"
+      height="40"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  )
 }
