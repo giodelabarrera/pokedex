@@ -129,6 +129,19 @@ main {
   color: var(--c-primary);
 }
 
+.pk-ScreenPokemonList {
+  .pk-ScreenPokemonList-filterBar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+  }
+
+  .pk-ScreenPokemonList-spinnerContainer {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 .pk-ScreenPokemonList-noSearchResults {
   text-align: center;
   color: var(--c-font);
@@ -172,7 +185,7 @@ main {
       height: 236px;
     }
 
-    img {
+    & img {
       width: 100%;
       height: 100%;
       object-fit: contain;
@@ -208,70 +221,70 @@ main {
   border-radius: 4px;
   color: #fff;
 
-  .pk-PokemonType--small {
+  &.pk-PokemonType--small {
     padding: 4px;
     font-size: 14px;
     width: 72px;
   }
 
-  .pk-PokemonType--medium {
+  &.pk-PokemonType--medium {
     padding: 8px;
     font-size: 16px;
     width: 104px;
   }
 
-  .pk-PokemonType.u-normal {
+  &.u-normal {
     background-color: #a4acaf;
   }
-  .pk-PokemonType.u-fighting {
+  &.u-fighting {
     background-color: #d56723;
   }
-  .pk-PokemonType.u-flying {
+  &.u-flying {
     background: linear-gradient(180deg, #3dc7ef 50%, #bdb9b8 50%);
   }
-  .pk-PokemonType.u-poison {
+  &.u-poison {
     background-color: #b97fc9;
   }
-  .pk-PokemonType.u-ground {
+  &.u-ground {
     background-color: #f7de3f;
   }
-  .pk-PokemonType.u-rock {
+  &.u-rock {
     background-color: #a38c21;
   }
-  .pk-PokemonType.u-bug {
+  &.u-bug {
     background-color: #729f3f;
   }
-  .pk-PokemonType.u-ghost {
+  &.u-ghost {
     background-color: #7b62a3;
   }
-  .pk-PokemonType.u-steel {
+  &.u-steel {
     background-color: #9eb7b8;
   }
-  .pk-PokemonType.u-fire {
+  &.u-fire {
     background-color: #fd7d24;
   }
-  .pk-PokemonType.u-water {
+  &.u-water {
     background-color: #4592c4;
   }
-  .pk-PokemonType.u-grass {
+  &.u-grass {
     background-color: #9bcc50;
   }
-  .pk-PokemonType.u-electric {
+  &.u-electric {
     background-color: #eed535;
   }
-  .pk-PokemonType.u-psychic {
+  &.u-psychic {
     background-color: #f366b9;
   }
-  .pk-PokemonType.u-ice {
+  &.u-ice {
     background-color: #51c4e7;
   }
-  .pk-PokemonType.u-dragon {
+  &.u-dragon {
     background: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);
   }
-  .pk-PokemonType.u-dark {
+  &.u-dark {
     background-color: #707070;
   }
-  .pk-PokemonType.u-fairy {
+  &.u-fairy {
     background-color: #fdb9e9;
   }
 }
