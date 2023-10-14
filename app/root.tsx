@@ -1,8 +1,5 @@
 import { json, redirect } from "@remix-run/node";
 import type { LinksFunction, ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
-
-import appStylesHref from "./app.css";
-
 import {
   Form,
   Link,
@@ -15,6 +12,8 @@ import {
   useLoaderData
 } from "@remix-run/react";
 import { forwardRef, useEffect, useRef } from "react";
+
+import appStylesHref from "./app.css";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: appStylesHref },
