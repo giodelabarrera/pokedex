@@ -1,5 +1,5 @@
-import { json, redirect } from "@remix-run/node";
-import type { LinksFunction, ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
+import { json } from "@remix-run/node";
+import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 import {
   Form,
   Link,
