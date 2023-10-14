@@ -40,6 +40,12 @@ main {
   margin-bottom: 40px;
 }
 
+main.loading {
+  opacity: 0.25;
+  transition: opacity 200ms;
+  transition-delay: 200ms;
+}
+
 .pk-App {
   max-width: 1150px;
   margin: 0 auto;

@@ -9,7 +9,9 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData
+  useLoaderData,
+  useNavigation,
+  useSubmit
 } from "@remix-run/react";
 import { forwardRef, useEffect, useRef } from "react";
 
@@ -26,6 +28,14 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 };
 
 export default function App() {
+  const navigation = useNavigation();
+
+  const searching =
+    navigation.location &&
+    new URLSearchParams(navigation.location.search).has(
+      "query"
+    );
+
   return (
     <html lang="en">
       <head>
@@ -37,7 +47,10 @@ export default function App() {
       <body data-theme="dark">
         <div className="pk-App">
           <Header />
-          <main>
+          <main className={
+            navigation.state === "loading" && !searching
+              ? "loading" : ""
+          }>
             <Outlet />
           </main>
         </div>
@@ -52,6 +65,7 @@ export default function App() {
 
 function Header() {
   const { query } = useLoaderData<typeof loader>()
+  const submit = useSubmit()
   const searchInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -70,7 +84,9 @@ function Header() {
         </Link>
         <div className={`${baseClass}-offset`} />
         <div className={`${baseClass}-searchContainer`}>
-          <Form id="search-form" role="search">
+          <Form id="search-form" role="search" onChange={(event) => {
+            submit(event.currentTarget);
+          }}>
             <Search
               ref={searchInputRef}
               placeholder="Name or Number"
