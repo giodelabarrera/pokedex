@@ -25,7 +25,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body data-theme="dark">
         <div className="pk-App">
           <Header />
           <main>
@@ -41,15 +41,7 @@ export default function App() {
   );
 }
 
-function useThemeMode() {
-  return {
-    themeMode: 'dark',
-    setThemeMode: () => { }
-  }
-}
-
 function Header() {
-  const { themeMode, setThemeMode } = useThemeMode()
   // const [query = '', setQuery] = useQueryParam('query', StringParam)
   // const navigate = useNavigate()
   // const match = useMatch('/')
@@ -60,10 +52,6 @@ function Header() {
   // useEffect(() => {
   //   setSearchValue(query)
   // }, [query])
-
-  function handleThemeModeClick(themeMode) {
-    setThemeMode(themeMode)
-  }
 
   function handleSearchChange(searchValue) {
     // setSearchValue(searchValue)
@@ -101,9 +89,6 @@ function Header() {
               onChange={handleSearchChange}
             />
           </form>
-        </div>
-        <div className={`${baseClass}-themeModeContainer`}>
-          <ToggleTheme mode={themeMode} onClick={handleThemeModeClick} />
         </div>
       </div>
     </header>
@@ -176,65 +161,6 @@ function SearchIcon() {
   return (
     <svg height="20" width="20" viewBox="0 0 24 24" role="img">
       <path d="M10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6m13.12 2.88l-4.26-4.26A9.842 9.842 0 0 0 20 10c0-5.52-4.48-10-10-10S0 4.48 0 10s4.48 10 10 10c1.67 0 3.24-.41 4.62-1.14l4.26 4.26a3 3 0 0 0 4.24 0 3 3 0 0 0 0-4.24"></path>
-    </svg>
-  )
-}
-
-function ToggleTheme({ mode = 'light', onClick }) {
-  const handleClick = event => {
-    const newMode = mode === 'light' ? 'dark' : 'light'
-    onClick(newMode)
-  }
-
-  const ModeIcon = mode === 'light' ? MoonIcon : SunIcon
-
-  const baseClass = 'pk-SharedHeader-toggleTheme'
-
-  return (
-    <button className={baseClass} onClick={handleClick}>
-      <ModeIcon />
-    </button>
-  )
-}
-
-function MoonIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="40"
-      height="40"
-      stroke="currentColor"
-      strokeWidth="2"
-      fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-    </svg>
-  )
-}
-
-function SunIcon() {
-  return (
-    <svg
-      width="40"
-      height="40"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="5"></circle>
-      <line x1="12" y1="1" x2="12" y2="3"></line>
-      <line x1="12" y1="21" x2="12" y2="23"></line>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-      <line x1="1" y1="12" x2="3" y2="12"></line>
-      <line x1="21" y1="12" x2="23" y2="12"></line>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
     </svg>
   )
 }
