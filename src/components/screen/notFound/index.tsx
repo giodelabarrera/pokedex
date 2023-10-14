@@ -1,7 +1,5 @@
-import React from 'react'
-
 import EmptyPokeball from './emptyPokeball'
-import './index.scss'
+import './index.css'
 
 const baseClass = 'pk-ScreenNotFound'
 

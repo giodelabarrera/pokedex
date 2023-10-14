@@ -1,20 +1,23 @@
-import {stringify, parseUrl, parse} from 'query-string'
+import queryString from 'query-string';
+import { type Location, type NavigateFunction } from 'react-router';
 
-function updateLocation(queryReplacements, location) {
-  const encodedSearchString = stringify(queryReplacements)
+type MyLocation = Location & { href?: string }
+
+function updateLocation(queryReplacements: Record<string, any>, location: MyLocation) {
+  const encodedSearchString = queryString.stringify(queryReplacements)
   const search = encodedSearchString && `?${encodedSearchString}`
-  const href = parseUrl(location.href || '').url + search
+  const href = queryString.parseUrl(location.href ?? '').url + search
 
   return {
     ...location,
     key: `${Date.now()}`,
     href,
     search
-  }
+  } as MyLocation
 }
 
-function updateInLocation(queryReplacements, location) {
-  const currentQueryParams = parse(location.search)
+function updateInLocation(queryReplacements: Record<string, any>, location: MyLocation) {
+  const currentQueryParams = queryString.parse(location.search)
   const newQueryReplacements = {
     ...currentQueryParams,
     ...queryReplacements
@@ -22,34 +25,41 @@ function updateInLocation(queryReplacements, location) {
   return updateLocation(newQueryReplacements, location)
 }
 
-function createLocationWithChanges(queryReplacements, location, updateType) {
+export enum UpdateType {
+  Replace = 'replace',
+  Push = 'push',
+  ReplaceIn = 'replaceIn',
+  PushIn = 'pushIn'
+}
+
+function createLocationWithChanges(queryReplacements: Record<string, any>, location: MyLocation, updateType: UpdateType) {
   switch (updateType) {
-    case 'replace':
-    case 'push':
+    case UpdateType.Replace:
+    case UpdateType.Push:
       return updateLocation(queryReplacements, location)
-    case 'replaceIn':
-    case 'pushIn':
+    case UpdateType.ReplaceIn:
+    case UpdateType.PushIn:
     default:
       return updateInLocation(queryReplacements, location)
   }
 }
 
-function updateUrlQuery(navigate, location, updateType) {
+function updateUrlQuery(navigate: NavigateFunction, location: Location, updateType: UpdateType) {
   switch (updateType) {
-    case 'pushIn':
-    case 'push':
+    case UpdateType.PushIn:
+    case UpdateType.Push:
       navigate(location)
       break
-    case 'replaceIn':
-    case 'replace':
+    case UpdateType.ReplaceIn:
+    case UpdateType.Replace:
     default:
-      navigate(location, {replace: true})
+      navigate(location, { replace: true })
       break
   }
 }
 
-function setLocation(queryReplacements, updateType, location, navigate) {
-  const newLocation = createLocationWithChanges(queryReplacements, location)
+function setLocation(queryReplacements: Record<string, any>, updateType: UpdateType, location: MyLocation, navigate: NavigateFunction) {
+  const newLocation = createLocationWithChanges(queryReplacements, location, updateType)
   updateUrlQuery(navigate, newLocation, updateType)
 }
 

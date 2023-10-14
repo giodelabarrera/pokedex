@@ -1,35 +1,43 @@
-import React, {useContext, useState, useEffect} from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
 
-const INITIAL_THEME_MODE = import.meta.env.VITE_INITIAL_THEME_MODE
+export type ThemeMode = 'dark' | 'light'
+type SetThemeMode = React.Dispatch<React.SetStateAction<ThemeMode>>
 
-const ThemeModeContext = React.createContext()
+export type ThemeModeContextValue = {
+  themeMode: ThemeMode;
+  setThemeMode: SetThemeMode;
+}
 
-function ThemeModeProvider({...restProps}) {
+const INITIAL_THEME_MODE = import.meta.env.VITE_INITIAL_THEME_MODE as ThemeMode
+
+const ThemeModeContext = createContext<ThemeModeContextValue>(undefined!)
+
+function ThemeModeProvider({ ...restProps }) {
   const [themeMode, setThemeMode] = useState(() => getInitialThemeMode())
 
   useEffect(() => {
     setClientThemeMode(themeMode)
   }, [themeMode])
 
-  const contextValue = {
+  const contextValue: ThemeModeContextValue = {
     themeMode,
     setThemeMode
-  }
+  } as const
 
   return <ThemeModeContext.Provider value={contextValue} {...restProps} />
 }
 
 function getInitialThemeMode() {
-  const modeFromLocalStorage = localStorage.getItem('theme')
+  const modeFromLocalStorage = localStorage.getItem('theme') as ThemeMode
   if (modeFromLocalStorage) return modeFromLocalStorage
 
-  const modeFromDOM = document.documentElement.getAttribute('data-theme')
+  const modeFromDOM = document.documentElement.getAttribute('data-theme') as ThemeMode
   if (modeFromDOM) return modeFromDOM
 
   return INITIAL_THEME_MODE
 }
 
-function setClientThemeMode(mode) {
+function setClientThemeMode(mode: ThemeMode) {
   document.documentElement.setAttribute('data-theme', mode)
   localStorage.setItem('theme', mode)
 }
@@ -42,4 +50,4 @@ function useThemeMode() {
   return context
 }
 
-export {ThemeModeProvider, useThemeMode}
+export { ThemeModeProvider, useThemeMode }

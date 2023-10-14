@@ -1,4 +1,6 @@
-function getEncodedValue(input, allowEmptyString) {
+type Input = null | string | Array<string>
+
+function getEncodedValue(input: Input, allowEmptyString: boolean) {
   if (input === null) return input
   // '' or []
   if (
@@ -15,12 +17,12 @@ function getEncodedValue(input, allowEmptyString) {
   return str
 }
 
-export function encodeString(str) {
+export function encodeString(str: null | string | number) {
   if (str === null) return str
   return String(str)
 }
 
-export function decodeString(input) {
+export function decodeString(input: Input) {
   const str = getEncodedValue(input, true)
   if (str === null) return str
   return String(str)

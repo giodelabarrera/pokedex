@@ -1,11 +1,11 @@
-import React from 'react'
-import {Routes, Route} from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
-import ScreenPokemonList from './components/screen/pokemonList'
-import ScreenPokemonDetail from './components/screen/pokemonDetail'
+// import ScreenPokemonList from './components/screen/pokemonList'
+// import ScreenPokemonDetail from './components/screen/pokemonDetail'
 import ScreenNotFound from './components/screen/notFound'
 import Header from './components/shared/header'
-import './app.scss'
+
+import './app.css'
 
 function App() {
   return (
@@ -21,8 +21,8 @@ function App() {
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<ScreenPokemonList />} />
-      <Route path="/p/:idOrSlug" element={<ScreenPokemonDetail />} />
+      {/* <Route path="/" element={<ScreenPokemonList />} />
+      <Route path="/p/:idOrSlug" element={<ScreenPokemonDetail />} /> */}
       <Route path="*" element={<ScreenNotFound />} />
     </Routes>
   )

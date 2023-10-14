@@ -2,13 +2,13 @@
   padding-left: 16px;
   padding-right: 16px;
 
-  &-content {
+  .pk-SharedHeader-content {
     display: flex;
     height: inherit;
     align-items: center;
   }
 
-  &-logoContainer {
+  .pk-SharedHeader-logoContainer {
     flex: 0 0 auto;
     padding: 16px;
     display: inline-flex;
@@ -16,11 +16,11 @@
     color: var(--c-primary);
   }
 
-  &-offset {
+  .pk-SharedHeader-offset {
     flex: 1 1 auto;
   }
 
-  &-searchContainer {
+  .pk-SharedHeader-searchContainer {
     width: 100%;
     display: flex;
 
@@ -29,11 +29,11 @@
     }
   }
 
-  &-searchForm {
+  .pk-SharedHeader-searchForm {
     width: inherit;
   }
 
-  &-themeModeContainer {
+  .pk-SharedHeader-themeModeContainer {
     flex: 0 0 auto;
     padding: 16px;
     display: inline-flex;
