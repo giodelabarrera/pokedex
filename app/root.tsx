@@ -19,13 +19,6 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: appStylesHref },
 ];
 
-export const action = async ({
-  request,
-}: ActionFunctionArgs) => {
-  const formData = await request.formData();
-  return redirect(`/?query=${formData.get('query')}`);
-};
-
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);
   const query = url.searchParams.get("query") || '';
@@ -77,7 +70,7 @@ function Header() {
         </Link>
         <div className={`${baseClass}-offset`} />
         <div className={`${baseClass}-searchContainer`}>
-          <Form id="search-form" role="search" method="post">
+          <Form id="search-form" role="search">
             <Search
               ref={searchInputRef}
               placeholder="Name or Number"
