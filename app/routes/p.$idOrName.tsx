@@ -25,7 +25,6 @@ export default function Detail() {
 }
 
 function PokemonDetail({ pokemon }) {
-  console.log(pokemon)
   const { name, number, types, stats, imageUrl } = pokemon
   const baseClass = 'pk-PokemonDetail'
   return (
