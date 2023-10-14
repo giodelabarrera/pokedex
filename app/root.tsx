@@ -1,4 +1,5 @@
-import { type LinksFunction, redirect, type ActionFunctionArgs } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
+import type { LinksFunction, ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
 
 import appStylesHref from "./app.css";
 
@@ -10,8 +11,10 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration
+  ScrollRestoration,
+  useLoaderData
 } from "@remix-run/react";
+import { forwardRef, useEffect, useRef } from "react";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: appStylesHref },
@@ -22,6 +25,12 @@ export const action = async ({
 }: ActionFunctionArgs) => {
   const formData = await request.formData();
   return redirect(`/?query=${formData.get('query')}`);
+};
+
+export const loader = async ({ request }: LoaderFunctionArgs) => {
+  const url = new URL(request.url);
+  const query = url.searchParams.get("query") || '';
+  return json({ query });
 };
 
 export default function App() {
@@ -50,6 +59,16 @@ export default function App() {
 }
 
 function Header() {
+  const { query } = useLoaderData<typeof loader>()
+  const searchInputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    const searchInput = searchInputRef.current
+    if (searchInput instanceof HTMLInputElement) {
+      searchInput.value = query || "";
+    }
+  }, [query]);
+
   const baseClass = 'pk-SharedHeader'
   return (
     <header className={baseClass}>
@@ -61,8 +80,9 @@ function Header() {
         <div className={`${baseClass}-searchContainer`}>
           <Form id="search-form" role="search" method="post">
             <Search
-              // defaultValue={searchValue}
+              ref={searchInputRef}
               placeholder="Name or Number"
+              defaultValue={query}
             />
           </Form>
         </div>
@@ -112,12 +132,13 @@ function Logo() {
   )
 }
 
-function Search({ defaultValue = '', placeholder }) {
+const Search = forwardRef<HTMLInputElement>(function Search({ defaultValue = '', placeholder }, ref) {
   const baseClass = 'pk-SharedHeader-search'
   return (
     <div className={baseClass}>
       <SearchIcon />
       <input
+        ref={ref}
         className={`${baseClass}-input`}
         type="text"
         defaultValue={defaultValue}
@@ -126,7 +147,8 @@ function Search({ defaultValue = '', placeholder }) {
       />
     </div>
   )
-}
+})
+
 
 function SearchIcon() {
   return (
