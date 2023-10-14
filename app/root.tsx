@@ -1,8 +1,9 @@
-import { type LinksFunction } from "@remix-run/node";
+import { type LinksFunction, redirect, type ActionFunctionArgs } from "@remix-run/node";
 
 import appStylesHref from "./app.css";
 
 import {
+  Form,
   Link,
   Links,
   LiveReload,
@@ -15,6 +16,13 @@ import {
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: appStylesHref },
 ];
+
+export const action = async ({
+  request,
+}: ActionFunctionArgs) => {
+  const formData = await request.formData();
+  return redirect(`/?query=${formData.get('query')}`);
+};
 
 export default function App() {
   return (
@@ -42,35 +50,7 @@ export default function App() {
 }
 
 function Header() {
-  // const [query = '', setQuery] = useQueryParam('query', StringParam)
-  // const navigate = useNavigate()
-  // const match = useMatch('/')
-
-  // const [searchValue, setSearchValue] = useState(query)
-  const searchValue = ''
-
-  // useEffect(() => {
-  //   setSearchValue(query)
-  // }, [query])
-
-  function handleSearchChange(searchValue) {
-    // setSearchValue(searchValue)
-  }
-
-  function handleSearchFormSubmit(e) {
-    // e.preventDefault()
-    // // match if it is homepage
-    // if (match) {
-    //   // simply update query param
-    //   setQuery(searchValue)
-    // } else {
-    //   // go to homepage with query param
-    //   navigate(`/?query=${searchValue}`)
-    // }
-  }
-
   const baseClass = 'pk-SharedHeader'
-
   return (
     <header className={baseClass}>
       <div className={`${baseClass}-content`}>
@@ -79,16 +59,12 @@ function Header() {
         </Link>
         <div className={`${baseClass}-offset`} />
         <div className={`${baseClass}-searchContainer`}>
-          <form
-            className={`${baseClass}-searchForm`}
-            onSubmit={handleSearchFormSubmit}
-          >
+          <Form id="search-form" role="search" method="post">
             <Search
-              value={searchValue}
+              // defaultValue={searchValue}
               placeholder="Name or Number"
-              onChange={handleSearchChange}
             />
-          </form>
+          </Form>
         </div>
       </div>
     </header>
@@ -136,22 +112,17 @@ function Logo() {
   )
 }
 
-function Search({ value = '', placeholder, onChange }) {
-  function handleChange(event) {
-    onChange(event.target.value)
-  }
-
+function Search({ defaultValue = '', placeholder }) {
   const baseClass = 'pk-SharedHeader-search'
-
   return (
     <div className={baseClass}>
       <SearchIcon />
       <input
         className={`${baseClass}-input`}
         type="text"
-        value={value}
+        defaultValue={defaultValue}
         placeholder={placeholder}
-        onChange={handleChange}
+        name="query"
       />
     </div>
   )

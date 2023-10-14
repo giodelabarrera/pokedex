@@ -1,10 +1,11 @@
-import { json } from "@remix-run/node";
+import { type LoaderFunctionArgs, json } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import { getPokemonList } from "~/data";
 
-
-export const loader = async () => {
-  const pokemonList = await getPokemonList({ limit: 1200 });
+export const loader = async ({ request }: LoaderFunctionArgs) => {
+  const url = new URL(request.url);
+  const query = url.searchParams.get("query") || '';
+  const pokemonList = await getPokemonList({ query, limit: 1200 });
   return json({ pokemonList });
 };
 
