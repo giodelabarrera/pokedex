@@ -150,8 +150,7 @@ const Search = forwardRef<HTMLInputElement>(function Search({ defaultValue = '',
         ref={ref}
         className={`${baseClass}-input`}
         aria-label="Search pokemon"
-        // type="text"
-        type="search"
+        type="text"
         defaultValue={defaultValue}
         placeholder={placeholder}
         name="query"

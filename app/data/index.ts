@@ -39,6 +39,7 @@ export async function getPokemonList({
   sort = 'lowest_number',
   limit = 12,
   offset = 0 }: { query?: string, types?: any, sort?: any, limit?: any, offset?: any } = {}) {
+  await new Promise((resolve) => setTimeout(resolve, 250));
   const params = { query, types, sort }
   if (typeof limit !== 'undefined') params.limit = Number(limit)
   if (typeof offset !== 'undefined') params.offset = Number(offset)
