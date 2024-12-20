@@ -11,19 +11,21 @@ import {
   ScrollRestoration,
   useLoaderData,
   useNavigation,
-  useSubmit
+  useSubmit,
 } from "@remix-run/react";
 import { forwardRef, useEffect, useRef } from "react";
 
+import stylesheet from "./tailwind.css?url";
 import appStylesHref from "./app.css";
 
 export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: stylesheet },
   { rel: "stylesheet", href: appStylesHref },
 ];
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);
-  const query = url.searchParams.get("query") || '';
+  const query = url.searchParams.get("query") || "";
   return json({ query });
 };
 
@@ -32,9 +34,7 @@ export default function App() {
 
   const searching =
     navigation.location &&
-    new URLSearchParams(navigation.location.search).has(
-      "query"
-    );
+    new URLSearchParams(navigation.location.search).has("query");
 
   return (
     <html lang="en">
@@ -47,10 +47,11 @@ export default function App() {
       <body data-theme="dark">
         <div className="pk-App">
           <Header />
-          <main className={
-            navigation.state === "loading" && !searching
-              ? "loading" : ""
-          }>
+          <main
+            className={
+              navigation.state === "loading" && !searching ? "loading" : ""
+            }
+          >
             <Outlet />
           </main>
         </div>
@@ -64,18 +65,18 @@ export default function App() {
 }
 
 function Header() {
-  const { query } = useLoaderData<typeof loader>()
-  const submit = useSubmit()
-  const searchInputRef = useRef<HTMLInputElement>(null)
+  const { query } = useLoaderData<typeof loader>();
+  const submit = useSubmit();
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    const searchInput = searchInputRef.current
+    const searchInput = searchInputRef.current;
     if (searchInput instanceof HTMLInputElement) {
       searchInput.value = query || "";
     }
   }, [query]);
 
-  const baseClass = 'pk-SharedHeader'
+  const baseClass = "pk-SharedHeader";
   return (
     <header className={baseClass}>
       <div className={`${baseClass}-content`}>
@@ -84,9 +85,13 @@ function Header() {
         </Link>
         <div className={`${baseClass}-offset`} />
         <div className={`${baseClass}-searchContainer`}>
-          <Form id="search-form" role="search" onChange={(event) => {
-            submit(event.currentTarget);
-          }}>
+          <Form
+            id="search-form"
+            role="search"
+            onChange={(event) => {
+              submit(event.currentTarget);
+            }}
+          >
             <Search
               ref={searchInputRef}
               placeholder="Name or Number"
@@ -96,7 +101,7 @@ function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }
 
 function Logo() {
@@ -137,11 +142,14 @@ function Logo() {
              101.47,576.80 101.47,576.80 101.47,576.80 Z"
       />
     </svg>
-  )
+  );
 }
 
-const Search = forwardRef<HTMLInputElement>(function Search({ defaultValue = '', placeholder }, ref) {
-  const baseClass = 'pk-SharedHeader-search'
+const Search = forwardRef<HTMLInputElement>(function Search(
+  { defaultValue = "", placeholder },
+  ref
+) {
+  const baseClass = "pk-SharedHeader-search";
   return (
     <div className={baseClass}>
       <SearchIcon />
@@ -156,14 +164,13 @@ const Search = forwardRef<HTMLInputElement>(function Search({ defaultValue = '',
         name="query"
       />
     </div>
-  )
-})
-
+  );
+});
 
 function SearchIcon() {
   return (
     <svg height="20" width="20" viewBox="0 0 24 24" role="img">
       <path d="M10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6m13.12 2.88l-4.26-4.26A9.842 9.842 0 0 0 20 10c0-5.52-4.48-10-10-10S0 4.48 0 10s4.48 10 10 10c1.67 0 3.24-.41 4.62-1.14l4.26 4.26a3 3 0 0 0 4.24 0 3 3 0 0 0 0-4.24"></path>
     </svg>
-  )
+  );
 }
