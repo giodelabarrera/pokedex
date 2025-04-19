@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "run-mock-server": "tsx ./mock-server.ts"
   },
   "dependencies": {
     "nanoid": "^5.1.5",
