@@ -33,6 +33,7 @@
     "express": "^5.1.0",
     "msw": "^2.7.5",
     "pino-http": "^10.4.0",
+    "pino-pretty": "^13.0.0",
     "tailwindcss": "^4",
     "tsx": "^4.19.3",
     "typescript": "^5"
