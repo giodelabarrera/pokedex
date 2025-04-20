@@ -1,39 +1,23 @@
-import { factory, primaryKey } from '@mswjs/data';
-import { nanoid } from 'nanoid';
+import { factory, primaryKey } from "@mswjs/data";
 
 const models = {
-  user: {
-    id: primaryKey(nanoid),
-    firstName: String,
-    lastName: String,
-    email: String,
-    password: String,
-    teamId: String,
-    role: String,
-    bio: String,
-    createdAt: Date.now,
-  },
-  team: {
-    id: primaryKey(nanoid),
-    name: String,
-    description: String,
-    createdAt: Date.now,
-  },
-  discussion: {
-    id: primaryKey(nanoid),
-    title: String,
-    body: String,
-    authorId: String,
-    teamId: String,
-    createdAt: Date.now,
-    public: Boolean,
-  },
-  comment: {
-    id: primaryKey(nanoid),
-    body: String,
-    authorId: String,
-    discussionId: String,
-    createdAt: Date.now,
+  pokemon: {
+    id: primaryKey(Number),
+    name: {
+      english: String,
+      japanese: String,
+      chinese: String,
+      french: String,
+    },
+    type: Array,
+    base: {
+      HP: Number,
+      Attack: Number,
+      Defense: Number,
+      "Sp. Attack": Number,
+      "Sp. Defense": Number,
+      Speed: Number,
+    },
   },
 };
 
@@ -41,45 +25,45 @@ export const db = factory(models);
 
 export type Model = keyof typeof models;
 
-const dbFilePath = 'mocked-db.json';
+const dbFilePath = "mocked-db.json";
 
 export const loadDb = async () => {
   // If we are running in a Node.js environment
-  if (typeof window === 'undefined') {
-    const { readFile, writeFile } = await import('fs/promises');
+  if (typeof window === "undefined") {
+    const { readFile, writeFile } = await import("fs/promises");
     try {
-      const data = await readFile(dbFilePath, 'utf8');
+      const data = await readFile(dbFilePath, "utf8");
       return JSON.parse(data);
     } catch (error: any) {
-      if (error?.code === 'ENOENT') {
+      if (error?.code === "ENOENT") {
         const emptyDB = {};
         await writeFile(dbFilePath, JSON.stringify(emptyDB, null, 2));
         return emptyDB;
       } else {
-        console.error('Error loading mocked DB:', error);
+        console.error("Error loading mocked DB:", error);
         return null;
       }
     }
   }
   // If we are running in a browser environment
   return Object.assign(
-    JSON.parse(window.localStorage.getItem('msw-db') || '{}'),
+    JSON.parse(window.localStorage.getItem("msw-db") || "{}")
   );
 };
 
 export const storeDb = async (data: string) => {
   // If we are running in a Node.js environment
-  if (typeof window === 'undefined') {
-    const { writeFile } = await import('fs/promises');
+  if (typeof window === "undefined") {
+    const { writeFile } = await import("fs/promises");
     await writeFile(dbFilePath, data);
   } else {
     // If we are running in a browser environment
-    window.localStorage.setItem('msw-db', data);
+    window.localStorage.setItem("msw-db", data);
   }
 };
 
 export const persistDb = async (model: Model) => {
-  if (process.env.NODE_ENV === 'test') return;
+  if (process.env.NODE_ENV === "test") return;
   const data = await loadDb();
   data[model] = db[model].getAll();
   await storeDb(JSON.stringify(data));
